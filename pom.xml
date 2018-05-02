@@ -16,12 +16,7 @@
   </properties>
   <modules>
   	
-    <module>good-cus-web</module>
-    <module>good-prd-web</module>
-	<module>good-mkt-web</module>
-	<module>good-mon-web</module>
-	<module>good-bench-web</module>
-	<module>good-sys</module>
+    <module>gcrm-cus-web</module>
 
   </modules>
   <dependencyManagement>

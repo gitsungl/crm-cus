@@ -5,7 +5,7 @@
     <artifactId>good-crm</artifactId>
     <version>1.0.0</version>
   </parent>
-  <artifactId>good-cus-web</artifactId>
+  <artifactId>gcrm-cus-web</artifactId>
   <packaging>war</packaging>
   <name>${project.artifactId}</name>
 	<properties>
@@ -18,8 +18,8 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.1</version>
 		        <configuration>
-		            <path>/good-cus-web</path>
-		            <port>8082</port>
+		            <path>/gcrm-cus-web</path>
+		            <port>8020</port>
 		            <uriEncoding>UTF-8</uriEncoding>
 		            <url>http://localhost:8080/manager/html</url>
 		            <server>tomcat7</server>
