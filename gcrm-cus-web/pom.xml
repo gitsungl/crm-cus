@@ -229,7 +229,7 @@
 		
 		<dependency>
             <groupId>com.app</groupId>
-            <artifactId>good-sys-provider</artifactId>
+            <artifactId>gcrm-sys-provider</artifactId>
             <version>1.0.0</version>
         </dependency>
 	</dependencies>
