@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.ProductInfoDao">
+	<resultMap id="ProductInfoMap" type="com.good.cus.bean.ProductInfoPo">
+		<result property="prdId" column="prd_id"/>
+		<result property="prdName" column="prd_name"/>
+		<result property="prdType" column="prd_type"/>
+		<result property="prdDesc" column="prd_desc"/>
+		<result property="crtTime" column="crt_time"/>
+		<result property="crtUser" column="crt_user"/>
+	</resultMap>
+	<select id="getByKey" parameterType="com.good.cus.bean.ProductInfoPo" 
+		resultMap="ProductInfoMap">
+		select
+			prd_id as prdId,
+			prd_name as prdName,
+			prd_type as prdType,
+			prd_desc as prdDesc,
+			crt_time as crtTime,
+			crt_user as crtUser
+		from product_info where 
+	</select>
+
+	<select id="list" resultMap="ProductInfoMap">
+		select 
+			prd_id as prdId,
+			prd_name as prdName,
+			prd_type as prdType,
+			prd_desc as prdDesc,
+			crt_time as crtTime,
+			crt_user as crtUser
+		from product_info 
+		<where> 1=1
+			<if test="condition.prdId != null and condition.prdId != ''"> and prd_id = #{condition.prdId} </if>
+			<if test="condition.prdName != null and condition.prdName != ''"> and prd_name = #{condition.prdName} </if>
+			<if test="condition.prdType != null and condition.prdType != ''"> and prd_type = #{condition.prdType} </if>
+			<if test="condition.prdDesc != null and condition.prdDesc != ''"> and prd_desc = #{condition.prdDesc} </if>
+			<if test="condition.crtTime != null and condition.crtTime != ''"> and crt_time = #{condition.crtTime} </if>
+			<if test="condition.crtUser != null and condition.crtUser != ''"> and crt_user = #{condition.crtUser} </if>
+		</where>
+		<if test="condition.orders != null " > ORDER BY ${condition.orders}</if>
+	</select>
+
+	<update id="update" parameterType="com.good.cus.bean.ProductInfoPo">
+		update product_info 
+		<set>
+			<if test="prdId != null">prd_id=#{prdId},</if>
+			<if test="prdName != null">prd_name=#{prdName},</if>
+			<if test="prdType != null">prd_type=#{prdType},</if>
+			<if test="prdDesc != null">prd_desc=#{prdDesc},</if>
+			<if test="crtTime != null">crt_time=#{crtTime},</if>
+			<if test="crtUser != null">crt_user=#{crtUser},</if>
+		</set>
+		where 
+	</update>
+
+	<insert id="insert" parameterType="com.good.cus.bean.ProductInfoPo">
+		insert into product_info (prd_id,prd_name,prd_type,prd_desc,crt_time,crt_user)
+		values(#{prdId,jdbcType=VARCHAR} ,#{prdName,jdbcType=VARCHAR} ,#{prdType,jdbcType=VARCHAR} ,#{prdDesc,jdbcType=VARCHAR} ,#{crtTime,jdbcType=TIMESTAMP} ,#{crtUser,jdbcType=VARCHAR} )
+	</insert>
+
+	<delete id="delete" parameterType="com.good.cus.bean.ProductInfoPo">
+		delete from product_info where 
+	</delete>
+</mapper>

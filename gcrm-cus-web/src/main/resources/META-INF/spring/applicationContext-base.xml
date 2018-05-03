@@ -15,6 +15,8 @@
     <context:annotation-config />
 
     <import resource="classpath:META-INF/spring/module-sys.xml"/>
+    
+    <context:component-scan base-package="com.good.cus" />
 
     <!-- 指定本应用所属模块 -->
     <bean id="appInfoService" class="com.good.sys.service.AppInfoServiceImpl">
