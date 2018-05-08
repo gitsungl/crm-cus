@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.HomePageInfoDao">
+
+  <select id="countMonthByStaffId" resultType="com.good.cus.bean.HomePagePo">
+    SELECT
+      MONTH(t.BIZ_DATE) AS month,
+      SUM(t.PERF_ACPH)  AS perfAcph
+    FROM
+      mkt_stf_perf t
+    WHERE
+      YEAR(t.BIZ_DATE) = DATE_FORMAT(NOW(), '%Y') AND STAFF_ID = #{staffId}
+    GROUP BY
+     MONTH(t.BIZ_DATE)
+  </select>
+
+</mapper>
