@@ -2,7 +2,9 @@ package com.good.cus.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.good.comm.web.WebPageResult;
 import com.good.comm.web.WebRequest;
-import com.good.cus.bean.HomePagePo;
 import com.good.cus.service.HomePageInfoService;
 
 @Controller
@@ -36,69 +37,27 @@ public class HomePageInfoController {
         return "/homepage/homepage_info";
     }
 
-    /**
-     * 查询方法
-     */
-//    @RequestMapping(value = "/homepage_info/list", method = { RequestMethod.POST, RequestMethod.GET })
-    @PostMapping("/homepage_info/list")
+    @PostMapping("/homepage_info/homepage")
     @ResponseBody
-    public WebPageResult list(WebRequest wr, HttpServletRequest request) throws Exception {
-//        LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-//        List<HomePagePo> rows = service.list(linfo.getOperator().getUserID());
-        List<HomePagePo> rows = service.list("admin");
-        WebPageResult ret = new WebPageResult(rows);
-        return ret;
-    }
-/*
-    @RequestMapping(value = "/homepage_info/add", method = { RequestMethod.POST })
-    @ResponseBody
-    public WebPageResult add(ProductInfoPo one, HttpServletRequest request) throws Exception {
-        WebPageResult ret = new WebPageResult();
-        try {
-            LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-            service.add(linfo.getOperator(), one);
-        } catch (Exception e) {
-            logger.error(MsgConstants.E0000, e);
-            ret.setRetcode(MsgConstants.E0000);
-            ret.setMsg(e.getMessage());
-        }
+    public WebPageResult homepage(WebRequest wr, HttpServletRequest request) throws Exception {
+        // LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
+        String staffId = "admin"; // linfo.getOperator().getUserID();
+        logger.info("controller staffId: {}", staffId);
+        List<String> perfAcph = service.performance(staffId);
+        List<Map<String, String>> pubDpsChg = service.pubDpsChg(staffId);
+        List<Map<String, String>> pubLoanChg = service.pubLoanChg(staffId);
+        List<String> busiOpp = service.busiOpp(staffId);
+
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("perfAcph", perfAcph);
+        result.put("pubDpsChg", pubDpsChg);
+        result.put("pubLoanChg", pubLoanChg);
+        result.put("busiOpp", busiOpp);
+        logger.info("homepage controller result: {}", result);
+        WebPageResult ret = new WebPageResult(result);
         return ret;
     }
 
-    @RequestMapping(value = "/homepage_info/update", method = { RequestMethod.POST })
-    @ResponseBody
-    public WebPageResult update(ProductInfoPo one, HttpServletRequest request) throws Exception {
-        WebPageResult ret = new WebPageResult();
-        try {
-            LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-            service.update(linfo.getOperator(), one);
-        } catch (Exception e) {
-            logger.error(MsgConstants.E0000, e);
-            ret.setRetcode(MsgConstants.E0000);
-            ret.setMsg(e.getMessage());
-        }
-        return ret;
-    }
-
-    @RequestMapping(value = "/homepage_info/delete", method = { RequestMethod.POST })
-    @ResponseBody
-    public WebPageResult delete(@RequestBody ProductInfoPo[] list, HttpServletRequest request) throws Exception {
-        WebPageResult ret = new WebPageResult();
-        try {
-            LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-            for (ProductInfoPo one : list) {
-                service.delete(linfo.getOperator(), one);
-            }
-            ret.setMsg("成功删除" + list.length + " 条记录!");
-        } catch (Exception e) {
-            logger.error(MsgConstants.E0000, e);
-            ret.setRetcode(MsgConstants.E0000);
-            ret.setMsg(e.getMessage());
-        }
-
-        return ret;
-    }
-*/
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

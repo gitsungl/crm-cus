@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%@ taglib prefix="s" uri="/auth" %>
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%@ taglib prefix="s" uri="/auth"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>product_info Page</title>
+<title>客户经理</title>
 
 <link rel="stylesheet" href="../assets/css/fonts/linecons/css/linecons.css">
 <link rel="stylesheet" href="../assets/css/fonts/fontawesome/css/font-awesome.min.css">
@@ -20,136 +20,392 @@
 <link rel="stylesheet" href="../assets/css/xenon-skins.css">
 <link rel="stylesheet" href="../assets/css/custom.css">
 
-<!-- Imported styles on this page -->
 <link rel="stylesheet" href="../assets/js/datatables/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="../assets/js/select2/select2.css">
 <link rel="stylesheet" href="../assets/js/select2/select2-bootstrap.css">
 <link rel="stylesheet" href="../assets/js/multiselect/css/multi-select.css">
 <link rel="stylesheet" href="../css/app.css">
 
-<script src="../assets/js/jquery-1.11.1.min.js"></script>
-
 <style type="text/css">
-#mktStfPerfDiv {
-    top: 9.5px;
-    left: 9.5px;
-    width : 440px;
-    height: 280px;
-    display: block;
-    background-color: none;
-    width: 440px;
+#performanceDiv {
+  width: 43%;
+  height: 280px;
+  display: inline-block;
+}
+#unfinishedDiv {
+  width: 57%;
+  height: 280px;
+  display: inline-block;
+}
+#pubDpsChgDiv {
+  height: 280px;
+  display: inline-block;
+}
+#pubLoanChgDiv {
+  height: 280px;
+  display: inline-block;
+}
+#busiOppDiv {
+  height: 280px;
+  display: inline-block;
+}
+#perfRankingDiv {
+  height: 280px;
+  display: inline-block;
+}
+.row {
+}
+.record-textbox {
+  overflow: auto;
+  position: absolute;
+  border: 1px solid #7ec6e3;
+  border-radius: 4px;
+  outline: 0;
+  padding: 2px .3em;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  font-family: inherit;
+  -webkit-appearance: none;
+  font-size: 10px;
 }
 </style>
-
 </head>
 
-<body class="page-body" style="overflow-x: hidden;">
-<jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
+<body>
 
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="mktStfPerfDiv"></div>
+  <div class="row">
+    <div id="performanceDiv" class="col-md-4"></div>
+    <div id="unfinishedDiv" class="col-md-4"></div>
+  </div>
+  <div class="row">
+    <div id="pubDpsChgDiv" class="col-md-4"></div>
+    <div id="pubLoanChgDiv" class="col-md-4"></div>
+    <div id="busiOppDiv" class="col-md-4"></div>
+  </div>
+  <div class="row">
+    <div id="perfRankingDiv" class="col-md-4"></div>
+  </div>
 
-<!-- Bottom Scripts -->
+</body>
+
+<script src="../assets/js/jquery-1.11.1.min.js"></script>
+<script src="../assets/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/js/jquery-validate/jquery.validate.min.js"></script>
+
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/js/TweenMax.min.js"></script>
 <script src="../assets/js/resizeable.js"></script>
 <script src="../assets/js/joinable.js"></script>
 <script src="../assets/js/xenon-api.js"></script>
 <script src="../assets/js/xenon-toggles.js"></script>
-<script src="../assets/js/datatables/js/jquery.dataTables.min.js"></script>
+<script src="../assets/js/xenon-custom.js"></script>
 <script src="../assets/js/moment.min.js"></script>
 
-<!-- Imported scripts on this page -->
+<script src="../assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="../assets/js/datatables/js/jquery.dataTables.min.js"></script>
 <script src="../assets/js/datatables/dataTables.bootstrap.js"></script>
 <script src="../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
 <script src="../assets/js/select2/select2.min.js"></script>
-<script src="../assets/js/jquery-ui/jquery-ui.min.js"></script>
 <script src="../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
-<script src="../assets/js/jquery-validate/jquery.validate.min.js"></script>
-<script src="../assets/js/datepicker/bootstrap-datepicker.js"></script>
 
-<!-- JavaScripts initializations and stuff -->
-<script src="../assets/js/xenon-custom.js"></script>
+<script src="../assets/js/echarts/echarts.js"></script>
+<script src="../assets/js/echarts/macarons.js"></script>
+
 <script src="../js/WebUtils.js"></script>
 
-<!-- ECharts单文件引入 -->
-<script src="../assets/js/echarts/echarts.js"></script>
+<jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
 
 <script type="text/javascript">
-	var month = [], perfAcph = [];
+/* 
+    var optionData = {
+        perfAcph : [],
+        pubDpsChg : [],
+        pubLoanChg : [],
+        busiOpp : [],
+        perfRanking : [],
+    };
+    var app = {};
 
     $(function() {
-    });
-
-    require.config({
-        paths: {
-            echarts: "../assets/js/echarts"
-        }
-    });
-
-    require(
-        [
-            "echarts",
-            "echarts/chart/line"
-        ],
-        function (ec) {
-            var myChart_mktStfPerf = ec.init(document.getElementById("mktStfPerfDiv"));
-            var option_mktStfPerf = {
-                title : {
-                    text : "营销业绩趋势图",
-                    x : 19,
-                    y : 11.5
-                },
-                xAxis : [
-                    {
-                        type : "category",
-                        boundaryGap : false,
-                        axisLine : { show: false },
-                        axisTick : { show: false },
-                        splitLine : { show: false },
-                        data : month
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : "value",
-                        axisLine : { show: false },
-                        axisTick : { show: false }
-                    }
-                ],
-                series : [
-                    {
-                        type : "line",
-                        smooth : true,
-                        data : perfAcph
-                    }
-                ]
-            };
-
-            $.ajax({
-                url : "homepage_info/list",
-                type : "post",
-                dataType : "json",
-                async : false,
-                success : function(result) {
-                    if (WebUtils.isSuccess(result)) {
-                        var data = result.data;
-                        for (var i = 0; i < data.length; i++) {
-                            month.push(data[i].month);
-                            perfAcph.push(data[i].perfAcph);
-                        }
-                    }
-                },
-                error : function(errorMsg) {
-                    alert("图表请求数据失败!");
+        $.ajax({
+            url : "homepage_info/homepage",
+            type : "post",
+            dataType : "json",
+            async : false,
+            success : function(result) {
+                if (WebUtils.isSuccess(result)) {
+                    optionData.perfAcph = result.data.perfAcph;
+                    optionData.pubDpsChg = result.data.pubDpsChg;
+                    optionData.pubLoanChg = result.data.pubLoanChg;
+                    optionData.busiOpp = [ "90", "70", "45" ];//result.data.busiOpp;
+                    optionData.perfRanking = [ "18203", "23489", "29034", "104970", "630230" ];//result.data.perfRanking;
                 }
-            })
+            },
+            error : function(errorMsg) {
+                WebUtils.alert("图表请求数据失败!");
+            }
+        })
+    });
+ */
 
-            myChart_mktStfPerf.setOption(option_mktStfPerf);
+    var noIcons = {
+     "no1" : "../images/crm/no1.png",
+     "no2" : "../images/crm/no2.png",
+     "no3" : "../images/crm/no3.png",
+     "nome" : "../images/crm/nome.png"
+    };
 
+    var seriesLabel = {
+       normal : {
+           show : true,
+           textBorderColor : "#333",
+           textBorderWidth : 1.5
+       }
+    };
+
+    // 营销业绩趋势图
+    var myChart_performance = echarts.init(document.getElementById("performanceDiv"), "macarons");
+    myChart_performance.setOption({
+        title : {
+            text : "营销业绩趋势图"
+        },
+        xAxis : [ {
+            type : "category",
+            boundaryGap : false,
+            axisLine : {
+                show : false
+            },
+            axisTick : {
+                show : false
+            },
+            splitLine : {
+                show : false
+            },
+            data : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+        } ],
+        yAxis : [ {
+            type : "value",
+            axisLine : {
+                show : false
+            },
+            axisTick : {
+                show : false
+            }
+        } ],
+        series : [ {
+            type : "line",
+            smooth : true,
+            data : []
+        } ]
+    }, true);
+
+    // 未完成营销任务
+    var myChart_unfinished = echarts.init(document.getElementById("unfinishedDiv"), "macarons");
+    myChart_unfinished.setOption({
+        title : {
+            text : "未完成营销任务"
+        },
+        xAxis : [ {
+            type : "category",
+            data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+        }, {
+            type : "category",
+            data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+        } ],
+        yAxis : [ {
+            type : "value",
+            axisLabel : {
+                formatter : "{value} ms"
+            }
+        } ],
+        series : [ {
+            type : "bar",
+            data : []
+        }, {
+            type : "bar",
+            xAxisIndex : 1,
+            data : []
+        } ]
+    }, true);
+
+    // 客户存款变动排名
+    var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "macarons");
+    myChart_pubDpsChg.setOption({
+        title : {
+            text : "客户存款变动排名"
+        },
+        series : [ {
+            type : "funnel",
+            width : "60%",
+            data : []
+        } ]
+    }, true);
+
+    // 客户贷款变动排名
+    var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "macarons");
+    myChart_pubLoanChg.setOption({
+        title : {
+            text : "客户贷款变动排名"
+        },
+        series : [ {
+            type : "funnel",
+            width : "60%",
+            data : []
+        } ]
+    }, true);
+
+    // 可营销商机
+    var myChart_busiOpp = echarts.init(document.getElementById("busiOppDiv"), "macarons");
+    myChart_busiOpp.setOption({
+        title : {
+            text : "可营销商机"
+        },
+        xAxis : [ {
+            type : "category",
+            splitLine : {
+                show : false
+            },
+            data : [ "商机总数", "我认领", "已完成" ]
+        } ],
+        yAxis : [ {
+            type : "value",
+            splitLine : {
+                show : false
+            }
+        } ],
+        series : [ {
+            type : "bar",
+            width : "60%",
+            data : [],
+            label : seriesLabel
+        } ]
+    }, true);
+
+    // 业绩排名
+    var myChart_perfRanking = echarts.init(document.getElementById("perfRankingDiv"), "macarons");
+    myChart_perfRanking.setOption({
+        title : {
+            text : "业绩排名"
+        },
+        xAxis : {
+            type : "value",
+            name : "Days",
+            position : "top",
+            axisTick: {show:false},
+            splitLine: {show:false}
+        },
+        yAxis : {
+            type : "category",
+            inverse : true,
+            axisLine: {show:false},
+            axisTick: {show:false},
+            splitLine: {show:false},
+            data : [],
+            axisLabel : {
+                formatter: function (value) {
+                    return (value === "4" || value === "5") ? "{" + value + "| }\n{value|" + value + "}" : "{" + value + "| }\n{value|}";
+                },
+                rich : {
+                    value : {
+                        lineHeight: 0,
+                        align : "center"
+                    },
+                    no1 : {
+                        align : "center",
+                        backgroundColor : {
+                            image : noIcons.no1
+                        }
+                    },
+                    no2 : {
+                        align : "center",
+                        backgroundColor : {
+                            image : noIcons.no2
+                        }
+                    },
+                    no3 : {
+                        align : "center",
+                        backgroundColor : {
+                            image : noIcons.no3
+                        }
+                    },
+                    nome : {
+                        align : "center",
+                        backgroundColor : {
+                            image : noIcons.nome
+                        }
+                    },
+                    4 : {
+                        align : "center"
+                    },
+                    5 : {
+                        align : "center"
+                    }
+                }
+            }
+        },
+        series : [ {
+            type : "bar",
+            data : [],
+            label : seriesLabel
+        } ]
+    }, true);
+
+    // 异步加载数据
+    $.ajax({
+        url : "homepage_info/homepage",
+        type : "post",
+        dataType : "json",
+        async : true,
+        success : function(result) {
+            if (WebUtils.isSuccess(result)) {
+                // 营销业绩趋势图
+                myChart_performance.setOption({
+                    series: [{
+                        data: result.data.perfAcph
+                    }]
+                });
+                // 未完成营销任务
+                myChart_unfinished.setOption({
+                    series: [{
+                        data: [ 1.6, 2.6, 3.6, 4.6, 5.6, 6.6, 7.6, 8.6, 9.6, 10.6, 11.6, 12.6 ]
+                    }, {
+                        data: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+                    }]
+                });
+                // 客户存款变动排名
+                myChart_pubDpsChg.setOption({
+                    series: [{
+                        data: result.data.pubDpsChg
+                    }]
+                });
+                // 客户贷款变动排名
+                myChart_pubLoanChg.setOption({
+                    series: [{
+                        data: result.data.pubLoanChg
+                    }]
+                });
+                // 可营销商机
+                myChart_busiOpp.setOption({
+                    series: [{
+                        data: [ "90", "70", "45" ] //result.data.busiOpp
+                    }]
+                });
+                // 业绩排名
+                myChart_perfRanking.setOption({
+                    yAxis : {
+                        data : [ "no1", "no2", "no3", "4", "nome" ] //result.data.perfRanking
+                    },
+                    series: [{
+                        data: [ 165, 140, 50, 30, 10 ] //result.data.perfRanking
+                    }]
+                });
+            }
+        },
+        error : function(errorMsg) {
+            WebUtils.alert("图表请求数据失败!");
         }
-    );
+    })
 
 </script>
-</body>
 </html>

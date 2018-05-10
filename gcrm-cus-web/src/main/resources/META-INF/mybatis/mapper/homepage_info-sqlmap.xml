@@ -2,16 +2,60 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.good.cus.mapper.HomePageInfoDao">
 
-  <select id="countMonthByStaffId" resultType="com.good.cus.bean.HomePagePo">
+  <select id="performance" resultType="com.good.cus.bean.MktStfPerfPo">
     SELECT
-      MONTH(t.BIZ_DATE) AS month,
-      SUM(t.PERF_ACPH)  AS perfAcph
+      MONTH(t.BIZ_DATE) AS id,
+      SUM(t.PERF_ACPH)  AS perfAcph,
+      SUM(t.PERF_TOTAL) AS perfTotal
     FROM
       mkt_stf_perf t
     WHERE
       YEAR(t.BIZ_DATE) = DATE_FORMAT(NOW(), '%Y') AND STAFF_ID = #{staffId}
     GROUP BY
      MONTH(t.BIZ_DATE)
+  </select>
+
+  <select id="pubDpsChg" resultType="com.good.cus.bean.pubChgPo">
+    SELECT
+      t.CUST_NO     AS custNo,
+      t.THAN_M_AMT  AS thanMAmt
+    FROM
+      pub_dps_chg_staff t
+    WHERE STAFF_ID = #{staffId}
+    ORDER BY
+      t.THAN_M_AMT DESC
+    LIMIT 5
+  </select>
+
+  <select id="pubLoanChg" resultType="com.good.cus.bean.pubChgPo">
+    SELECT
+      t.CUST_NO     AS custNo,
+      t.THAN_M_AMT  AS thanMAmt
+    FROM
+      pub_loan_chg_staff t
+    WHERE STAFF_ID = #{staffId}
+    ORDER BY
+      t.THAN_M_AMT DESC
+    LIMIT 5
+  </select>
+
+  <select id="busiOpp" resultType="java.lang.String">
+    SELECT
+      COUNT(*)
+    FROM
+      cust_busi_info
+    UNION ALL
+      SELECT
+        COUNT(*)
+      FROM
+        mkt_task_info
+      WHERE STAFF_ID = #{staffId}
+    UNION ALL
+      SELECT
+        COUNT(*)
+      FROM
+        mkt_task_info
+      WHERE TASK_STATUS = '4' AND STAFF_ID = #{staffId}
   </select>
 
 </mapper>
