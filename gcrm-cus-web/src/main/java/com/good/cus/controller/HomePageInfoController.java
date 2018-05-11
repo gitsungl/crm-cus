@@ -44,15 +44,19 @@ public class HomePageInfoController {
         String staffId = "admin"; // linfo.getOperator().getUserID();
         logger.info("controller staffId: {}", staffId);
         List<String> perfAcph = service.performance(staffId);
+        Map<String, List<String>> unfinished = service.unfinished(staffId);
         List<Map<String, String>> pubDpsChg = service.pubDpsChg(staffId);
         List<Map<String, String>> pubLoanChg = service.pubLoanChg(staffId);
         List<String> busiOpp = service.busiOpp(staffId);
+        Map<String, List<String>> perfRanking = service.perfRanking(staffId);
 
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("perfAcph", perfAcph);
+        result.put("unfinished", unfinished);
         result.put("pubDpsChg", pubDpsChg);
         result.put("pubLoanChg", pubLoanChg);
         result.put("busiOpp", busiOpp);
+        result.put("perfRanking", perfRanking);
         logger.info("homepage controller result: {}", result);
         WebPageResult ret = new WebPageResult(result);
         return ret;

@@ -15,6 +15,26 @@
      MONTH(t.BIZ_DATE)
   </select>
 
+  <select id="unfinished" resultType="com.good.cus.bean.mktTaskInfoPo">
+    SELECT
+      t.TASK_NAME AS taskName,
+      CASE t.TASK_STATUS
+      WHEN '1' THEN
+        t.PERF_TOTAL * 0.25
+      WHEN '2' THEN
+        t.PERF_TOTAL * 0.5
+      WHEN '3' THEN
+        t.PERF_TOTAL * 0.75
+      END AS perfAlready,
+      t.PERF_TOTAL AS perfTotal
+    FROM
+      MKT_TASK_INFO t
+    WHERE
+      t.TASK_TYPE = '1' AND t.TASK_STATUS != '4' AND t.STAFF_ID = #{staffId}
+    ORDER BY t.CREATE_TIME ASC
+    LIMIT 10
+  </select>
+
   <select id="pubDpsChg" resultType="com.good.cus.bean.pubChgPo">
     SELECT
       t.CUST_NO     AS custNo,
@@ -56,6 +76,35 @@
       FROM
         mkt_task_info
       WHERE TASK_STATUS = '4' AND STAFF_ID = #{staffId}
+  </select>
+
+  <select id="perfRanking" resultType="com.good.cus.bean.MktStfPerfPo">
+    ( SELECT
+      p.STAFF_ID AS STAFF_ID,
+      s.STAFF_NAME AS staffName,
+      SUM(p.PERF_ACPH) AS PERF_ACPH
+    FROM
+      mkt_stf_perf p
+    LEFT JOIN sys_staff s ON s.STAFF_ID = p.STAFF_ID
+    WHERE
+      MONTH (p.BIZ_DATE) = DATE_FORMAT(NOW(), '%m')
+    AND p.STAFF_ID != #{staffId}
+    GROUP BY
+      p.STAFF_ID
+    ORDER BY
+      SUM(p.PERF_ACPH) DESC
+    LIMIT 4 )
+    UNION ALL
+    SELECT
+      t.STAFF_ID AS id,
+      s.STAFF_NAME AS staffName,
+      SUM(t.PERF_ACPH) AS perfAcph
+    FROM
+      mkt_stf_perf t
+    LEFT JOIN sys_staff s ON s.STAFF_ID = t.STAFF_ID
+    WHERE
+      MONTH (t.BIZ_DATE) = DATE_FORMAT(NOW(), '%m')
+    AND t.STAFF_ID = #{staffId}
   </select>
 
 </mapper>

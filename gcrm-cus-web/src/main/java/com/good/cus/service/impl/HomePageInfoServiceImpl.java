@@ -1,5 +1,6 @@
 package com.good.cus.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.good.cus.bean.MktStfPerfPo;
+import com.good.cus.bean.mktTaskInfoPo;
 import com.good.cus.bean.pubChgPo;
 import com.good.cus.mapper.HomePageInfoDao;
 import com.good.cus.service.HomePageInfoService;
@@ -25,8 +27,8 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
 
     @Override
     public List<String> performance(String staffId) throws ServiceException {
-        List<MktStfPerfPo> list = homePageInfoDao.performance(staffId);
         List<String> perfAcph = new ArrayList<String>(12);
+        List<MktStfPerfPo> list = homePageInfoDao.performance(staffId);
         boolean monthFlag = false;
         for (int i = 0; i < 12; i++) {
             if (list != null && list.size() > 0) {
@@ -44,7 +46,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
                             break;
                         }
                     }
-                    
+
                 } else {
                     perfAcph.add("0");
                 }
@@ -57,9 +59,24 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
     }
 
     @Override
-    public List<String> unfinished(String staffId) throws ServiceException {
-        // TODO Auto-generated method stub
-        return null;
+    public Map<String, List<String>> unfinished(String staffId) throws ServiceException {
+        Map<String, List<String>> result = new HashMap<String, List<String>>(3);
+        List<mktTaskInfoPo> list = homePageInfoDao.unfinished(staffId);
+        List<String> taskName = new ArrayList<String>(10);
+        List<String> perfAlready = new ArrayList<String>(10);
+        List<String> perfTotal = new ArrayList<String>(10);
+        if (list != null && list.size() > 0) {
+            for (mktTaskInfoPo po : list) {
+                taskName.add(po.getTaskName());
+                perfAlready.add(po.getPerfAlready().toString());
+                perfTotal.add(po.getPerfTotal().toString());
+            }
+        }
+        result.put("taskName", taskName);
+        result.put("perfAlready", perfAlready);
+        result.put("perfTotal", perfTotal);
+        logger.info("unfinished service result: {}", result);
+        return result;
     }
 
     @Override
@@ -102,9 +119,44 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
     }
 
     @Override
-    public List<String> PerfRanking(String staffId) throws ServiceException {
-        // TODO Auto-generated method stub
-        return null;
+    public Map<String, List<String>> perfRanking(String staffId) throws ServiceException {
+        Map<String, List<String>> result = new HashMap<String, List<String>>(3);
+        List<MktStfPerfPo> list = homePageInfoDao.perfRanking(staffId);
+        List<String> perfRanking = new ArrayList<String>(5);
+        List<String> perfRankingName = new ArrayList<String>(5);
+        List<String> perfRankingAxis = new ArrayList<String>(5);
+        perfRankingAxis.add("no1");
+        perfRankingAxis.add("no2");
+        perfRankingAxis.add("no3");
+        perfRankingAxis.add("4");
+        perfRankingAxis.add("5");
+        if (list.size() == 5 && staffId.equals(list.get(4).getStaffId())) {
+            String myName = list.get(4).getStaffName();
+            BigDecimal myValue = list.get(4).getPerfAcph();
+            int i_acph = 4;
+            for (int i = 0; i < 4; i++) {
+                if (myValue.compareTo(list.get(i).getPerfAcph()) == 1) {
+                    i_acph = i;
+                    break;
+                }
+            }
+            perfRankingAxis.set(i_acph, "nome");
+            for (int i = 0; i < i_acph; i++) {
+                perfRankingName.add(list.get(i).getStaffName());
+                perfRanking.add(list.get(i).getPerfAcph().toString());
+            }
+            perfRankingName.add(myName);
+            perfRanking.add(myValue.toString());
+            for (int i = i_acph + 1; i < 5; i++) {
+                perfRankingName.add(list.get(i - 1).getStaffName());
+                perfRanking.add(list.get(i - 1).getPerfAcph().toString());
+            }
+        }
+        result.put("perfRankingAxis", perfRankingAxis);
+        result.put("perfRankingName", perfRankingName);
+        result.put("perfRanking", perfRanking);
+        logger.info("perfRanking service result: {}", result);
+        return result;
     }
 
 }

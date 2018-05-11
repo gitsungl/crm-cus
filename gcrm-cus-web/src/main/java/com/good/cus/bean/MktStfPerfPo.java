@@ -14,6 +14,8 @@ public class MktStfPerfPo implements Serializable {
 
     private String staffId;
 
+    private String staffName;
+
     private BigDecimal perfAcph;
 
     private BigDecimal perfTotal;
@@ -48,6 +50,14 @@ public class MktStfPerfPo implements Serializable {
 
     public void setStaffId(String staffId) {
         this.staffId = staffId;
+    }
+
+    public String getStaffName() {
+        return staffName;
+    }
+
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
     }
 
     public BigDecimal getPerfAcph() {

@@ -27,66 +27,118 @@
 <link rel="stylesheet" href="../css/app.css">
 
 <style type="text/css">
-#performanceDiv {
+.page-container {
+  width: 90%;
+}
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.chart-item-bg {
+  margin-bottom: 14px;
+}
+.leftCol {
+  padding-left: 15px;
+}
+.rightCol {
+  padding-right: 15px;
+}
+.lessCol {
   width: 43%;
+}
+.moreCol {
+  width: 57%;
+}
+.echartsDiv {
   height: 280px;
-  display: inline-block;
+}
+.echartsCol {
+  height: 340px;
+}
+#topRow {
+  margin-top: 1.5%;
+}
+#performanceDiv {
+  width: 440px;
 }
 #unfinishedDiv {
-  width: 57%;
-  height: 280px;
-  display: inline-block;
+  width: 580px;
 }
 #pubDpsChgDiv {
-  height: 280px;
-  display: inline-block;
+  width: 337px;
 }
 #pubLoanChgDiv {
-  height: 280px;
-  display: inline-block;
+  width: 337px;
 }
 #busiOppDiv {
-  height: 280px;
-  display: inline-block;
+  width: 337px;
 }
 #perfRankingDiv {
-  height: 280px;
-  display: inline-block;
-}
-.row {
-}
-.record-textbox {
-  overflow: auto;
-  position: absolute;
-  border: 1px solid #7ec6e3;
-  border-radius: 4px;
-  outline: 0;
-  padding: 2px .3em;
-  display: inline-block;
-  vertical-align: middle;
-  box-sizing: border-box;
-  font-family: inherit;
-  -webkit-appearance: none;
-  font-size: 10px;
+  width: 440px;
 }
 </style>
 </head>
 
-<body>
-
-  <div class="row">
-    <div id="performanceDiv" class="col-md-4"></div>
-    <div id="unfinishedDiv" class="col-md-4"></div>
+<body class="page-body">
+  <div class="page-container">
+    <div class="main-content">
+      <div id="topRow" class="row">
+        <div class="col-sm-6 leftCol lessCol">
+          <div class="chart-item-bg echartsCol">
+            <div class="chart-label">
+              <div id="performanceDiv" class="echartsDiv"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 rightCol moreCol">
+          <div class="chart-item-bg echartsCol">
+            <div class="chart-label">
+              <div id="unfinishedDiv" class="echartsDiv"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 leftCol">
+          <div class="chart-item-bg echartsCol">
+            <div class="chart-label">
+              <div id="pubDpsChgDiv" class="echartsDiv"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="chart-item-bg echartsCol">
+            <div class="chart-label">
+              <div id="pubLoanChgDiv" class="echartsDiv"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 rightCol">
+          <div class="chart-item-bg echartsCol">
+            <div class="chart-label">
+              <div id="busiOppDiv" class="echartsDiv"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 leftCol lessCol">
+          <div class="chart-item-bg echartsCol">
+            <div class="chart-label">
+              <div id="perfRankingDiv" class="echartsDiv"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 rightCol moreCol">
+          <div class="chart-item-bg echartsCol">
+            <div class="chart-label">
+              <div id="messageDiv" class="echartsDiv"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row">
-    <div id="pubDpsChgDiv" class="col-md-4"></div>
-    <div id="pubLoanChgDiv" class="col-md-4"></div>
-    <div id="busiOppDiv" class="col-md-4"></div>
-  </div>
-  <div class="row">
-    <div id="perfRankingDiv" class="col-md-4"></div>
-  </div>
-
 </body>
 
 <script src="../assets/js/jquery-1.11.1.min.js"></script>
@@ -117,38 +169,6 @@
 <jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
 
 <script type="text/javascript">
-/* 
-    var optionData = {
-        perfAcph : [],
-        pubDpsChg : [],
-        pubLoanChg : [],
-        busiOpp : [],
-        perfRanking : [],
-    };
-    var app = {};
-
-    $(function() {
-        $.ajax({
-            url : "homepage_info/homepage",
-            type : "post",
-            dataType : "json",
-            async : false,
-            success : function(result) {
-                if (WebUtils.isSuccess(result)) {
-                    optionData.perfAcph = result.data.perfAcph;
-                    optionData.pubDpsChg = result.data.pubDpsChg;
-                    optionData.pubLoanChg = result.data.pubLoanChg;
-                    optionData.busiOpp = [ "90", "70", "45" ];//result.data.busiOpp;
-                    optionData.perfRanking = [ "18203", "23489", "29034", "104970", "630230" ];//result.data.perfRanking;
-                }
-            },
-            error : function(errorMsg) {
-                WebUtils.alert("图表请求数据失败!");
-            }
-        })
-    });
- */
-
     var noIcons = {
      "no1" : "../images/crm/no1.png",
      "no2" : "../images/crm/no2.png",
@@ -160,7 +180,7 @@
        normal : {
            show : true,
            textBorderColor : "#333",
-           textBorderWidth : 1.5
+           textBorderWidth : 1
        }
     };
 
@@ -208,16 +228,12 @@
         },
         xAxis : [ {
             type : "category",
-            data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+            data : []
         }, {
-            type : "category",
-            data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+            type : "category"
         } ],
         yAxis : [ {
-            type : "value",
-            axisLabel : {
-                formatter : "{value} ms"
-            }
+            type : "value"
         } ],
         series : [ {
             type : "bar",
@@ -225,6 +241,28 @@
         }, {
             type : "bar",
             xAxisIndex : 1,
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#35D6FF'},
+                            {offset: 0.5, color: '#188df0'},
+                            {offset: 1, color: '#3B90FF'}
+                        ]
+                    )
+                },
+                emphasis: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#2378f7'},
+                            {offset: 0.7, color: '#2378f7'},
+                            {offset: 1, color: '#83bff6'}
+                        ]
+                    )
+                }
+            },
             data : []
         } ]
     }, true);
@@ -276,9 +314,8 @@
         } ],
         series : [ {
             type : "bar",
-            width : "60%",
-            data : [],
-            label : seriesLabel
+            label : seriesLabel,
+            data : []
         } ]
     }, true);
 
@@ -292,15 +329,15 @@
             type : "value",
             name : "Days",
             position : "top",
-            axisTick: {show:false},
-            splitLine: {show:false}
+            axisTick: { show : false },
+            splitLine: { show : false }
         },
         yAxis : {
             type : "category",
             inverse : true,
-            axisLine: {show:false},
-            axisTick: {show:false},
-            splitLine: {show:false},
+            axisLine: { show : false },
+            axisTick: { show : false },
+            splitLine: { show : false },
             data : [],
             axisLabel : {
                 formatter: function (value) {
@@ -346,8 +383,8 @@
         },
         series : [ {
             type : "bar",
-            data : [],
-            label : seriesLabel
+            label : seriesLabel,
+            data : []
         } ]
     }, true);
 
@@ -367,10 +404,16 @@
                 });
                 // 未完成营销任务
                 myChart_unfinished.setOption({
+                    xAxis : {
+                        // data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+                        data : result.data.unfinished.taskName
+                    },
                     series: [{
-                        data: [ 1.6, 2.6, 3.6, 4.6, 5.6, 6.6, 7.6, 8.6, 9.6, 10.6, 11.6, 12.6 ]
+                        // data: [ 1.6, 2.6, 3.6, 4.6, 5.6, 6.6, 7.6, 8.6, 9.6, 10.6, 11.6, 12.6 ]
+                        data: result.data.unfinished.perfTotal
                     }, {
-                        data: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+                        // data: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 8 ]
+                        data: result.data.unfinished.perfAlready
                     }]
                 });
                 // 客户存款变动排名
@@ -388,16 +431,19 @@
                 // 可营销商机
                 myChart_busiOpp.setOption({
                     series: [{
-                        data: [ "90", "70", "45" ] //result.data.busiOpp
+                     // data: [ "90", "70", "45" ]
+                        data: result.data.busiOpp
                     }]
                 });
                 // 业绩排名
                 myChart_perfRanking.setOption({
                     yAxis : {
-                        data : [ "no1", "no2", "no3", "4", "nome" ] //result.data.perfRanking
+                        // data : [ "no1", "no2", "no3", "4", "nome" ]
+                        data : result.data.perfRanking.perfRankingAxis
                     },
                     series: [{
-                        data: [ 165, 140, 50, 30, 10 ] //result.data.perfRanking
+                        // data: [ 165, 140, 50, 30, 10 ]
+                        data: result.data.perfRanking.perfRanking
                     }]
                 });
             }

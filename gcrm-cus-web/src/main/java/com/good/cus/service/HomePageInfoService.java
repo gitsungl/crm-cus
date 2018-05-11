@@ -23,7 +23,7 @@ public interface HomePageInfoService {
      * @return
      * @throws ServiceException
      */
-    public List<String> unfinished(String staffId) throws ServiceException;
+    public Map<String, List<String>> unfinished(String staffId) throws ServiceException;
 
     /**
      * 客户存款变动排名
@@ -59,6 +59,6 @@ public interface HomePageInfoService {
      * @return
      * @throws ServiceException
      */
-    public List<String> PerfRanking(String staffId) throws ServiceException;
+    public Map<String, List<String>> perfRanking(String staffId) throws ServiceException;
 
 }
