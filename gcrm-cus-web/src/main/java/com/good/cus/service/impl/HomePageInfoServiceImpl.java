@@ -54,7 +54,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
                 perfAcph.add("0");
             }
         }
-        logger.info("performance service result:\n{}", perfAcph);
+        logger.info("performance service result:\n{}\n", perfAcph);
         return perfAcph;
     }
 
@@ -75,7 +75,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         result.put("taskName", taskName);
         result.put("perfAlready", perfAlready);
         result.put("perfTotal", perfTotal);
-        logger.info("unfinished service result:\n{}", result);
+        logger.info("unfinished service result:\n{}\n", result);
         return result;
     }
 
@@ -86,12 +86,12 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         if (list != null && list.size() > 0) {
             for (pubChgPo po : list) {
                 Map<String, String> map = new HashMap<String, String>(2);
-                map.put("name", po.getCustNo());
+                map.put("name", po.getCustName() + po.getThanMAmt().toString());
                 map.put("value", po.getThanMAmt().toString());
                 result.add(map);
             }
         }
-        logger.info("pubDpsChg service result:\n{}", result);
+        logger.info("pubDpsChg service result:\n{}\n", result);
         return result;
     }
 
@@ -102,19 +102,19 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         if (list != null && list.size() > 0) {
             for (pubChgPo po : list) {
                 Map<String, String> map = new HashMap<String, String>(2);
-                map.put("name", po.getCustNo());
+                map.put("name", po.getCustName() + po.getThanMAmt().toString());
                 map.put("value", po.getThanMAmt().toString());
                 result.add(map);
             }
         }
-        logger.info("pubLoanChg service result:\n{}", result);
+        logger.info("pubLoanChg service result:\n{}\n", result);
         return result;
     }
 
     @Override
     public List<String> busiOpp(String staffId) throws ServiceException {
         List<String> result = homePageInfoDao.busiOpp(staffId);
-        logger.info("busiOpp service result:\n{}", result);
+        logger.info("busiOpp service result:\n{}\n", result);
         return result;
     }
 
@@ -124,12 +124,6 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         List<MktStfPerfPo> list = homePageInfoDao.perfRanking(staffId);
         List<String> perfRanking = new ArrayList<String>(5);
         List<String> perfRankingName = new ArrayList<String>(5);
-        List<String> perfRankingAxis = new ArrayList<String>(5);
-        perfRankingAxis.add("no1");
-        perfRankingAxis.add("no2");
-        perfRankingAxis.add("no3");
-        perfRankingAxis.add("4");
-        perfRankingAxis.add("5");
         if (list.size() == 5 && staffId.equals(list.get(4).getStaffId())) {
             String myName = list.get(4).getStaffName();
             BigDecimal myValue = list.get(4).getPerfAcph();
@@ -140,22 +134,20 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
                     break;
                 }
             }
-            perfRankingAxis.set(i_acph, "nome");
             for (int i = 0; i < i_acph; i++) {
-                perfRankingName.add(list.get(i).getStaffName());
+                perfRankingName.add("no" + (i + 1) + list.get(i).getStaffName());
                 perfRanking.add(list.get(i).getPerfAcph().toString());
             }
-            perfRankingName.add(myName);
+            perfRankingName.add("nom" + myName);
             perfRanking.add(myValue.toString());
             for (int i = i_acph + 1; i < 5; i++) {
-                perfRankingName.add(list.get(i - 1).getStaffName());
+                perfRankingName.add("no" + (i + 1) + list.get(i - 1).getStaffName());
                 perfRanking.add(list.get(i - 1).getPerfAcph().toString());
             }
         }
-        result.put("perfRankingAxis", perfRankingAxis);
         result.put("perfRankingName", perfRankingName);
         result.put("perfRanking", perfRanking);
-        logger.info("perfRanking service result:\n{}", result);
+        logger.info("perfRanking service result:\n{}\n", result);
         return result;
     }
 

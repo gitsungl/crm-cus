@@ -12,6 +12,8 @@ public class pubChgPo implements Serializable {
 
     private String custNo;
 
+    private String custName;
+
     private BigDecimal bal;
 
     private BigDecimal thanYAmt;
@@ -40,6 +42,14 @@ public class pubChgPo implements Serializable {
 
     public void setCustNo(String custNo) {
         this.custNo = custNo;
+    }
+
+    public String getCustName() {
+        return custName;
+    }
+
+    public void setCustName(String custName) {
+        this.custName = custName;
     }
 
     public BigDecimal getBal() {

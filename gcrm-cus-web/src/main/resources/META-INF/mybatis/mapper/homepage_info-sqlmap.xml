@@ -38,9 +38,10 @@
   <select id="pubDpsChg" resultType="com.good.cus.bean.pubChgPo">
     SELECT
       t.CUST_NO     AS custNo,
+      c.CUST_NAME   AS custName,
       t.THAN_M_AMT  AS thanMAmt
-    FROM
-      pub_dps_chg_staff t
+    FROM pub_dps_chg_staff t
+    LEFT JOIN cust_base_info c ON c.CUST_NO = t.CUST_NO
     WHERE STAFF_ID = #{staffId}
     ORDER BY
       t.THAN_M_AMT DESC
@@ -50,9 +51,10 @@
   <select id="pubLoanChg" resultType="com.good.cus.bean.pubChgPo">
     SELECT
       t.CUST_NO     AS custNo,
+      c.CUST_NAME   AS custName,
       t.THAN_M_AMT  AS thanMAmt
-    FROM
-      pub_loan_chg_staff t
+    FROM pub_loan_chg_staff t
+    LEFT JOIN cust_base_info c ON c.CUST_NO = t.CUST_NO
     WHERE STAFF_ID = #{staffId}
     ORDER BY
       t.THAN_M_AMT DESC

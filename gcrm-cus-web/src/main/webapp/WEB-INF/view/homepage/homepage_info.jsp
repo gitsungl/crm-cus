@@ -132,7 +132,22 @@
         <div class="col-sm-6 rightCol moreCol">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div id="messageDiv" class="echartsDiv"></div>
+              <div class="xe-widget xe-status-update">
+                <div class="xe-header">
+                  BUILD
+                </div>
+                <div class="xe-body">
+                  Build your own Fake Twitter Post now! Check it out @ simitator.com #laborator #envato
+                </div>
+                <div class="xe-footer">
+                  <a href="#">
+                    <i class="fa-retweet"></i>了解更多&gt;
+                  </a>
+                </div>
+              </div>
+              
+              
+              
             </div>
           </div>
         </div>
@@ -177,6 +192,7 @@
     };
 
     var colorStyle = {
+        blackStyle : "#666666",
         guidelines : "#BDBDBD",
         areaStyle : "#DDF1FF"
     }
@@ -232,11 +248,22 @@
             show : true,
             position : "insideRight",
             textStyle: {
-                color: "#000000"
+                color: colorStyle.blackStyle
             },
             fontSize : 10,
-            textBorderWidth : 1,
-            color : colorStyle.guidelines
+            textBorderWidth : 1
+        }
+    };
+
+    var fontLabel3 = {
+        normal : {
+            show : true,
+            position : "inside",
+            textStyle: {
+                color: colorStyle.blackStyle
+            },
+            fontSize : 10,
+            textBorderWidth : 1
         }
     };
 
@@ -286,6 +313,10 @@
         },
         xAxis : [ {
             type : "category",
+            axisLabel : {
+                interval : 0,
+                rotate : 40
+            },
             data : []
         }, {
             type : "category"
@@ -320,8 +351,12 @@
         },
         series : [ {
             type : "funnel",
-            width : "50%",
+            width : "47%",
+            min: 0,
+            minSize: '0%',
+            maxSize: '100%',
             gap : 2,
+            label : fontLabel3,
             data : []
         } ]
     }, true);
@@ -335,9 +370,13 @@
         },
         series : [ {
             type : "funnel",
-            width : "50%",
+            width : "47%",
+            min: 0,
+            minSize: '0%',
+            maxSize: '100%',
             gap : 2,
             sort : "ascending",
+            label : fontLabel3,
             data : []
         } ]
     }, true);
@@ -381,6 +420,9 @@
         xAxis : {
             type : "value",
             name : "(万元)",
+            nameTextStyle : {
+                fontSize : 11
+            },
             position : "top",
             splitLine : {
                 show : false
@@ -398,42 +440,45 @@
             data : [],
             axisLabel : {
                 formatter : function(value) {
-                    return (value === "4" || value === "5") ? "{" + value + "| }\n{value|" + value + "}" : "{" + value + "| }\n{value|}";
+                    var va1 = value.slice(0, 3);
+                    var va2 = value.slice(3);
+                    return (va1 === "no4" || va1 === "no5") ? "{value|" + va2 + "}" : "{" + va1 + "| }\n{value|" + va2 + "}";
                 },
                 rich : {
                     value : {
-                        lineHeight : 0,
-                        align : "center"
+                        lineHeight : 10,
+                        fontSize : 9,
+                        color: colorStyle.blackStyle
                     },
                     no1 : {
-                        align : "center",
+                        align : "right",
                         backgroundColor : {
                             image : noIcons.no1
                         }
                     },
                     no2 : {
-                        align : "center",
+                        align : "right",
                         backgroundColor : {
                             image : noIcons.no2
                         }
                     },
                     no3 : {
-                        align : "center",
+                        align : "right",
                         backgroundColor : {
                             image : noIcons.no3
                         }
                     },
-                    nome : {
-                        align : "center",
+                    nom : {
+                        align : "right",
                         backgroundColor : {
                             image : noIcons.nome
                         }
                     },
-                    4 : {
-                        align : "center"
+                    no4 : {
+                        align : "right"
                     },
-                    5 : {
-                        align : "center"
+                    no5 : {
+                        align : "right"
                     }
                 }
             }
@@ -476,16 +521,18 @@
                     } ]
                 });
                 // 客户存款变动排名
+                var pubDpsChg = result.data.pubDpsChg;
                 myChart_pubDpsChg.setOption({
                     series : [ {
-                        min : 0,
-                        max : 100,
-                        data : result.data.pubDpsChg
+                        max : pubDpsChg[0].value,
+                        data : pubDpsChg
                     } ]
                 });
                 // 客户贷款变动排名
+                var pubLoanChg = result.data.pubLoanChg;
                 myChart_pubLoanChg.setOption({
                     series : [ {
+                        max : pubLoanChg[0].value,
                         data : result.data.pubLoanChg
                     } ]
                 });
@@ -499,8 +546,8 @@
                 // 业绩排名
                 myChart_perfRanking.setOption({
                     yAxis : {
-                        // data : [ "no1", "no2", "no3", "4", "nome" ]
-                        data : result.data.perfRanking.perfRankingAxis
+                        // data : [ "no1", "no2", "no3", "no4", "nom" ]
+                        data : result.data.perfRanking.perfRankingName
                     },
                     series : [ {
                         // data: [ 165, 140, 50, 30, 10 ]
