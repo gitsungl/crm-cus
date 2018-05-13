@@ -109,4 +109,18 @@
     AND t.STAFF_ID = #{staffId}
   </select>
 
+  <select id="message" resultType="java.lang.String">
+    SELECT
+      t.MSG_CONTENT
+    FROM
+      pub_poit_msg t
+    WHERE
+      t.MSG_TYPE = '1'
+    AND t. STATUS = '2'
+    AND t.CREATE_USER = #{staffId}
+    ORDER BY
+      t.CREATE_TIME DESC
+    LIMIT 3
+  </select>
+
 </mapper>

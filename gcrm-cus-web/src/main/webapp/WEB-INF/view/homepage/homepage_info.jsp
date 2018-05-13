@@ -37,6 +37,13 @@
 .chart-item-bg {
   margin-bottom: 14px;
 }
+.messageCol {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.messagelabel {
+  padding: 10px;
+}
 .leftCol {
   padding-left: 15px;
 }
@@ -49,11 +56,22 @@
 .moreCol {
   width: 57%;
 }
-.echartsDiv {
-  height: 280px;
-}
 .echartsCol {
   height: 340px;
+}
+.echartsHeight {
+  height: 280px;
+}
+.messageHeight {
+  height: 180px;
+}
+.message-header {
+  font-size: 14px;
+  line-height: 14px;
+}
+.message-body {
+  font-size: 12px;
+  line-height: 12px;
 }
 #topRow {
   margin-top: 1.5%;
@@ -86,14 +104,14 @@
         <div class="col-sm-6 leftCol lessCol">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div id="performanceDiv" class="echartsDiv"></div>
+              <div id="performanceDiv" class="echartsHeight"></div>
             </div>
           </div>
         </div>
         <div class="col-sm-6 rightCol moreCol">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div id="unfinishedDiv" class="echartsDiv"></div>
+              <div id="unfinishedDiv" class="echartsHeight"></div>
             </div>
           </div>
         </div>
@@ -102,21 +120,21 @@
         <div class="col-sm-4 leftCol">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div id="pubDpsChgDiv" class="echartsDiv"></div>
+              <div id="pubDpsChgDiv" class="echartsHeight"></div>
             </div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div id="pubLoanChgDiv" class="echartsDiv"></div>
+              <div id="pubLoanChgDiv" class="echartsHeight"></div>
             </div>
           </div>
         </div>
         <div class="col-sm-4 rightCol">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div id="busiOppDiv" class="echartsDiv"></div>
+              <div id="busiOppDiv" class="echartsHeight"></div>
             </div>
           </div>
         </div>
@@ -125,29 +143,57 @@
         <div class="col-sm-6 leftCol lessCol">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div id="perfRankingDiv" class="echartsDiv"></div>
+              <div id="perfRankingDiv" class="echartsHeight"></div>
             </div>
           </div>
         </div>
         <div class="col-sm-6 rightCol moreCol">
           <div class="chart-item-bg echartsCol">
-            <div class="chart-label">
-              <div class="xe-widget xe-status-update">
-                <div class="xe-header">
-                  BUILD
+            <div class="row">
+              <div class="col-sm-12 messageCol">
+                <div class="col-sm-4">
+                  <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update">
+                      <div class="xe-header message-header"></div>
+                      <div>&nbsp;</div>
+                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-footer">
+                        <a href="#">
+                          <i class="fa-retweet"></i>了解更多&gt;
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="xe-body">
-                  Build your own Fake Twitter Post now! Check it out @ simitator.com #laborator #envato
+                <div class="col-sm-4">
+                  <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update">
+                      <div class="xe-header message-header"></div>
+                      <div>&nbsp;</div>
+                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-footer">
+                        <a href="#">
+                          <i class="fa-retweet"></i>了解更多&gt;
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="xe-footer">
-                  <a href="#">
-                    <i class="fa-retweet"></i>了解更多&gt;
-                  </a>
+                <div class="col-sm-4">
+                  <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update">
+                      <div class="xe-header message-header"></div>
+                      <div>&nbsp;</div>
+                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-footer">
+                        <a href="#">
+                          <i class="fa-retweet"></i>了解更多&gt;
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              
-              
             </div>
           </div>
         </div>
@@ -188,7 +234,7 @@
      "no1" : "../images/crm/no1.png",
      "no2" : "../images/crm/no2.png",
      "no3" : "../images/crm/no3.png",
-     "nome" : "../images/crm/nome.png"
+     "nom" : "../images/crm/nom.png"
     };
 
     var colorStyle = {
@@ -471,7 +517,7 @@
                     nom : {
                         align : "right",
                         backgroundColor : {
-                            image : noIcons.nome
+                            image : noIcons.nom
                         }
                     },
                     no4 : {
@@ -539,8 +585,8 @@
                 // 可营销商机
                 myChart_busiOpp.setOption({
                     series : [ {
-                        data : [ "90", "70", "45" ]
-                    // data: result.data.busiOpp
+                        // data : [ "90", "70", "45" ]
+                        data: result.data.busiOpp
                     } ]
                 });
                 // 业绩排名
@@ -554,6 +600,16 @@
                         data : result.data.perfRanking.perfRanking
                     } ]
                 });
+                // 公告栏
+                var msg = result.data.message;
+                if (msg.length > 0) {
+                    var $msgheader = $(".message-header");
+                    var $msgbody = $(".message-body");
+                    for (var i_msg = 0; i_msg < 3; i_msg++) {
+                        $($msgheader[i_msg]).empty().append(msg[i_msg].slice(0, 8));
+                        $($msgbody[i_msg]).empty().append(msg[i_msg].slice(0, 188));
+                    }
+                }
             }
         },
         error : function(errorMsg) {

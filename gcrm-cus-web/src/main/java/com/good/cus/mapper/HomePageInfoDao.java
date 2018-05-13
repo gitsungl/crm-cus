@@ -22,4 +22,6 @@ public interface HomePageInfoDao {
 
     List<MktStfPerfPo> perfRanking(@Param("staffId") String staffId);
 
+    List<String> message(@Param("staffId") String staffId);
+
 }

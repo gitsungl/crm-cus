@@ -151,4 +151,11 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         return result;
     }
 
+    @Override
+    public List<String> message(String staffId) throws ServiceException {
+        List<String> result = homePageInfoDao.message(staffId);
+        logger.info("message service result:\n{}\n", result);
+        return result;
+    }
+
 }
