@@ -20,7 +20,7 @@ import com.good.sys.ServiceException;
 
 @Service
 public class HomePageInfoServiceImpl implements HomePageInfoService {
-    private static Logger logger = LoggerFactory.getLogger(ProductInfoServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(HomePageInfoServiceImpl.class);
 
     @Autowired
     private HomePageInfoDao homePageInfoDao;
@@ -54,7 +54,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
                 perfAcph.add("0");
             }
         }
-        logger.info("performance service result: {}", perfAcph);
+        logger.info("performance service result:\n{}", perfAcph);
         return perfAcph;
     }
 
@@ -75,7 +75,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         result.put("taskName", taskName);
         result.put("perfAlready", perfAlready);
         result.put("perfTotal", perfTotal);
-        logger.info("unfinished service result: {}", result);
+        logger.info("unfinished service result:\n{}", result);
         return result;
     }
 
@@ -91,7 +91,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
                 result.add(map);
             }
         }
-        logger.info("pubDpsChg service result: {}", result);
+        logger.info("pubDpsChg service result:\n{}", result);
         return result;
     }
 
@@ -107,14 +107,14 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
                 result.add(map);
             }
         }
-        logger.info("pubLoanChg service result: {}", result);
+        logger.info("pubLoanChg service result:\n{}", result);
         return result;
     }
 
     @Override
     public List<String> busiOpp(String staffId) throws ServiceException {
         List<String> result = homePageInfoDao.busiOpp(staffId);
-        logger.info("busiOpp service result: {}", result);
+        logger.info("busiOpp service result:\n{}", result);
         return result;
     }
 
@@ -155,7 +155,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         result.put("perfRankingAxis", perfRankingAxis);
         result.put("perfRankingName", perfRankingName);
         result.put("perfRanking", perfRanking);
-        logger.info("perfRanking service result: {}", result);
+        logger.info("perfRanking service result:\n{}", result);
         return result;
     }
 

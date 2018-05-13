@@ -176,12 +176,68 @@
      "nome" : "../images/crm/nome.png"
     };
 
-    var seriesLabel = {
-       normal : {
-           show : true,
-           textBorderColor : "#333",
-           textBorderWidth : 1
-       }
+    var colorStyle = {
+        guidelines : "#BDBDBD",
+        areaStyle : "#DDF1FF"
+    }
+
+    var gradientStyle = {
+        normal: {
+            color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                    {offset: 0, color: "#35D6FF"},
+                    {offset: 1, color: "#3B90FF"}
+                ]
+            )
+        }
+    };
+
+    var gradientStyle2 = {
+        normal: {
+            color: new echarts.graphic.LinearGradient(
+                1, 0, 0, 0,
+                [
+                    {offset: 0, color: "#35D6FF"},
+                    {offset: 1, color: "#3B90FF"}
+                ]
+            )
+        }
+    };
+
+    var gradientStyle3 = {
+        normal: {
+            color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                    {offset: 0, color: "#99E28E"},
+                    {offset: 1, color: "#57CFA9"}
+                ]
+            )
+        }
+    };
+
+    var fontLabel = {
+        normal : {
+            show : true,
+            position : "top",
+            fontSize : 10,
+            textBorderWidth : 1,
+            color : colorStyle.guidelines
+        }
+    };
+
+    var fontLabel2 = {
+        normal : {
+            show : true,
+            position : "insideRight",
+            textStyle: {
+                color: "#000000"
+            },
+            fontSize : 10,
+            textBorderWidth : 1,
+            color : colorStyle.guidelines
+        }
     };
 
     // 营销业绩趋势图
@@ -192,30 +248,31 @@
         },
         xAxis : [ {
             type : "category",
+            name : "(月)",
+            position : "bottom",
             boundaryGap : false,
             axisLine : {
-                show : false
-            },
-            axisTick : {
                 show : false
             },
             splitLine : {
                 show : false
             },
-            data : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+            data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
         } ],
         yAxis : [ {
             type : "value",
+            name : "(万元)",
+            position : "left",
             axisLine : {
-                show : false
-            },
-            axisTick : {
                 show : false
             }
         } ],
         series : [ {
             type : "line",
-            smooth : true,
+            label : fontLabel,
+            areaStyle : {
+                color : colorStyle.areaStyle
+            },
             data : []
         } ]
     }, true);
@@ -224,7 +281,8 @@
     var myChart_unfinished = echarts.init(document.getElementById("unfinishedDiv"), "macarons");
     myChart_unfinished.setOption({
         title : {
-            text : "未完成营销任务"
+            text : "未完成营销任务",
+            subtext : "(万元)"
         },
         xAxis : [ {
             type : "category",
@@ -233,36 +291,22 @@
             type : "category"
         } ],
         yAxis : [ {
-            type : "value"
+            type : "value",
+            show : false
         } ],
         series : [ {
             type : "bar",
+            barMaxWidth: "15px",
+            label: fontLabel,
+            itemStyle : {
+                color : colorStyle.areaStyle
+            },
             data : []
         }, {
             type : "bar",
+            barMaxWidth: "15px",
             xAxisIndex : 1,
-            itemStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(
-                        0, 0, 0, 1,
-                        [
-                            {offset: 0, color: '#35D6FF'},
-                            {offset: 0.5, color: '#188df0'},
-                            {offset: 1, color: '#3B90FF'}
-                        ]
-                    )
-                },
-                emphasis: {
-                    color: new echarts.graphic.LinearGradient(
-                        0, 0, 0, 1,
-                        [
-                            {offset: 0, color: '#2378f7'},
-                            {offset: 0.7, color: '#2378f7'},
-                            {offset: 1, color: '#83bff6'}
-                        ]
-                    )
-                }
-            },
+            itemStyle: gradientStyle,
             data : []
         } ]
     }, true);
@@ -271,11 +315,13 @@
     var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "macarons");
     myChart_pubDpsChg.setOption({
         title : {
-            text : "客户存款变动排名"
+            text : "客户存款变动排名",
+            subtext : "(万元)"
         },
         series : [ {
             type : "funnel",
-            width : "60%",
+            width : "50%",
+            gap : 2,
             data : []
         } ]
     }, true);
@@ -284,11 +330,14 @@
     var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "macarons");
     myChart_pubLoanChg.setOption({
         title : {
-            text : "客户贷款变动排名"
+            text : "客户贷款变动排名",
+            subtext : "(万元)"
         },
         series : [ {
             type : "funnel",
-            width : "60%",
+            width : "50%",
+            gap : 2,
+            sort : "ascending",
             data : []
         } ]
     }, true);
@@ -308,13 +357,17 @@
         } ],
         yAxis : [ {
             type : "value",
+            name : "(个)",
+            position : "left",
             splitLine : {
                 show : false
             }
         } ],
         series : [ {
             type : "bar",
-            label : seriesLabel,
+            barMaxWidth: "20px",
+            label : fontLabel,
+            itemStyle: gradientStyle3,
             data : []
         } ]
     }, true);
@@ -327,25 +380,29 @@
         },
         xAxis : {
             type : "value",
-            name : "Days",
+            name : "(万元)",
             position : "top",
-            axisTick: { show : false },
-            splitLine: { show : false }
+            splitLine : {
+                show : false
+            }
         },
         yAxis : {
             type : "category",
             inverse : true,
-            axisLine: { show : false },
-            axisTick: { show : false },
-            splitLine: { show : false },
+            axisLine : {
+                show : false
+            },
+            splitLine : {
+                show : false
+            },
             data : [],
             axisLabel : {
-                formatter: function (value) {
+                formatter : function(value) {
                     return (value === "4" || value === "5") ? "{" + value + "| }\n{value|" + value + "}" : "{" + value + "| }\n{value|}";
                 },
                 rich : {
                     value : {
-                        lineHeight: 0,
+                        lineHeight : 0,
                         align : "center"
                     },
                     no1 : {
@@ -383,7 +440,9 @@
         },
         series : [ {
             type : "bar",
-            label : seriesLabel,
+            barMaxWidth : "15px",
+            label : fontLabel2,
+            itemStyle: gradientStyle2,
             data : []
         } ]
     }, true);
@@ -398,9 +457,9 @@
             if (WebUtils.isSuccess(result)) {
                 // 营销业绩趋势图
                 myChart_performance.setOption({
-                    series: [{
-                        data: result.data.perfAcph
-                    }]
+                    series : [ {
+                        data : result.data.perfAcph
+                    } ]
                 });
                 // 未完成营销任务
                 myChart_unfinished.setOption({
@@ -408,32 +467,34 @@
                         // data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
                         data : result.data.unfinished.taskName
                     },
-                    series: [{
+                    series : [ {
                         // data: [ 1.6, 2.6, 3.6, 4.6, 5.6, 6.6, 7.6, 8.6, 9.6, 10.6, 11.6, 12.6 ]
-                        data: result.data.unfinished.perfTotal
+                        data : result.data.unfinished.perfTotal
                     }, {
                         // data: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 8 ]
-                        data: result.data.unfinished.perfAlready
-                    }]
+                        data : result.data.unfinished.perfAlready
+                    } ]
                 });
                 // 客户存款变动排名
                 myChart_pubDpsChg.setOption({
-                    series: [{
-                        data: result.data.pubDpsChg
-                    }]
+                    series : [ {
+                        min : 0,
+                        max : 100,
+                        data : result.data.pubDpsChg
+                    } ]
                 });
                 // 客户贷款变动排名
                 myChart_pubLoanChg.setOption({
-                    series: [{
-                        data: result.data.pubLoanChg
-                    }]
+                    series : [ {
+                        data : result.data.pubLoanChg
+                    } ]
                 });
                 // 可营销商机
                 myChart_busiOpp.setOption({
-                    series: [{
-                     // data: [ "90", "70", "45" ]
-                        data: result.data.busiOpp
-                    }]
+                    series : [ {
+                        data : [ "90", "70", "45" ]
+                    // data: result.data.busiOpp
+                    } ]
                 });
                 // 业绩排名
                 myChart_perfRanking.setOption({
@@ -441,10 +502,10 @@
                         // data : [ "no1", "no2", "no3", "4", "nome" ]
                         data : result.data.perfRanking.perfRankingAxis
                     },
-                    series: [{
+                    series : [ {
                         // data: [ 165, 140, 50, 30, 10 ]
-                        data: result.data.perfRanking.perfRanking
-                    }]
+                        data : result.data.perfRanking.perfRanking
+                    } ]
                 });
             }
         },
@@ -452,6 +513,5 @@
             WebUtils.alert("图表请求数据失败!");
         }
     })
-
 </script>
 </html>
