@@ -361,7 +361,8 @@
             type : "category",
             axisLabel : {
                 interval : 0,
-                rotate : 40
+                rotate : 25,
+                fontSize : 8
             },
             data : []
         }, {
@@ -607,7 +608,7 @@
                     var $msgbody = $(".message-body");
                     for (var i_msg = 0; i_msg < 3; i_msg++) {
                         $($msgheader[i_msg]).empty().append(msg[i_msg].slice(0, 8));
-                        $($msgbody[i_msg]).empty().append(msg[i_msg].slice(0, 188));
+                        $($msgbody[i_msg]).empty().append(msg[i_msg].slice(0, 180));
                     }
                 }
             }
