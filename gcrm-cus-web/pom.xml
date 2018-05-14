@@ -12,11 +12,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
   <build>
-	  	<plugins>
-			<plugin>
+	  <plugins>
+		<plugin>
 		        <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.1</version>
+                	<artifactId>tomcat7-maven-plugin</artifactId>
+                        <version>2.1</version>
 		        <configuration>
 		            <path>/gcrm-cus-web</path>
 		            <port>8020</port>
@@ -24,8 +24,18 @@
 		            <url>http://localhost:8080/manager/html</url>
 		            <server>tomcat7</server>
 		        </configuration>
-		    </plugin>
-		    <plugin>
+		 </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
