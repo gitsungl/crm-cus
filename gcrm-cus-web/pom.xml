@@ -12,11 +12,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
   <build>
-	  	<plugins>
-			<plugin>
+	  <plugins>
+		<plugin>
 		        <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.1</version>
+                	<artifactId>tomcat7-maven-plugin</artifactId>
+                        <version>2.1</version>
 		        <configuration>
 		            <path>/gcrm-cus-web</path>
 		            <port>8020</port>
@@ -24,7 +24,7 @@
 		            <url>http://localhost:8080/manager/html</url>
 		            <server>tomcat7</server>
 		        </configuration>
-		    </plugin>
+		 </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -35,8 +35,32 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-        </plugins>
-    </build>
+            <plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<classifier>package</classifier>
+					<descriptors>
+						<descriptor>package.xml</descriptor>
+					</descriptors>
+					<archive>
+						<manifest>
+							<mainClass>com.good.cus.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+  </build>
 	<dependencies>
 		<dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -179,6 +203,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>

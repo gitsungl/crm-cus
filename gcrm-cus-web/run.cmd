@@ -1,0 +1,1 @@
+C:\Java\jdk1.7_x64\bin\java -jar gcrm-cus-web-1.0.0-package.war gcrm-cus-web 8020
