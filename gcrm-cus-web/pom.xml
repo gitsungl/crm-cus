@@ -25,6 +25,30 @@
 		            <server>tomcat7</server>
 		        </configuration>
 		    </plugin>
+		    <plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<classifier>package</classifier>
+					<descriptors>
+						<descriptor>package.xml</descriptor>
+					</descriptors>
+					<archive>
+						<manifest>
+							<mainClass>com.good.cus.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
   </build>
 	<dependencies>
@@ -169,6 +193,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
