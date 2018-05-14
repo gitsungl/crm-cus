@@ -15,7 +15,7 @@
      MONTH(t.BIZ_DATE)
   </select>
 
-  <select id="unfinished" resultType="com.good.cus.bean.mktTaskInfoPo">
+  <select id="unfinished" resultType="com.good.cus.bean.MktTaskInfoPo">
     SELECT
       t.TASK_NAME AS taskName,
       CASE t.TASK_STATUS
@@ -35,7 +35,7 @@
     LIMIT 10
   </select>
 
-  <select id="pubDpsChg" resultType="com.good.cus.bean.pubChgPo">
+  <select id="pubDpsChg" resultType="com.good.cus.bean.PubChgPo">
     SELECT
       t.CUST_NO     AS custNo,
       c.SHORT_NAME  AS custName,
@@ -48,7 +48,7 @@
     LIMIT 5
   </select>
 
-  <select id="pubLoanChg" resultType="com.good.cus.bean.pubChgPo">
+  <select id="pubLoanChg" resultType="com.good.cus.bean.PubChgPo">
     SELECT
       t.CUST_NO     AS custNo,
       c.SHORT_NAME  AS custName,
