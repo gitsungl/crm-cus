@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class pubChgPo implements Serializable {
+public class PubChgPo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.good.cus.bean.MktStfPerfPo;
-import com.good.cus.bean.mktTaskInfoPo;
-import com.good.cus.bean.pubChgPo;
+import com.good.cus.bean.MktTaskInfoPo;
+import com.good.cus.bean.PubChgPo;
 import com.good.cus.mapper.HomePageInfoDao;
 import com.good.cus.service.HomePageInfoService;
 import com.good.sys.ServiceException;
@@ -61,12 +61,12 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
     @Override
     public Map<String, List<String>> unfinished(String staffId) throws ServiceException {
         Map<String, List<String>> result = new HashMap<String, List<String>>(3);
-        List<mktTaskInfoPo> list = homePageInfoDao.unfinished(staffId);
+        List<MktTaskInfoPo> list = homePageInfoDao.unfinished(staffId);
         List<String> taskName = new ArrayList<String>(10);
         List<String> perfAlready = new ArrayList<String>(10);
         List<String> perfTotal = new ArrayList<String>(10);
         if (list != null && list.size() > 0) {
-            for (mktTaskInfoPo po : list) {
+            for (MktTaskInfoPo po : list) {
                 taskName.add(po.getTaskName());
                 perfAlready.add(po.getPerfAlready().toString());
                 perfTotal.add(po.getPerfTotal().toString());
@@ -82,9 +82,9 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
     @Override
     public List<Map<String, String>> pubDpsChg(String staffId) throws ServiceException {
         List<Map<String, String>> result = new ArrayList<Map<String, String>>(5);
-        List<pubChgPo> list = homePageInfoDao.pubDpsChg(staffId);
+        List<PubChgPo> list = homePageInfoDao.pubDpsChg(staffId);
         if (list != null && list.size() > 0) {
-            for (pubChgPo po : list) {
+            for (PubChgPo po : list) {
                 Map<String, String> map = new HashMap<String, String>(2);
                 map.put("name", po.getCustName() + po.getThanMAmt().toString());
                 map.put("value", po.getThanMAmt().toString());
@@ -98,9 +98,9 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
     @Override
     public List<Map<String, String>> pubLoanChg(String staffId) throws ServiceException {
         List<Map<String, String>> result = new ArrayList<Map<String, String>>(5);
-        List<pubChgPo> list = homePageInfoDao.pubLoanChg(staffId);
+        List<PubChgPo> list = homePageInfoDao.pubLoanChg(staffId);
         if (list != null && list.size() > 0) {
-            for (pubChgPo po : list) {
+            for (PubChgPo po : list) {
                 Map<String, String> map = new HashMap<String, String>(2);
                 map.put("name", po.getCustName() + po.getThanMAmt().toString());
                 map.put("value", po.getThanMAmt().toString());

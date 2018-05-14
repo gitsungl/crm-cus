@@ -1,8 +1,8 @@
 package com.good.cus.mapper;
 
 import com.good.cus.bean.MktStfPerfPo;
-import com.good.cus.bean.mktTaskInfoPo;
-import com.good.cus.bean.pubChgPo;
+import com.good.cus.bean.MktTaskInfoPo;
+import com.good.cus.bean.PubChgPo;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ public interface HomePageInfoDao {
 
     List<MktStfPerfPo> performance(@Param("staffId") String staffId);
 
-    List<mktTaskInfoPo> unfinished(@Param("staffId") String staffId);
+    List<MktTaskInfoPo> unfinished(@Param("staffId") String staffId);
 
-    List<pubChgPo> pubDpsChg(@Param("staffId") String staffId);
+    List<PubChgPo> pubDpsChg(@Param("staffId") String staffId);
 
-    List<pubChgPo> pubLoanChg(@Param("staffId") String staffId);
+    List<PubChgPo> pubLoanChg(@Param("staffId") String staffId);
 
     List<String> busiOpp(@Param("staffId") String staffId);
 
