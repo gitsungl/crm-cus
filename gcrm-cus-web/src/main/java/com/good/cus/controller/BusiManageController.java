@@ -24,9 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.good.comm.web.WebPageResult;
 import com.good.comm.web.WebRequest;
-import com.good.cus.bean.MktStfPerfPo;
-import com.good.cus.bean.MktTaskInfoPo;
-import com.good.cus.service.BusiManageService;
+
+import src.main.java.com.good.cus.bean.MktStfPerfPo;
+import src.main.java.com.good.cus.bean.MktTaskInfoPo;
+import src.main.java.com.good.cus.service.BusiManageService;
 
 @Controller
 @RequestMapping("/cus")
@@ -68,12 +69,12 @@ public class BusiManageController {
         StringBuffer MktStfPerfPoTabYear = new StringBuffer();
         BigDecimal[] MktStfPerfPoTabNum = new  BigDecimal[12];
         if(MktStfPerfPoTab.size()>0) {
-        	MktStfPerfPoTabYear.append(MktStfPerfPoTab.get(0).getStaffName()).append("年");
+        	MktStfPerfPoTabYear.append(MktStfPerfPoTab.get(0).getStaffName()).append("骞�");
         	for(int i = 0 ; i<MktStfPerfPoTab.size() ; i++) {
         		MktStfPerfPoTabNum[i] = MktStfPerfPoTab.get(i).getPerfAcph();
         	}
         }else {
-        	logger.info("---------------图3：业绩比较图数据为空--------------");
+        	logger.info("---------------鍥�3锛氫笟缁╂瘮杈冨浘鏁版嵁涓虹┖--------------");
         }
         result.put("MktStfPerfPoTabYear", MktStfPerfPoTabYear.toString());
         result.put("MktStfPerfPoTabNum", MktStfPerfPoTabNum);
