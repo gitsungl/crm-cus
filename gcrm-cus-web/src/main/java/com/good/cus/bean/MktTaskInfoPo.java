@@ -33,8 +33,18 @@ public class MktTaskInfoPo implements Serializable {
     private BigDecimal perfTotal;
 
     private Date createTime;
+    
+    private Integer taskStatusNum;
+    
+    public Integer getTaskStatusNum() {
+		return taskStatusNum;
+	}
 
-    public Integer getTaskId() {
+	public void setTaskStatusNum(Integer taskStatusNum) {
+		this.taskStatusNum = taskStatusNum;
+	}
+
+	public Integer getTaskId() {
         return taskId;
     }
 

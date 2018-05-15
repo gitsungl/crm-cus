@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.BusiManageDao">
+
+	<select id="MktTaskInfoForTable" resultType="com.good.cus.bean.MktTaskInfoPo">
+		SELECT MT.TASK_NAME taskName , MT.TASK_STATUS taskStatus
+		FROM
+		MKT_TASK_INFO MT
+		WHERE 1=1 AND MT.STAFF_ID = #{staffId} AND
+		MT.START_DATE ORDER BY MT.START_DATE DESC LIMIT 5
+	</select>
+	
+
+  <select id="MktStfPerfPoForTable" resultType="com.good.cus.bean.MktStfPerfPo">
+	SELECT
+	YEAR(t.BIZ_DATE) AS staffName,
+	t.PERF_ACPH  AS perfAcph
+	FROM
+	MKT_STF_PERF t
+	WHERE
+	YEAR(t.BIZ_DATE) = DATE_FORMAT(NOW(), '%Y') AND STAFF_ID = #{staffId}
+  </select>
+
+  <select id="PubVifyListPoForTable" resultType="com.good.cus.bean.PubVifyListPo">
+	SELECT
+	DATE_FORMAT(MT.CREATE_TIME, '%Y-%m-%d') createTime,
+	GROUP_CONCAT(MT.`STATUS` SEPARATOR '|') status
+	FROM
+	PUB_VIFY_LIST MT WHERE MT.CREATE_USER = #{createUser} 
+	GROUP BY
+	MT.CREATE_TIME
+  </select>
+
+  <select id="message" resultType="java.lang.String">
+    SELECT
+      t.MSG_CONTENT
+    FROM
+      pub_poit_msg t
+    WHERE
+      t.MSG_TYPE = '1'
+    AND t. STATUS = '2'
+    AND t.CREATE_USER = #{staffId}
+    ORDER BY
+      t.CREATE_TIME DESC
+    LIMIT 3
+  </select>
+</mapper>
