@@ -1,0 +1,59 @@
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.page-container {
+    width: 90%;
+}
+
+.crm-top-row {
+    margin-top: 1.5%;
+}
+
+.chart-item-bg {
+    margin-bottom: 14px;
+}
+
+.crm-left-col {
+    padding-left: 15px;
+}
+
+.crm-right-col {
+    padding-right: 15px;
+}
+
+.crm-less-col {
+    width: 43%;
+}
+
+.crm-more-col {
+    width: 57%;
+}
+
+.crm-echarts-col-height {
+    height: 340px;
+}
+
+.crm-echarts-panel-height {
+    height: 280px;
+}
+
+.crm-message-col {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.crm-message-header {
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.crm-message-body {
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.crm-message-body-height {
+    height: 180px;
+}

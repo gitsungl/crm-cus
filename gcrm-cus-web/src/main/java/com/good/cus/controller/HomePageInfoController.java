@@ -51,7 +51,7 @@ public class HomePageInfoController {
         Map<String, List<String>> perfRanking = service.perfRanking(staffId);
         List<String> message = service.message(staffId);
 
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new HashMap<String, Object>(7);
         result.put("perfAcph", perfAcph);
         result.put("unfinished", unfinished);
         result.put("pubDpsChg", pubDpsChg);
