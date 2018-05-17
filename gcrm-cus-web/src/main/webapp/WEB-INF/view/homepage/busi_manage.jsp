@@ -159,7 +159,7 @@
         <div class="col-sm-6 rightCol fro50Col">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div><div style="float: left;width: 100px">任务审批图例</div><div style="float: right;width: 280px"><a href=""><img alt="" src="../images/crm/0_doing.png">任务审批完成&nbsp;&nbsp;&nbsp;</a><a href=""><img alt="" src="../images/crm/1_done.png">有新审批任务</a></div></div>
+              <div><div style="float:left;width: 100px;">任务审批图例</div><div style="float: right;width: 280px"><a href=""><img alt="" src="../images/crm/0_doing.png">任务审批完成&nbsp;&nbsp;&nbsp;</a><a href=""><img alt="" src="../images/crm/1_done.png">有新审批任务</a></div></div>
               <div id="PubVifyListPoDiv" class="echartsHeight model"></div>
             </div>
           </div>
@@ -169,10 +169,11 @@
         <div class="col-sm-6 leftCol lessCol">
           <div class="echartsColDown chart-item-bg">
             <div class="chart-label-Left">
-              <div id="perfRankingDiv" class="echartsHeight-left"><img alt="" src="../images/crm/yxhdfqlc.png" usemap="yxhdfqlc">
+              <div style="float: left;width: 170px ;padding-left: 35px;padding-top: 12px;font-size:16px">营销活动发起流程</div>
+              <div id="perfRankingDiv" class="echartsHeight-left" ><img alt="" src="../images/crm/yxhdfqlc.png" usemap="yxhdfqlc">
               	<map name="yxhdfqlc">
-              	  <area shape="rect" coords="325,135,180,190" onclick="alert('\'发起\'功能开发中。。。。。')" title="发起" target="_blank" ><!-- href="http://hao.360.cn/daxue/hlj.html" -->
-              	  <area shape="rect" coords="445,430,305,480" onclick="alert('\'分配\'功能开发中。。。。。')" title="黑龙江" target="_blank" >
+              	  <area shape="rect" coords="330,100,185,150" onclick="alert('\'发起\'功能开发中。。。。。')" title="发起" target="_blank" ><!-- href="http://hao.360.cn/daxue/hlj.html" -->
+              	  <area shape="rect" coords="450,393,310,443" onclick="alert('\'分配\'功能开发中。。。。。')" title="黑龙江" target="_blank" >
               	</map>
               </div>
             </div>
