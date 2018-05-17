@@ -45,7 +45,7 @@ public class BusiManageController {
     @ResponseBody
     public WebPageResult homepage(WebRequest wr, HttpServletRequest request) throws Exception {
         // LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-        String staffId = "201801"; // linfo.getOperator().getUserID();
+        String staffId = "admin"; // linfo.getOperator().getUserID();
         logger.info("controller staffId: {}", staffId);
         List<MktTaskInfoPo> MktTaskInfoTab = service.MktTaskInfoForTable(staffId);
         List<String> MktTaskInfoPoName = new LinkedList<String>();

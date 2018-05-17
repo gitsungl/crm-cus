@@ -465,7 +465,7 @@
     		data.push({type: 'bar',
 		        data: [numList[i]],
 		        coordinateSystem: 'polar',
-		        name: nameList[i]});
+		        name: nameList[i].slice(0, 5)});
     	}
     	return data;
     }  
