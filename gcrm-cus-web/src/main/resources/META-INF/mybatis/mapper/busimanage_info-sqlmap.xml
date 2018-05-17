@@ -14,17 +14,19 @@
   <select id="MktStfPerfPoForTable" resultType="com.good.cus.bean.MktStfPerfPo">
 	SELECT
 	YEAR(t.BIZ_DATE) AS staffName,
-	t.PERF_ACPH  AS perfAcph
+	GROUP_CONCAT(t.PERF_ACPH SEPARATOR ',') perfAcphStr
 	FROM
 	MKT_STF_PERF t
 	WHERE
-	YEAR(t.BIZ_DATE) = DATE_FORMAT(NOW(), '%Y') AND STAFF_ID = #{staffId}
+	STAFF_ID = #{staffId}
+	GROUP BY
+	staffName
   </select>
 
   <select id="PubVifyListPoForTable" resultType="com.good.cus.bean.PubVifyListPo">
 	SELECT
 	DATE_FORMAT(MT.CREATE_TIME, '%Y-%m-%d') createTime,
-	GROUP_CONCAT(MT.`STATUS` SEPARATOR '|') status
+	GROUP_CONCAT(MT.`STATUS` SEPARATOR ',') status
 	FROM
 	PUB_VIFY_LIST MT WHERE MT.CREATE_USER = #{createUser} 
 	GROUP BY

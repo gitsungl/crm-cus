@@ -3,6 +3,7 @@ package com.good.cus.bean;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class MktStfPerfPo implements Serializable {
 
@@ -27,8 +28,28 @@ public class MktStfPerfPo implements Serializable {
     private Date lastUpdUser;
 
     private String lastUpdTime;
+ 
+    private String perfAcphStr;
+    
+    private List<BigDecimal> perfAcphList;
+    
+    public String getPerfAcphStr() {
+		return perfAcphStr;
+	}
 
-    public Integer getId() {
+	public void setPerfAcphStr(String perfAcphStr) {
+		this.perfAcphStr = perfAcphStr;
+	}
+
+	public List<BigDecimal> getPerfAcphList() {
+		return perfAcphList;
+	}
+
+	public void setPerfAcphList(List<BigDecimal> perfAcphList) {
+		this.perfAcphList = perfAcphList;
+	}
+
+	public Integer getId() {
         return id;
     }
 

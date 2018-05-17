@@ -1,4 +1,4 @@
-package com.good.cus.controller;
+/*package com.good.cus.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,9 +31,9 @@ import com.good.sys.bean.LogonInfo;
 import com.good.cus.service.ProductInfoService;
 import com.good.cus.bean.ProductInfoPo;
 
-/**
+*//**
  * product_info Controller类
- */
+ *//*
 @Controller
 @RequestMapping("/cus")
 public class ProductInfoController {
@@ -47,9 +47,9 @@ public class ProductInfoController {
     public String toPage() throws Exception {
         return "/product_info/product_info";
     }
-    /**
+    *//**
      * 查询方法
-     */
+     *//*
     @RequestMapping(value = "/product_info/list", method = { RequestMethod.POST, RequestMethod.GET })
     @ResponseBody
     public WebPageResult list(WebRequest wr, HttpServletRequest request) throws Exception {
@@ -125,3 +125,4 @@ public class ProductInfoController {
     }
 
 }
+*/

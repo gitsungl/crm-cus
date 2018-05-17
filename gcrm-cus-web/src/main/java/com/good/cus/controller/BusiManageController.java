@@ -24,10 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.good.comm.web.WebPageResult;
 import com.good.comm.web.WebRequest;
-
-import src.main.java.com.good.cus.bean.MktStfPerfPo;
-import src.main.java.com.good.cus.bean.MktTaskInfoPo;
-import src.main.java.com.good.cus.service.BusiManageService;
+import com.good.cus.bean.MktStfPerfPo;
+import com.good.cus.bean.MktTaskInfoPo;
+import com.good.cus.service.BusiManageService;
 
 @Controller
 @RequestMapping("/cus")
@@ -42,7 +41,6 @@ public class BusiManageController {
         return "/homepage/busi_manage";
     }
 
-    @SuppressWarnings("null")
 	@PostMapping("/busi_manage/homepage")
     @ResponseBody
     public WebPageResult homepage(WebRequest wr, HttpServletRequest request) throws Exception {
@@ -52,6 +50,7 @@ public class BusiManageController {
         List<MktTaskInfoPo> MktTaskInfoTab = service.MktTaskInfoForTable(staffId);
         List<String> MktTaskInfoPoName = new LinkedList<String>();
         List<Integer> MktTaskInfoPoStu = new LinkedList<Integer>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
         Map<String, Object> result = new HashMap<String, Object>();
         if(MktTaskInfoTab.size()>0) {
         	 for(int i=0 ; i<MktTaskInfoTab.size();i++) {
@@ -62,27 +61,27 @@ public class BusiManageController {
         result.put("MktTaskInfoPoName", MktTaskInfoPoName);
         result.put("MktTaskInfoPoStu", MktTaskInfoPoStu);
         
-        //String PubVifyListTab = service.PubVifyListPoForTable(staffId);
-        
+        List<List<String>> PubVifyListTab = service.PubVifyListPoForTable(staffId);
+        result.put("PubVifyListTab", PubVifyListTab);
+        result.put("PubVifyListTabYear", sdf.format(new Date()));
         
         List<MktStfPerfPo> MktStfPerfPoTab = service.MktStfPerfPoForTable(staffId);
-        StringBuffer MktStfPerfPoTabYear = new StringBuffer();
-        BigDecimal[] MktStfPerfPoTabNum = new  BigDecimal[12];
+        List<String> MktStfPerfPoTabYearList = new LinkedList<String>();
+        List<List<BigDecimal>> MktStfPerfPoTabNumlist = new LinkedList<List<BigDecimal>>();
         if(MktStfPerfPoTab.size()>0) {
-        	MktStfPerfPoTabYear.append(MktStfPerfPoTab.get(0).getStaffName()).append("骞�");
         	for(int i = 0 ; i<MktStfPerfPoTab.size() ; i++) {
-        		MktStfPerfPoTabNum[i] = MktStfPerfPoTab.get(i).getPerfAcph();
+        		StringBuffer MktStfPerfPoTabYear = new StringBuffer(MktStfPerfPoTab.get(i).getStaffName()).append("年");
+        		MktStfPerfPoTabYearList.add(MktStfPerfPoTabYear.toString());
+        		MktStfPerfPoTabNumlist.add( MktStfPerfPoTab.get(i).getPerfAcphList());
         	}
         }else {
-        	logger.info("---------------鍥�3锛氫笟缁╂瘮杈冨浘鏁版嵁涓虹┖--------------");
+        	logger.info("---------------图3 ：业绩比较图数据为空--------------");
         }
-        result.put("MktStfPerfPoTabYear", MktStfPerfPoTabYear.toString());
-        result.put("MktStfPerfPoTabNum", MktStfPerfPoTabNum);
+        result.put("MktStfPerfPoTabYear", MktStfPerfPoTabYearList);
+        result.put("MktStfPerfPoTabNum", MktStfPerfPoTabNumlist);
         
         List<String> message = service.message(staffId);
         result.put("message", message);
-        
-        //result.put("MktStfPerfPoTab", MktStfPerfPoTab);
         logger.info("homepage controller result: {}", result);
         
         WebPageResult ret = new WebPageResult(result);

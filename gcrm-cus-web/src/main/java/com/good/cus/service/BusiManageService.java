@@ -1,5 +1,6 @@
 package com.good.cus.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -24,7 +25,7 @@ public interface BusiManageService {
 	 * @return
 	 * @throws ServiceException
 	 * */
-	public List<String[]> PubVifyListPoForTable(@Param("createUser") String createUser)  throws ServiceException;
+	public List<List<String>> PubVifyListPoForTable(@Param("createUser") String createUser)  throws ServiceException, ParseException;
 
 	/**
 	 * 图3：业绩比较图

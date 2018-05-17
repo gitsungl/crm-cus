@@ -1,11 +1,15 @@
 package com.good.cus.service.impl;
 
-import java.text.DateFormat;
+import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,23 +60,37 @@ public class BusiManageServiceImpl implements BusiManageService {
 		return poList;
 	}
 
-	@SuppressWarnings("null")
 	@Override
-	public List<String[]> PubVifyListPoForTable(String createUser) throws ServiceException {
+	public List<List<String>> PubVifyListPoForTable(String createUser) throws ServiceException, ParseException {
 		List<PubVifyListPo> poList = busiManageDao.PubVifyListPoForTable(createUser);
-		List<String[]> StrList = new LinkedList<String[]>();
-		//Map<String,String> dataMap = new HashMap<>();
+		Map<String,String[]> dataMap = new HashMap<String,String[]>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		if(poList.size()>0) {
 			for(int i=0 ; i <poList.size() ; i++) {
-				dataList(poList.get(i),null);
+				if(null!=poList.get(i)&&!"".equals(poList.get(i).getStatus())&&null!=poList.get(i).getStatus()) {
+					poList.get(i).setDataStr(poList.get(i).getStatus().split(","));
+					dataMap.put(sdf.format(poList.get(i).getCreateTime()), poList.get(i).getDataStr());
+				}else {
+					logger.info("---------------数据错误--------------");
+				}
 			}
 		}
-		return StrList;
+		return getListOfData(dataMap);
 	}
 
 	@Override
 	public List<MktStfPerfPo> MktStfPerfPoForTable(String staffId) throws ServiceException {
 		List<MktStfPerfPo> poList = busiManageDao.MktStfPerfPoForTable(staffId);
+		if(poList.size()>0) {
+			for(int i = 0 ; i < poList.size();i++) {
+				List<BigDecimal> list = new LinkedList<>();
+				String[] s =poList.get(i).getPerfAcphStr().split(",");
+				for(int k = 0;k<s.length;k++) {
+					list.add(new BigDecimal(s[k]));
+				}
+				poList.get(i).setPerfAcphList(list);
+			}
+		}
 		return poList;
 	}
 	
@@ -84,7 +102,7 @@ public class BusiManageServiceImpl implements BusiManageService {
     }
 	
 	/******日期遍历方法******/
-	@SuppressWarnings("null")
+/*	@SuppressWarnings("null")
 	public List<List<String>> dataList(PubVifyListPo po,Integer year) {
 		List<String[]> dataList = new LinkedList<>();
 		Calendar start = Calendar.getInstance();
@@ -114,15 +132,54 @@ public class BusiManageServiceImpl implements BusiManageService {
 		}
 		
 		return null;
-	}
-/*	*//******将日期相等的值设置进入*****//*
-	
-	@SuppressWarnings("null")
-	public String[] addDate(String str,String status) {
-		String  dstr[] = null;
-		dstr[0] = str;
-		dstr[1] = status;
-		return dstr;
 	}*/
+	
+	/******日期遍历方法
+	 * @throws ParseException ******/
+	public List<List<String>> getListOfData(Map<String,String[]> dataMap) throws ParseException {
+		List<List<String>> list = new LinkedList<List<String>>();
+		Calendar aCalendar = Calendar.getInstance(Locale.CHINA);
+		int year = aCalendar.get(Calendar.YEAR);// 年份
+		int month = aCalendar.get(Calendar.MONTH) + 1;// 月份
+		int day = aCalendar.getActualMaximum(Calendar.DATE);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		for (int i = 1; i <= day; i++) {
+			String aDate = String.valueOf(year) + "-" + month + "-" + i;
+			//判断该日期中存在任务状态
+			List<String> slist = new ArrayList<>();
+			slist.add(sdf.format(sdf.parse(aDate)));
+			if(null!=dataMap.get(sdf.format(sdf.parse(aDate)))) {
+				slist.add(goToList(dataMap.get(sdf.format(sdf.parse(aDate)))));
+			}else {
+				slist.add("");
+			}
+			list.add(slist);
+		}
+		return list;
+	}
 
+	public String goToList(String[] str){
+		List<String> strList = new ArrayList<String>();
+		for(int i = 0 ; i <str.length;i++) {
+			if(null!=str[i]&&!"".equals(str[i])) {
+				if("1".equals(str[i])) {
+					strList.add("0");
+				}else {
+					strList.add("1");
+				}
+			}
+		}
+		StringBuilder result=new StringBuilder();
+	    boolean flag=false;
+	    for (String string : strList) {
+	        if (flag) {
+	            result.append("|"); // 分隔符
+	        }else {
+	            flag=true;
+	        }
+	        result.append(string);
+	    }
+		return result.toString();
+	}
+	
 }
