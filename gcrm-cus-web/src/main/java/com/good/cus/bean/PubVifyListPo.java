@@ -2,6 +2,7 @@ package com.good.cus.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class PubVifyListPo implements Serializable {
 
@@ -33,7 +34,7 @@ public class PubVifyListPo implements Serializable {
 	/************/
 	private String yearStr;
 	
-	private String dataStr;
+	private String[] dataStr;
 	
 	public String getYearStr() {
 		return yearStr;
@@ -41,10 +42,11 @@ public class PubVifyListPo implements Serializable {
 	public void setYearStr(String yearStr) {
 		this.yearStr = yearStr;
 	}
-	public String getDataStr() {
+
+	public String[] getDataStr() {
 		return dataStr;
 	}
-	public void setDataStr(String dataStr) {
+	public void setDataStr(String[] dataStr) {
 		this.dataStr = dataStr;
 	}
 	public Integer getId() {

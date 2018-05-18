@@ -25,74 +25,26 @@
 <link rel="stylesheet" href="../assets/js/select2/select2-bootstrap.css">
 <link rel="stylesheet" href="../assets/js/multiselect/css/multi-select.css">
 <link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="../css/crm.css">
 
 <style type="text/css">
-.page-container {
-  width: 90%;
-}
-.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
-  padding-left: 7px;
-  padding-right: 7px;
-}
-.chart-item-bg {
-  margin-bottom: 14px;
-}
-.messageCol {
-  padding-left: 25px;
-  padding-right: 25px;
-}
-.messagelabel {
-  padding: 10px;
-}
-.leftCol {
-  padding-left: 15px;
-}
-.rightCol {
-  padding-right: 15px;
-}
-.lessCol {
-  width: 43%;
-}
-.moreCol {
-  width: 57%;
-}
-.echartsCol {
-  height: 340px;
-}
-.echartsHeight {
-  height: 280px;
-}
-.messageHeight {
-  height: 180px;
-}
-.message-header {
-  font-size: 14px;
-  line-height: 14px;
-}
-.message-body {
-  font-size: 12px;
-  line-height: 12px;
-}
-#topRow {
-  margin-top: 1.5%;
-}
 #performanceDiv {
-  width: 440px;
+    width: 440px;
 }
 #unfinishedDiv {
-  width: 580px;
+    width: 580px;
 }
 #pubDpsChgDiv {
-  width: 337px;
+    width: 337px;
 }
 #pubLoanChgDiv {
-  width: 337px;
+    width: 337px;
 }
 #busiOppDiv {
-  width: 337px;
+    width: 337px;
 }
 #perfRankingDiv {
-  width: 440px;
+    width: 440px;
 }
 </style>
 </head>
@@ -100,63 +52,63 @@
 <body class="page-body">
   <div class="page-container">
     <div class="main-content">
-      <div id="topRow" class="row">
-        <div class="col-sm-6 leftCol lessCol">
-          <div class="chart-item-bg echartsCol">
+      <div class="row crm-top-row">
+        <div class="col-sm-6 crm-left-col crm-less-col">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="performanceDiv" class="echartsHeight"></div>
+              <div id="performanceDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 rightCol moreCol">
-          <div class="chart-item-bg echartsCol">
+        <div class="col-sm-6 crm-right-col crm-more-col">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="unfinishedDiv" class="echartsHeight"></div>
+              <div id="unfinishedDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4 leftCol">
-          <div class="chart-item-bg echartsCol">
+        <div class="col-sm-4 crm-left-col">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="pubDpsChgDiv" class="echartsHeight"></div>
+              <div id="pubDpsChgDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="chart-item-bg echartsCol">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="pubLoanChgDiv" class="echartsHeight"></div>
+              <div id="pubLoanChgDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
-        <div class="col-sm-4 rightCol">
-          <div class="chart-item-bg echartsCol">
+        <div class="col-sm-4 crm-right-col">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="busiOppDiv" class="echartsHeight"></div>
+              <div id="busiOppDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 leftCol lessCol">
-          <div class="chart-item-bg echartsCol">
+        <div class="col-sm-6 crm-left-col crm-less-col">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="perfRankingDiv" class="echartsHeight"></div>
+              <div id="perfRankingDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 rightCol moreCol">
-          <div class="chart-item-bg echartsCol">
+        <div class="col-sm-6 crm-right-col crm-more-col">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="row">
-              <div class="col-sm-12 messageCol">
+              <div class="col-sm-12 crm-message-col">
                 <div class="col-sm-4">
                   <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
                     <div class="xe-widget xe-status-update">
-                      <div class="xe-header message-header"></div>
+                      <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-body crm-message-body crm-message-body-height"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -168,9 +120,9 @@
                 <div class="col-sm-4">
                   <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
                     <div class="xe-widget xe-status-update">
-                      <div class="xe-header message-header"></div>
+                      <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-body crm-message-body crm-message-body-height"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -182,9 +134,9 @@
                 <div class="col-sm-4">
                   <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
                     <div class="xe-widget xe-status-update">
-                      <div class="xe-header message-header"></div>
+                      <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-body crm-message-body crm-message-body-height"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -222,8 +174,8 @@
 <script src="../assets/js/select2/select2.min.js"></script>
 <script src="../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
 
-<script src="../assets/js/echarts/echarts.js"></script>
-<script src="../assets/js/echarts/macarons.js"></script>
+<script src="../assets/js/echarts/echarts.min.js"></script>
+<script src="../assets/js/echarts/macarons-cus.js"></script>
 
 <script src="../js/WebUtils.js"></script>
 
@@ -314,7 +266,7 @@
     };
 
     // 营销业绩趋势图
-    var myChart_performance = echarts.init(document.getElementById("performanceDiv"), "macarons");
+    var myChart_performance = echarts.init(document.getElementById("performanceDiv"), "macarons-cus");
     myChart_performance.setOption({
         title : {
             text : "营销业绩趋势图"
@@ -351,7 +303,7 @@
     }, true);
 
     // 未完成营销任务
-    var myChart_unfinished = echarts.init(document.getElementById("unfinishedDiv"), "macarons");
+    var myChart_unfinished = echarts.init(document.getElementById("unfinishedDiv"), "macarons-cus");
     myChart_unfinished.setOption({
         title : {
             text : "未完成营销任务",
@@ -390,7 +342,7 @@
     }, true);
 
     // 客户存款变动排名
-    var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "macarons");
+    var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "macarons-cus");
     myChart_pubDpsChg.setOption({
         title : {
             text : "客户存款变动排名",
@@ -409,7 +361,7 @@
     }, true);
 
     // 客户贷款变动排名
-    var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "macarons");
+    var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "macarons-cus");
     myChart_pubLoanChg.setOption({
         title : {
             text : "客户贷款变动排名",
@@ -429,7 +381,7 @@
     }, true);
 
     // 可营销商机
-    var myChart_busiOpp = echarts.init(document.getElementById("busiOppDiv"), "macarons");
+    var myChart_busiOpp = echarts.init(document.getElementById("busiOppDiv"), "macarons-cus");
     myChart_busiOpp.setOption({
         title : {
             text : "可营销商机"
@@ -459,7 +411,7 @@
     }, true);
 
     // 业绩排名
-    var myChart_perfRanking = echarts.init(document.getElementById("perfRankingDiv"), "macarons");
+    var myChart_perfRanking = echarts.init(document.getElementById("perfRankingDiv"), "macarons-cus");
     myChart_perfRanking.setOption({
         title : {
             text : "业绩排名"
@@ -544,7 +496,6 @@
         url : "homepage_info/homepage",
         type : "post",
         dataType : "json",
-        async : true,
         success : function(result) {
             if (WebUtils.isSuccess(result)) {
                 // 营销业绩趋势图
@@ -604,8 +555,8 @@
                 // 公告栏
                 var msg = result.data.message;
                 if (msg.length > 0) {
-                    var $msgheader = $(".message-header");
-                    var $msgbody = $(".message-body");
+                    var $msgheader = $(".crm-message-header");
+                    var $msgbody = $(".crm-message-body");
                     for (var i_msg = 0; i_msg < 3; i_msg++) {
                         $($msgheader[i_msg]).empty().append(msg[i_msg].slice(0, 8));
                         $($msgbody[i_msg]).empty().append(msg[i_msg].slice(0, 180));

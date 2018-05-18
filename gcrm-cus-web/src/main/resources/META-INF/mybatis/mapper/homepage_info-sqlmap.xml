@@ -117,7 +117,6 @@
     WHERE
       t.MSG_TYPE = '1'
     AND t. STATUS = '2'
-    AND t.CREATE_USER = #{staffId}
     ORDER BY
       t.CREATE_TIME DESC
     LIMIT 3
