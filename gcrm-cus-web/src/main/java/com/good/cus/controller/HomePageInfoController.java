@@ -49,7 +49,7 @@ public class HomePageInfoController {
         List<Map<String, String>> pubLoanChg = service.pubLoanChg(staffId);
         List<String> busiOpp = service.busiOpp(staffId);
         Map<String, List<String>> perfRanking = service.perfRanking(staffId);
-        List<String> message = service.message(staffId);
+        List<Map<String, String>> message = service.message(staffId);
 
         Map<String, Object> result = new HashMap<String, Object>(7);
         result.put("perfAcph", perfAcph);

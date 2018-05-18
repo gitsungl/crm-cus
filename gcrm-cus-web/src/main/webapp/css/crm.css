@@ -7,6 +7,27 @@
     width: 90%;
 }
 
+.xe-widget.xe-status-update {
+    background: #FFFFFF;
+    color: #333333;
+    padding: 10px;
+    padding-top: 15px;
+}
+
+.xe-widget.xe-status-update .xe-body li p {
+    font-size: 14px;
+    color: #333333;
+}
+
+.xe-widget.xe-status-update .xe-footer a {
+    color: #333333;
+}
+
+.crm-widget {
+    border: 1px solid #F0F0F0;
+    border-top: 7px solid #3B90FF;
+}
+
 .crm-top-row {
     margin-top: 1.5%;
 }
@@ -51,7 +72,7 @@
 
 .crm-message-body {
     font-size: 12px;
-    line-height: 12px;
+    line-height: 16px;
 }
 
 .crm-message-body-height {

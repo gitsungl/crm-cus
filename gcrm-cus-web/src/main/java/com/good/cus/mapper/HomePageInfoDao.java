@@ -5,6 +5,7 @@ import com.good.cus.bean.MktTaskInfoPo;
 import com.good.cus.bean.PubChgPo;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -22,6 +23,6 @@ public interface HomePageInfoDao {
 
     List<MktStfPerfPo> perfRanking(@Param("staffId") String staffId);
 
-    List<String> message(@Param("staffId") String staffId);
+    List<Map<String, String>> message(@Param("staffId") String staffId);
 
 }

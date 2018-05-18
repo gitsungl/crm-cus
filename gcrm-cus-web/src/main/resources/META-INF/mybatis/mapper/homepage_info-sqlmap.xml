@@ -17,7 +17,7 @@
 
   <select id="unfinished" resultType="com.good.cus.bean.MktTaskInfoPo">
     SELECT
-      t.TASK_NAME AS taskName,
+      SUBSTR(t.TASK_NAME, 1, 8) AS taskName,
       CASE t.TASK_STATUS
       WHEN '1' THEN
         t.PERF_TOTAL * 0.25
@@ -109,9 +109,10 @@
     AND t.STAFF_ID = #{staffId} )
   </select>
 
-  <select id="message" resultType="java.lang.String">
+  <select id="message" resultType="java.util.Map">
     SELECT
-      t.MSG_CONTENT
+      t.MSG_TITLE   AS msgTitle,
+      t.MSG_CONTENT AS msgContent
     FROM
       pub_poit_msg t
     WHERE

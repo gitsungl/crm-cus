@@ -28,6 +28,10 @@
 <link rel="stylesheet" href="../css/crm.css">
 
 <style type="text/css">
+.panel {
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+}
 #performanceDiv {
     width: 440px;
 }
@@ -103,12 +107,20 @@
           <div class="chart-item-bg crm-echarts-col-height">
             <div class="row">
               <div class="col-sm-12 crm-message-col">
+                <div class="panel panel-default collapsed">
+                  <div class="form-group">
+                    <h4>公告栏</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 crm-message-col" style="hight:90%;">
                 <div class="col-sm-4">
-                  <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
-                    <div class="xe-widget xe-status-update">
+                  <div class="chart-label" style="padding: 0px; padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update crm-widget">
+                      <div style="hight:5px; background: linear-gradient(red, blue);"></div>
                       <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body crm-message-body crm-message-body-height"></div>
+                      <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -118,11 +130,12 @@
                   </div>
                 </div>
                 <div class="col-sm-4">
-                  <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
-                    <div class="xe-widget xe-status-update">
+                  <div class="chart-label" style="padding: 0px; padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update crm-widget">
+                      <div style="hight:5px; background: linear-gradient(red, blue);"></div>
                       <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body crm-message-body crm-message-body-height"></div>
+                      <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -132,11 +145,12 @@
                   </div>
                 </div>
                 <div class="col-sm-4">
-                  <div class="chart-label" style="padding-left: 10px; padding-right: 10px;">
-                    <div class="xe-widget xe-status-update">
+                  <div class="chart-label" style="padding: 0px; padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update crm-widget">
+                      <div style="hight:5px; background: linear-gradient(red, blue);"></div>
                       <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body crm-message-body crm-message-body-height"></div>
+                      <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -244,7 +258,7 @@
     var fontLabel2 = {
         normal : {
             show : true,
-            position : "insideRight",
+            position : "right",
             textStyle: {
                 color: colorStyle.blackStyle
             },
@@ -260,7 +274,7 @@
             textStyle: {
                 color: colorStyle.blackStyle
             },
-            fontSize : 10,
+            fontSize : 12,
             textBorderWidth : 1
         }
     };
@@ -558,8 +572,8 @@
                     var $msgheader = $(".crm-message-header");
                     var $msgbody = $(".crm-message-body");
                     for (var i_msg = 0; i_msg < 3; i_msg++) {
-                        $($msgheader[i_msg]).empty().append(msg[i_msg].slice(0, 8));
-                        $($msgbody[i_msg]).empty().append(msg[i_msg].slice(0, 180));
+                        $($msgheader[i_msg]).empty().append(msg[i_msg].msgTitle);
+                        $($msgbody[i_msg]).empty().append(msg[i_msg].msgContent.slice(0, 150) + "…");
                     }
                 }
             }

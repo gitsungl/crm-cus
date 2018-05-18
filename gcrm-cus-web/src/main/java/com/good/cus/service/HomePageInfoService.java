@@ -68,6 +68,6 @@ public interface HomePageInfoService {
      * @return
      * @throws ServiceException
      */
-    public List<String> message(String staffId) throws ServiceException;
+    public List<Map<String, String>> message(String staffId) throws ServiceException;
 
 }

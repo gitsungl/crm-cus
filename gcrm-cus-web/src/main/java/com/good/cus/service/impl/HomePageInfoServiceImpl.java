@@ -84,10 +84,12 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         List<Map<String, String>> result = new ArrayList<Map<String, String>>(5);
         List<PubChgPo> list = homePageInfoDao.pubDpsChg(staffId);
         if (list != null && list.size() > 0) {
+            int value = 50;
             for (PubChgPo po : list) {
                 Map<String, String> map = new HashMap<String, String>(2);
-                map.put("name", po.getCustName() + po.getThanMAmt().toString());
-                map.put("value", po.getThanMAmt().toString());
+                map.put("name", po.getCustName() + ": " + po.getThanMAmt().toString());
+                map.put("value", String.valueOf(value));
+                value = value - 10;
                 result.add(map);
             }
         }
@@ -100,10 +102,12 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         List<Map<String, String>> result = new ArrayList<Map<String, String>>(5);
         List<PubChgPo> list = homePageInfoDao.pubLoanChg(staffId);
         if (list != null && list.size() > 0) {
+            int value = 50;
             for (PubChgPo po : list) {
                 Map<String, String> map = new HashMap<String, String>(2);
-                map.put("name", po.getCustName() + po.getThanMAmt().toString());
-                map.put("value", po.getThanMAmt().toString());
+                map.put("name", po.getCustName() + ": " + po.getThanMAmt().toString());
+                map.put("value", String.valueOf(value));
+                value = value - 10;
                 result.add(map);
             }
         }
@@ -152,8 +156,8 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
     }
 
     @Override
-    public List<String> message(String staffId) throws ServiceException {
-        List<String> result = homePageInfoDao.message(staffId);
+    public List<Map<String, String>> message(String staffId) throws ServiceException {
+        List<Map<String, String>> result = homePageInfoDao.message(staffId);
         logger.info("message service result:\n{}\n", result);
         return result;
     }
