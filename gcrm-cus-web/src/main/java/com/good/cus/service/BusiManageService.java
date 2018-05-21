@@ -2,6 +2,7 @@ package com.good.cus.service;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -42,6 +43,6 @@ public interface BusiManageService {
      * @return
      * @throws ServiceException
      */
-    public List<String> message(String staffId) throws ServiceException;
+	public List<Map<String, String>> message(String staffId) throws ServiceException;
 	
 }

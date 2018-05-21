@@ -21,6 +21,6 @@ public interface DirManageService {
 
 	public List<List<String>> PubVifyListPoForTable(String createUser) throws ServiceException, ParseException;
 
-	public List<String> message(String staffId) throws ServiceException;
+	public List<Map<String, String>> message(String staffId) throws ServiceException;
 
 }

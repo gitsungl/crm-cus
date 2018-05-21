@@ -80,7 +80,7 @@ public class BusiManageController {
         result.put("MktStfPerfPoTabYear", MktStfPerfPoTabYearList);
         result.put("MktStfPerfPoTabNum", MktStfPerfPoTabNumlist);
         
-        List<String> message = service.message(staffId);
+        List<Map<String, String>> message = service.message(staffId);
         result.put("message", message);
         logger.info("homepage controller result: {}", result);
         

@@ -161,12 +161,12 @@ public class DirManageServiceImpl implements DirManageService {
 		return getListOfData(dataMap);
 	}
 
-	@Override
-	public List<String> message(String staffId) throws ServiceException{
-		 List<String> result = dirManageDao.message(staffId);
-	        logger.info("message service result:\n{}\n", result);
-	        return result;
-	}
+    @Override
+    public List<Map<String, String>> message(String staffId) throws ServiceException {
+        List<Map<String, String>> result = dirManageDao.message(staffId);
+        logger.info("message service result:\n{}\n", result);
+        return result;
+    }
 
 	/******日期遍历方法
 	 * @throws ParseException ******/

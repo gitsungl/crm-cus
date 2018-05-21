@@ -98,9 +98,10 @@
     AND t.STAFF_ID = #{staffId} )
   </select>
   
-  <select id="message" resultType="java.lang.String">
+  <select id="message" resultType="java.util.Map">
     SELECT
-      t.MSG_CONTENT
+      t.MSG_TITLE   AS msgTitle,
+      t.MSG_CONTENT AS msgContent
     FROM
       pub_poit_msg t
     WHERE

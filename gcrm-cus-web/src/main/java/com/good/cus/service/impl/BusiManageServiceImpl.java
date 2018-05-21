@@ -95,8 +95,8 @@ public class BusiManageServiceImpl implements BusiManageService {
 	}
 	
     @Override
-    public List<String> message(String staffId) throws ServiceException {
-        List<String> result = busiManageDao.message(staffId);
+    public List<Map<String, String>> message(String staffId) throws ServiceException {
+    	 List<Map<String, String>> result = busiManageDao.message(staffId);
         logger.info("message service result:\n{}\n", result);
         return result;
     }

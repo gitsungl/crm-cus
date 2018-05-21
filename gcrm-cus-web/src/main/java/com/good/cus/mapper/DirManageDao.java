@@ -1,6 +1,7 @@
 package com.good.cus.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -23,5 +24,5 @@ public interface DirManageDao {
 
     List<PubVifyListPo> PubVifyListPoForTable(@Param("createUser") String createUser);
 
-    List<String> message(@Param("staffId") String staffId);
+    List<Map<String, String>> message(@Param("staffId") String staffId);
 }

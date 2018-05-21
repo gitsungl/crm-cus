@@ -33,15 +33,15 @@
 	MT.CREATE_TIME
   </select>
 
-  <select id="message" resultType="java.lang.String">
+  <select id="message" resultType="java.util.Map">
     SELECT
-      t.MSG_CONTENT
+      t.MSG_TITLE   AS msgTitle,
+      t.MSG_CONTENT AS msgContent
     FROM
       pub_poit_msg t
     WHERE
       t.MSG_TYPE = '1'
     AND t. STATUS = '2'
-    AND t.CREATE_USER = #{staffId}
     ORDER BY
       t.CREATE_TIME DESC
     LIMIT 3
