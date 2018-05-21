@@ -173,7 +173,7 @@
               <div id="perfRankingDiv" class="echartsHeight-left" ><img alt="" src="../images/crm/yxhdfqlc.png" usemap="yxhdfqlc">
               	<map name="yxhdfqlc">
               	  <area shape="rect" coords="330,100,185,150" onclick="alert('\'发起\'功能开发中。。。。。')" title="发起" target="_blank" ><!-- href="http://hao.360.cn/daxue/hlj.html" -->
-              	  <area shape="rect" coords="450,393,310,443" onclick="alert('\'分配\'功能开发中。。。。。')" title="黑龙江" target="_blank" >
+              	  <area shape="rect" coords="450,393,310,443" onclick="alert('\'分配\'功能开发中。。。。。')" title="分配" target="_blank" >
               	</map>
               </div>
             </div>
