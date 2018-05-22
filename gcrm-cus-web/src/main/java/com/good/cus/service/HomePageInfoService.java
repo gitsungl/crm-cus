@@ -59,7 +59,7 @@ public interface HomePageInfoService {
      * @return
      * @throws ServiceException
      */
-    public Map<String, List<String>> perfRanking(String staffId) throws ServiceException;
+    public Map<String, Object> perfRanking(String staffId) throws ServiceException;
 
     /**
      * 公告栏

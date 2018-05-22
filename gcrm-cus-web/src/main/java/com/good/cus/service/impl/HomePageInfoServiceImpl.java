@@ -123,15 +123,15 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
     }
 
     @Override
-    public Map<String, List<String>> perfRanking(String staffId) throws ServiceException {
-        Map<String, List<String>> result = new HashMap<String, List<String>>(3);
+    public Map<String, Object> perfRanking(String staffId) throws ServiceException {
+        Map<String, Object> result = new HashMap<String, Object>(3);
         List<MktStfPerfPo> list = homePageInfoDao.perfRanking(staffId);
         List<String> perfRanking = new ArrayList<String>(5);
         List<String> perfRankingName = new ArrayList<String>(5);
+        int i_acph = 4;
         if (list.size() == 5 && staffId.equals(list.get(4).getStaffId())) {
             String myName = list.get(4).getStaffName();
             BigDecimal myValue = list.get(4).getPerfAcph();
-            int i_acph = 4;
             for (int i = 0; i < 4; i++) {
                 if (myValue.compareTo(list.get(i).getPerfAcph()) == 1) {
                     i_acph = i;
@@ -151,6 +151,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         }
         result.put("perfRankingName", perfRankingName);
         result.put("perfRanking", perfRanking);
+        result.put("perfRankingMe", i_acph);
         logger.info("perfRanking service result:\n{}\n", result);
         return result;
     }

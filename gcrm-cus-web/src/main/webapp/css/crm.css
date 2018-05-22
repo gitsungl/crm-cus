@@ -3,37 +3,12 @@
     padding-right: 7px;
 }
 
-.page-container {
-    width: 90%;
-}
-
-.xe-widget.xe-status-update {
-    background: #FFFFFF;
-    color: #333333;
-    padding: 10px;
-    padding-top: 15px;
-}
-
-.xe-widget.xe-status-update .xe-body li p {
-    font-size: 14px;
-    color: #333333;
-}
-
-.xe-widget.xe-status-update .xe-footer a {
-    color: #333333;
-}
-
-.crm-widget {
-    border: 1px solid #F0F0F0;
-    border-top: 7px solid #3B90FF;
+.chart-item-bg {
+    margin-bottom: 14px;
 }
 
 .crm-top-row {
     margin-top: 1.5%;
-}
-
-.chart-item-bg {
-    margin-bottom: 14px;
 }
 
 .crm-left-col {
@@ -60,6 +35,14 @@
     height: 280px;
 }
 
+.crm-left-echarts-div {
+    width: 440px;
+}
+
+.crm-right-echarts-div {
+    width: 600px;
+}
+
 .crm-message-col {
     padding-left: 25px;
     padding-right: 25px;
@@ -77,4 +60,25 @@
 
 .crm-message-body-height {
     height: 180px;
+}
+
+.crm-widget {
+    border: 1px solid #F0F0F0;
+    border-top: 4px solid #3B90FF;
+}
+
+.xe-widget.xe-status-update {
+    background: #FFFFFF;
+    color: #333333;
+    padding: 10px;
+    padding-top: 15px;
+}
+
+.xe-widget.xe-status-update .xe-body li p {
+    font-size: 14px;
+    color: #333333;
+}
+
+.xe-widget.xe-status-update .xe-footer a {
+    color: #333333;
 }

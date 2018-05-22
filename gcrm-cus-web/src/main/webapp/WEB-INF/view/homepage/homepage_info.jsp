@@ -189,7 +189,8 @@
 <script src="../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
 
 <script src="../assets/js/echarts/echarts.min.js"></script>
-<script src="../assets/js/echarts/macarons-cus.js"></script>
+<script src="../assets/js/echarts/crm-homepage1.js"></script>
+<script src="../assets/js/echarts/crm-homepage2.js"></script>
 
 <script src="../js/WebUtils.js"></script>
 
@@ -224,6 +225,18 @@
     var gradientStyle2 = {
         normal: {
             color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                    {offset: 0, color: "#99E28E"},
+                    {offset: 1, color: "#57CFA9"}
+                ]
+            )
+        }
+    };
+
+    var gradientStyle3 = {
+        normal: {
+            color: new echarts.graphic.LinearGradient(
                 1, 0, 0, 0,
                 [
                     {offset: 0, color: "#35D6FF"},
@@ -233,13 +246,13 @@
         }
     };
 
-    var gradientStyle3 = {
+    var gradientStyle4 = {
         normal: {
             color: new echarts.graphic.LinearGradient(
-                0, 0, 0, 1,
+                1, 0, 0, 0,
                 [
-                    {offset: 0, color: "#99E28E"},
-                    {offset: 1, color: "#57CFA9"}
+                    {offset: 0, color: "#E171FD"},
+                    {offset: 1, color: "#9682FD"}
                 ]
             )
         }
@@ -262,7 +275,7 @@
             textStyle: {
                 color: colorStyle.blackStyle
             },
-            fontSize : 10,
+            fontSize : 9,
             textBorderWidth : 1
         }
     };
@@ -280,7 +293,7 @@
     };
 
     // 营销业绩趋势图
-    var myChart_performance = echarts.init(document.getElementById("performanceDiv"), "macarons-cus");
+    var myChart_performance = echarts.init(document.getElementById("performanceDiv"), "crm-homepage1");
     myChart_performance.setOption({
         title : {
             text : "营销业绩趋势图"
@@ -317,11 +330,15 @@
     }, true);
 
     // 未完成营销任务
-    var myChart_unfinished = echarts.init(document.getElementById("unfinishedDiv"), "macarons-cus");
+    var myChart_unfinished = echarts.init(document.getElementById("unfinishedDiv"), "crm-homepage1");
     myChart_unfinished.setOption({
         title : {
             text : "未完成营销任务",
-            subtext : "(万元)"
+            subtext : "(万元)",
+            top : "-1.5%"
+        },
+        legend: {
+            data: ["任务奖金总额", "完成度"]
         },
         xAxis : [ {
             type : "category",
@@ -339,6 +356,7 @@
             show : false
         } ],
         series : [ {
+            name : "任务奖金总额",
             type : "bar",
             barMaxWidth: "15px",
             label: fontLabel,
@@ -347,6 +365,7 @@
             },
             data : []
         }, {
+            name : "完成度",
             type : "bar",
             barMaxWidth: "15px",
             xAxisIndex : 1,
@@ -356,7 +375,7 @@
     }, true);
 
     // 客户存款变动排名
-    var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "macarons-cus");
+    var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "crm-homepage1");
     myChart_pubDpsChg.setOption({
         title : {
             text : "客户存款变动排名",
@@ -375,7 +394,7 @@
     }, true);
 
     // 客户贷款变动排名
-    var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "macarons-cus");
+    var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "crm-homepage2");
     myChart_pubLoanChg.setOption({
         title : {
             text : "客户贷款变动排名",
@@ -395,7 +414,7 @@
     }, true);
 
     // 可营销商机
-    var myChart_busiOpp = echarts.init(document.getElementById("busiOppDiv"), "macarons-cus");
+    var myChart_busiOpp = echarts.init(document.getElementById("busiOppDiv"), "crm-homepage1");
     myChart_busiOpp.setOption({
         title : {
             text : "可营销商机"
@@ -419,13 +438,13 @@
             type : "bar",
             barMaxWidth: "20px",
             label : fontLabel,
-            itemStyle: gradientStyle3,
+            itemStyle: gradientStyle2,
             data : []
         } ]
     }, true);
 
     // 业绩排名
-    var myChart_perfRanking = echarts.init(document.getElementById("perfRankingDiv"), "macarons-cus");
+    var myChart_perfRanking = echarts.init(document.getElementById("perfRankingDiv"), "crm-homepage1");
     myChart_perfRanking.setOption({
         title : {
             text : "业绩排名"
@@ -500,7 +519,7 @@
             type : "bar",
             barMaxWidth : "15px",
             label : fontLabel2,
-            itemStyle: gradientStyle2,
+            itemStyle: gradientStyle3,
             data : []
         } ]
     }, true);
@@ -556,6 +575,9 @@
                     } ]
                 });
                 // 业绩排名
+                var perfRanking = result.data.perfRanking.perfRanking;
+                var perfRankingMe = result.data.perfRanking.perfRankingMe;
+                perfRanking[perfRankingMe] = {value : perfRanking[perfRankingMe], itemStyle : gradientStyle4};
                 myChart_perfRanking.setOption({
                     yAxis : {
                         // data : [ "no1", "no2", "no3", "no4", "nom" ]

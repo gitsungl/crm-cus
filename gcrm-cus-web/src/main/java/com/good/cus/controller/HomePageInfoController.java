@@ -48,7 +48,7 @@ public class HomePageInfoController {
         List<Map<String, String>> pubDpsChg = service.pubDpsChg(staffId);
         List<Map<String, String>> pubLoanChg = service.pubLoanChg(staffId);
         List<String> busiOpp = service.busiOpp(staffId);
-        Map<String, List<String>> perfRanking = service.perfRanking(staffId);
+        Map<String, Object> perfRanking = service.perfRanking(staffId);
         List<Map<String, String>> message = service.message(staffId);
 
         Map<String, Object> result = new HashMap<String, Object>(7);
@@ -59,7 +59,7 @@ public class HomePageInfoController {
         result.put("busiOpp", busiOpp);
         result.put("perfRanking", perfRanking);
         result.put("message", message);
-        logger.info("homepage controller result: {}", result);
+        logger.info("homepage controller result:\n{}\n", result);
         WebPageResult ret = new WebPageResult(result);
         return ret;
     }

@@ -196,5 +196,5 @@
         }
     };
 
-    echarts.registerTheme('macarons-cus', theme);
+    echarts.registerTheme('crm-homepage1', theme);
 }));
