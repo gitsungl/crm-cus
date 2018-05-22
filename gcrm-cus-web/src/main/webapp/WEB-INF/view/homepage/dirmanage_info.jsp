@@ -333,7 +333,7 @@
             textStyle: {
                 color: colorStyle.blackStyle
             },
-            fontSize : 10,
+            fontSize : 9,
             textBorderWidth : 1
         }
     };
@@ -345,7 +345,7 @@
             textStyle: {
                 color: colorStyle.blackStyle
             },
-            fontSize : 10,
+            fontSize : 12,
             textBorderWidth : 1
         }
     };
@@ -596,12 +596,6 @@
                         align : "right",
                         backgroundColor : {
                             image : noIcons.no3
-                        }
-                    },
-                    nom : {
-                        align : "right",
-                        backgroundColor : {
-                            image : noIcons.nom
                         }
                     },
                     no4 : {
