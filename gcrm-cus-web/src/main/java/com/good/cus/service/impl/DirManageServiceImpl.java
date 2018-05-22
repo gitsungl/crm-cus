@@ -113,29 +113,33 @@ public class DirManageServiceImpl implements DirManageService {
 
 	@Override
 	public List<Map<String, String>> pubDpsChg(String staffId) throws ServiceException{
-		List<Map<String, String>> result = new ArrayList<Map<String, String>>(5);
-        List<PubChgPo> list = dirManageDao.pubDpsChg(staffId);
-        if (list != null && list.size() > 0) {
-            for (PubChgPo po : list) {
-                Map<String, String> map = new HashMap<String, String>(2);
-                map.put("name", po.getCustName() + po.getThanMAmt().toString());
-                map.put("value", po.getThanMAmt().toString());
-                result.add(map);
-            }
-        }
-        logger.info("pubDpsChg service result:\n{}\n", result);
-        return result;
+		 List<Map<String, String>> result = new ArrayList<Map<String, String>>(5);
+	        List<PubChgPo> list = dirManageDao.pubDpsChg(staffId);
+	        if (list != null && list.size() > 0) {
+	            int value = 50;
+	            for (PubChgPo po : list) {
+	                Map<String, String> map = new HashMap<String, String>(2);
+	                map.put("name", po.getCustName() + ": " + po.getThanMAmt().toString());
+	                map.put("value", String.valueOf(value));
+	                value = value - 10;
+	                result.add(map);
+	            }
+	        }
+	        logger.info("pubDpsChg service result:\n{}\n", result);
+	        return result;
 	}
 
 	@Override
 	public List<Map<String, String>> pubLoanChg(String staffId) throws ServiceException{
-		List<Map<String, String>> result = new ArrayList<Map<String, String>>(5);
+        List<Map<String, String>> result = new ArrayList<Map<String, String>>(5);
         List<PubChgPo> list = dirManageDao.pubLoanChg(staffId);
         if (list != null && list.size() > 0) {
+            int value = 50;
             for (PubChgPo po : list) {
                 Map<String, String> map = new HashMap<String, String>(2);
-                map.put("name", po.getCustName() + po.getThanMAmt().toString());
-                map.put("value", po.getThanMAmt().toString());
+                map.put("name", po.getCustName() + ": " + po.getThanMAmt().toString());
+                map.put("value", String.valueOf(value));
+                value = value - 10;
                 result.add(map);
             }
         }

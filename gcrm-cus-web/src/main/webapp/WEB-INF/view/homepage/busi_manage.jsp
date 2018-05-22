@@ -25,28 +25,20 @@
 <link rel="stylesheet" href="../assets/js/select2/select2-bootstrap.css">
 <link rel="stylesheet" href="../assets/js/multiselect/css/multi-select.css">
 <link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="../css/crm.css">
+
 
 <style type="text/css">
 .page-container {
   width: 90%;
 }
-.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
-  padding-left: 7px;
-  padding-right: 7px;
-}
-.chart-item-bg {
-  margin-bottom: 14px;
-}
-.messageCol {
-  padding-left: 25px;
-  padding-right: 25px;
-}
-.messagelabel {
-  padding: 10px;
+.panel {
+    margin-bottom: 0px;
+    padding-bottom: 5px;
 }
 .pe3Row{
   width:  670px;
-  height: 330px;
+  height: 704px;
 }
 .leftCol {
   padding-left: 15px;
@@ -72,9 +64,8 @@
 .echartsCol {
   height: 340px;
 }
-
 .echartsColDown {
-  height : 660px;
+  height : 694px;
 }
 .echartsHeight {
   height: 280px;
@@ -82,10 +73,6 @@
 .echartsHeight-left {
   wigth: 470px;
   height: 660px;
-}
-.chart-label {
-  width :570px;
-  height :330px;
 }
 .chart-label-Left{
   width : 490px;
@@ -95,51 +82,16 @@
   width :660px;
   height :330px;
 }
-.chart-labelTop{
-  width :660px;
-  height :330px;
-}
-.chart-labelDown{
-  width :190px;
-  height :300px;
-}
-.pe3ColTop{
-  width : 670px;
-  height :330px;
-}
 .model {
   width :530px;
   height :300px
-}
-.messageHeight {
-  height: 180px;
 }
 .echartsHeight1 {
   width :630px;
   height : 320px; 
 }
-.message-header {
-  font-size: 14px;
-  line-height: 14px;
-}
-.message-body {
-  font-size: 12px;
-  line-height: 12px;
-}
 #topRow {
   margin-top: 1.5%;
-}
-#performanceDiv {
-  width: 440px;
-}
-#unfinishedDiv {
-  width: 580px;
-}
-#pubLoanChgDiv {
-  width: 337px;
-}
-#busiOppDiv {
-  width: 337px;
 }
 
 </style>
@@ -181,21 +133,30 @@
         </div>
         <div class="col-sm-6 rightCol moreCol">
           <div class="pe3Row">
-            <div class="col-sm-4 pe3ColTop chart-item-bg">
+            <div class="col-sm-4 echartsCol chart-item-bg">
           	 <div class="p3topColBg"> 
-               <div class="chart-labelTop">
+               <div class="chart-label">
                 <div id="MktStfPerfPoDiv" class="echartsHeight1"></div>
               </div>
              </div>
             </div>
-             <div class="col-sm-12 messageCol downCol chart-item-bg"><!-- TODO -->
+            <div class="col-sm-12 echartsCol chart-item-bg">
               <div class="row">
+                <div class="col-sm-12 crm-message-col">
+                  <div class="panel panel-default collapsed">
+                    <div class="form-group">
+                      <h4>公告栏</h4>
+                    </div>
+                   </div>
+                 </div>
+                <div class="col-sm-12 crm-message-col">
                 <div class="col-sm-4">
-                  <div class="chart-labelDown" style="padding-left: 10px; padding-right: 10px;">
-                    <div class="xe-widget xe-status-update">
-                      <div class="xe-header message-header"></div>
+                  <div class="chart-label" style="padding: 0px; padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update crm-widget">
+                      <div style="hight:5px; background: linear-gradient(red, blue);"></div>
+                      <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -205,11 +166,12 @@
                   </div>
                 </div>
                 <div class="col-sm-4">
-                  <div class="chart-labelDown" style="padding-left: 10px; padding-right: 10px;">
-                    <div class="xe-widget xe-status-update">
-                      <div class="xe-header message-header"></div>
+                  <div class="chart-label" style="padding: 0px; padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update crm-widget">
+                      <div style="hight:5px; background: linear-gradient(red, blue);"></div>
+                      <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -218,12 +180,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-4">
-                  <div class="chart-labelDown" style="padding-left: 10px; padding-right: 10px;">
-                    <div class="xe-widget xe-status-update">
-                      <div class="xe-header message-header"></div>
+                 <div class="col-sm-4">
+                  <div class="chart-label" style="padding: 0px; padding-left: 10px; padding-right: 10px;">
+                    <div class="xe-widget xe-status-update crm-widget">
+                      <div style="hight:5px; background: linear-gradient(red, blue);"></div>
+                      <div class="xe-header crm-message-header"></div>
                       <div>&nbsp;</div>
-                      <div class="xe-body message-body messageHeight"></div>
+                      <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
                         <a href="#">
                           <i class="fa-retweet"></i>了解更多&gt;
@@ -232,8 +195,9 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+               </div>
+               </div>
+             </div>
           </div>
         </div>
       </div>
@@ -342,7 +306,7 @@
 	        }
 	    },
 	    grid : {
-        	right : 150
+        	left : 200
         },
 	    angleAxis: {
 	        type: 'category',
@@ -446,12 +410,12 @@
                 // 公告栏
                 var msg = result.data.message;
                 if (msg.length > 0) {
-                    var $msgheader = $(".message-header");
-                    var $msgbody = $(".message-body");
-                    for (var i_msg = 0; i_msg < 3; i_msg++) {
-                        $($msgheader[i_msg]).empty().append(msg[i_msg].slice(0, 8));
-                        $($msgbody[i_msg]).empty().append(msg[i_msg].slice(0, 100));
-                    }
+                	 var $msgheader = $(".crm-message-header");
+                     var $msgbody = $(".crm-message-body");
+                     for (var i_msg = 0; i_msg < 3; i_msg++) {
+                     	$($msgheader[i_msg]).empty().append(msg[i_msg].msgTitle);
+                         $($msgbody[i_msg]).empty().append(msg[i_msg].msgContent.slice(0, 150) + "…");
+                     }
                 }
             }
         },
@@ -466,7 +430,7 @@
     		data.push({type: 'bar',
 		        data: [numList[i]],
 		        coordinateSystem: 'polar',
-		        name: nameList[i].slice(0, 5)});
+		        name: nameList[i].slice(0, 6)});
     	}
     	return data;
     }  
