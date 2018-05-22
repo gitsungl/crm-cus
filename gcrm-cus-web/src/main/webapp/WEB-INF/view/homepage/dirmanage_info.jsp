@@ -469,12 +469,27 @@
         ]
     }, true);
 
-    // 客户存款变动排名
+    // 管辖客户存款排名
     var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "macarons-cus");
     myChart_pubDpsChg.setOption({
         title : {
-            text : "客户存款变动排名",
+            text : "管辖客户存款排名",
             subtext : "(万元)"
+        },
+        toolbox: {
+        	itemSize : 40,
+            feature: {
+                myTool1: {
+                	show: true,
+                    title: '自定义',
+                    icon: 'image://../images/crm/more.png',
+                    onclick: function (){
+                        alert('myToolHandler2')
+                    }
+                }
+        	},
+        right : 15,
+        top : -5
         },
         series : [ {
             type : "funnel",
@@ -488,12 +503,27 @@
         } ]
     }, true);
 
-    // 客户贷款变动排名
+    // 管辖客户贷款排名
     var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "macarons-cus");
     myChart_pubLoanChg.setOption({
         title : {
-            text : "客户贷款变动排名",
+            text : "管辖客户贷款排名",
             subtext : "(万元)"
+        },
+        toolbox: {
+        	itemSize : 40,
+            feature: {
+                myTool1: {
+                	show: true,
+                    title: '自定义',
+                    icon: 'image://../images/crm/more.png',
+                    onclick: function (){
+                        alert('myToolHandler2')
+                    }
+                }
+        	},
+        right : 15,
+        top : -5
         },
         series : [ {
             type : "funnel",
@@ -510,11 +540,11 @@
 
     var myChart_pubvifylist = echarts.init(document.getElementById("PubVifyListPoDiv"), "macarons");
 
-    // 业绩排名
+    // 客户经理业绩排名
     var myChart_perfRanking = echarts.init(document.getElementById("perfRankingDiv"), "macarons-cus");
     myChart_perfRanking.setOption({
         title : {
-            text : "业绩排名"
+            text : "客户经理业绩排名"
         },
         xAxis : {
             type : "value",
@@ -651,7 +681,7 @@
                         orient: 'vertical',
                         dayLabel: {
                             firstDay: 1,
-                            nameMap:['日', '一', '二', '三', '四', '五', '六']
+                            nameMap:['周日', '周一', '周二', '周三', '周四', '周五', '周六']
                         },
                         monthLabel: {
                             show: false

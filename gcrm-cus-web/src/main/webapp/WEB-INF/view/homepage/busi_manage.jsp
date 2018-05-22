@@ -385,7 +385,7 @@
                         orient: 'vertical',
                         dayLabel: {
                             firstDay: 1,
-                            nameMap:['日', '一', '二', '三', '四', '五', '六']
+                            nameMap:['周日', '周一', '周二', '周三', '周四', '周五', '周六']
                         },
                         monthLabel: {
                             show: false
