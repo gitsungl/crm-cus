@@ -197,7 +197,8 @@
 <script src="../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
 
 <script src="../assets/js/echarts/echarts.min.js"></script>
-<script src="../assets/js/echarts/macarons-cus.js"></script>
+<script src="../assets/js/echarts/crm-homepage1.js"></script>
+<script src="../assets/js/echarts/crm-homepage2.js"></script>
 
 <script src="../js/WebUtils.js"></script>
 
@@ -350,7 +351,7 @@
     };
 
     // 营销业绩趋势图
-    var myChart_performance = echarts.init(document.getElementById("performanceDiv"), "macarons-cus");
+    var myChart_performance = echarts.init(document.getElementById("performanceDiv"), "crm-homepage1");
     myChart_performance.setOption({
         title : {
             text : "管辖客户经理营销业绩趋势图"
@@ -396,7 +397,7 @@
     }, true);
 
     // 未完成营销任务
-    var myChart_unfinished = echarts.init(document.getElementById("unfinishedDiv"), "macarons-cus");
+    var myChart_unfinished = echarts.init(document.getElementById("unfinishedDiv"), "crm-homepage1");
     myChart_unfinished.setOption({
         title: {
             text: '营销任务完成情况',
@@ -470,7 +471,7 @@
     }, true);
 
     // 管辖客户存款排名
-    var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "macarons-cus");
+    var myChart_pubDpsChg = echarts.init(document.getElementById("pubDpsChgDiv"), "crm-homepage1");
     myChart_pubDpsChg.setOption({
         title : {
             text : "管辖客户存款排名",
@@ -504,7 +505,7 @@
     }, true);
 
     // 管辖客户贷款排名
-    var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "macarons-cus");
+    var myChart_pubLoanChg = echarts.init(document.getElementById("pubLoanChgDiv"), "crm-homepage2");
     myChart_pubLoanChg.setOption({
         title : {
             text : "管辖客户贷款排名",
@@ -541,7 +542,7 @@
     var myChart_pubvifylist = echarts.init(document.getElementById("PubVifyListPoDiv"), "macarons");
 
     // 客户经理业绩排名
-    var myChart_perfRanking = echarts.init(document.getElementById("perfRankingDiv"), "macarons-cus");
+    var myChart_perfRanking = echarts.init(document.getElementById("perfRankingDiv"), "crm-homepage1");
     myChart_perfRanking.setOption({
         title : {
             text : "客户经理业绩排名"
