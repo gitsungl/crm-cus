@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.CustBaseInfoDao">
+
+  <resultMap id="BaseResultMap" type="com.good.cus.bean.CustBaseInfoPo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CUST_NO" jdbcType="VARCHAR" property="custNo" />
+    <result column="SHORT_NAME" jdbcType="VARCHAR" property="shortName" />
+    <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
+    <result column="EN_NAME" jdbcType="VARCHAR" property="enName" />
+    <result column="OFFICE_TEL" jdbcType="VARCHAR" property="officeTel" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="FAX" jdbcType="VARCHAR" property="fax" />
+    <result column="WEB_ADDR" jdbcType="VARCHAR" property="webAddr" />
+    <result column="COMPANY_ADDR" jdbcType="VARCHAR" property="companyAddr" />
+    <result column="INDUSTRY_TYPE" jdbcType="VARCHAR" property="industryType" />
+    <result column="ENTERPRISE_SCOPE" jdbcType="VARCHAR" property="enterpriseScope" />
+    <result column="REVENUE" jdbcType="DECIMAL" property="revenue" />
+    <result column="BUSINESS_SCOPE" jdbcType="VARCHAR" property="businessScope" />
+    <result column="COMPANY_DESC" jdbcType="VARCHAR" property="companyDesc" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="REG_CAPITAL" jdbcType="DECIMAL" property="regCapital" />
+    <result column="SETUP_DATE" jdbcType="DATE" property="setupDate" />
+    <result column="LEGAL_PERSON" jdbcType="VARCHAR" property="legalPerson" />
+    <result column="REG_ID" jdbcType="VARCHAR" property="regId" />
+    <result column="ORG_CERT_NO" jdbcType="VARCHAR" property="orgCertNo" />
+    <result column="ORG_CERT_DATE" jdbcType="DATE" property="orgCertDate" />
+    <result column="UNIFORM_CREDIT_NO" jdbcType="VARCHAR" property="uniformCreditNo" />
+    <result column="ENTERPRISE_TYPE" jdbcType="VARCHAR" property="enterpriseType" />
+    <result column="OPERATE_STATUS" jdbcType="VARCHAR" property="operateStatus" />
+    <result column="OPERATE_TERM" jdbcType="VARCHAR" property="operateTerm" />
+    <result column="CHECK_DATE" jdbcType="DATE" property="checkDate" />
+    <result column="REG_ORG" jdbcType="VARCHAR" property="regOrg" />
+    <result column="LISTINGCORP_FLAG" jdbcType="VARCHAR" property="listingcorpFlag" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ID, CUST_NO, SHORT_NAME, CUST_NAME, EN_NAME, OFFICE_TEL, EMAIL, FAX, WEB_ADDR, COMPANY_ADDR, 
+    INDUSTRY_TYPE, ENTERPRISE_SCOPE, REVENUE, BUSINESS_SCOPE, COMPANY_DESC, CURRENCY, 
+    REG_CAPITAL, SETUP_DATE, LEGAL_PERSON, REG_ID, ORG_CERT_NO, ORG_CERT_DATE, UNIFORM_CREDIT_NO, 
+    ENTERPRISE_TYPE, OPERATE_STATUS, OPERATE_TERM, CHECK_DATE, REG_ORG, LISTINGCORP_FLAG
+  </sql>
+
+  <select id="listCustBaseInfo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cust_base_info
+    <where> 1=1
+      <if test="condition.id != null and condition.id != ''"> and ID = #{condition.id} </if>
+      <if test="condition.custNo != null and condition.custNo != ''"> and CUST_NO = #{condition.custNo} </if>
+      <if test="condition.custName != null and condition.custName != ''"> and CUST_NAME like '%${condition.custName}%' </if>
+    </where>
+    ORDER BY ID ASC
+  </select>
+
+  <select id="ownstr" resultType="java.util.Map">
+    SELECT  t.DIRECTOR_NAME AS name,
+            t.RATE          AS value
+    FROM cust_director_info t
+    LEFT JOIN cust_base_info b ON b.CUST_NO = t.CUST_NO
+    WHERE b.ID = #{id}
+    ORDER BY t.RATE DESC
+    LIMIT 5
+  </select>
+
+  <select id="pri" resultType="java.util.Map">
+    SELECT  CASE t.SEX
+            WHEN 'M' THEN 'male'
+            WHEN 'F' THEN 'female'
+            ELSE 'male' END AS sex,
+            t.KEY_ROLE_NAME AS name
+    FROM cust_pri_info t
+    LEFT JOIN cust_base_info b ON b.CUST_NO = t.CUST_NO
+    WHERE b.ID = #{id}
+  </select>
+
+  <select id="dps" resultType="java.lang.String">
+    SELECT IF( isnull(SUM(t.THAN_M_AMT)), 0, SUM(t.THAN_M_AMT) )
+    FROM pub_dps_chg_staff t
+    LEFT JOIN cust_base_info b ON b.CUST_NO = t.CUST_NO
+    WHERE b.ID = #{condition.id}
+    AND YEAR(t.BIZ_DATE) = #{condition.year1}
+    AND MONTH (t.BIZ_DATE) = #{condition.month1}
+    UNION ALL
+    SELECT IF( isnull(SUM(t.THAN_M_AMT)), 0, SUM(t.THAN_M_AMT) )
+    FROM pub_dps_chg_staff t
+    LEFT JOIN cust_base_info b ON b.CUST_NO = t.CUST_NO
+    WHERE b.ID = #{condition.id}
+    AND YEAR(t.BIZ_DATE) = #{condition.year2}
+    AND MONTH (t.BIZ_DATE) = #{condition.month2}
+    UNION ALL
+    SELECT IF( isnull(SUM(t.THAN_M_AMT)), 0, SUM(t.THAN_M_AMT) )
+    FROM pub_dps_chg_staff t
+    LEFT JOIN cust_base_info b ON b.CUST_NO = t.CUST_NO
+    WHERE b.ID = #{condition.id}
+    AND YEAR(t.BIZ_DATE) = #{condition.year3}
+    AND MONTH (t.BIZ_DATE) = #{condition.month3}
+  </select>
+
+  <select id="loan" resultType="java.lang.String">
+    SELECT IF( isnull(SUM(t.THAN_M_AMT)), 0, SUM(t.THAN_M_AMT) )
+    FROM pub_loan_chg_staff t
+    LEFT JOIN cust_base_info b ON b.CUST_NO = t.CUST_NO
+    WHERE b.ID = #{condition.id}
+    AND YEAR(t.BIZ_DATE) = #{condition.year1}
+    AND MONTH (t.BIZ_DATE) = #{condition.month1}
+    UNION ALL
+    SELECT IF( isnull(SUM(t.THAN_M_AMT)), 0, SUM(t.THAN_M_AMT) )
+    FROM pub_loan_chg_staff t
+    LEFT JOIN cust_base_info b ON b.CUST_NO = t.CUST_NO
+    WHERE b.ID = #{condition.id}
+    AND YEAR(t.BIZ_DATE) = #{condition.year2}
+    AND MONTH (t.BIZ_DATE) = #{condition.month2}
+    UNION ALL
+    SELECT IF( isnull(SUM(t.THAN_M_AMT)), 0, SUM(t.THAN_M_AMT) )
+    FROM pub_loan_chg_staff t
+    LEFT JOIN cust_base_info b ON b.CUST_NO = t.CUST_NO
+    WHERE b.ID = #{condition.id}
+    AND YEAR(t.BIZ_DATE) = #{condition.year3}
+    AND MONTH (t.BIZ_DATE) = #{condition.month3}
+  </select>
+
+  <select id="rskm" resultType="java.lang.String">
+    SELECT
+      concat( 
+        FORMAT(
+          IF( isnull(t.RISK_NUM), 0, t.RISK_NUM )
+        , 0)
+      , '')
+    FROM sys_enums e
+    LEFT JOIN cust_risk_type_item t ON t.RISK_TYPE = e.enum_id
+    LEFT JOIN cust_base_info b ON b.ID = #{id} AND b.CUST_NO = t.CUST_NO
+    WHERE e.enum_type = 'crm_risk_type' AND e.enum_id != ''
+    ORDER BY e.enum_id + 0 ASC
+  </select>
+
+</mapper>
