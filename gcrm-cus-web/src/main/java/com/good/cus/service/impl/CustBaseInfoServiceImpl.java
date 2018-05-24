@@ -55,7 +55,7 @@ public class CustBaseInfoServiceImpl implements CustBaseInfoService {
                 }
 
                 Map<String, String> map = list.get(i);
-                sb.append("<div class='keyman-inline'><img src='../images/crm/");
+                sb.append("<div class='keyman-inline'><img src='../../images/crm/");
                 sb.append(map.get("sex"));
                 sb.append(".png'><p class='text-center'>");
                 sb.append(map.get("name"));

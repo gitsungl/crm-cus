@@ -31,7 +31,7 @@ import com.good.db.IPage;
 import com.good.sys.WebUtils;
 
 @Controller
-@RequestMapping("/cus")
+@RequestMapping("/cus/custbase")
 public class CustBaseInfoController {
     private static Logger logger = LoggerFactory.getLogger(CustBaseInfoController.class);
 

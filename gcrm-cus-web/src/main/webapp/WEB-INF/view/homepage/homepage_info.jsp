@@ -11,21 +11,21 @@
 
 <title>客户经理</title>
 
-<link rel="stylesheet" href="../assets/css/fonts/linecons/css/linecons.css">
-<link rel="stylesheet" href="../assets/css/fonts/fontawesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../assets/css/bootstrap.css">
-<link rel="stylesheet" href="../assets/css/xenon-core.css">
-<link rel="stylesheet" href="../assets/css/xenon-forms.css">
-<link rel="stylesheet" href="../assets/css/xenon-components.css">
-<link rel="stylesheet" href="../assets/css/xenon-skins.css">
-<link rel="stylesheet" href="../assets/css/custom.css">
+<link rel="stylesheet" href="../../assets/css/fonts/linecons/css/linecons.css">
+<link rel="stylesheet" href="../../assets/css/fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../assets/css/xenon-core.css">
+<link rel="stylesheet" href="../../assets/css/xenon-forms.css">
+<link rel="stylesheet" href="../../assets/css/xenon-components.css">
+<link rel="stylesheet" href="../../assets/css/xenon-skins.css">
+<link rel="stylesheet" href="../../assets/css/custom.css">
 
-<link rel="stylesheet" href="../assets/js/datatables/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="../assets/js/select2/select2.css">
-<link rel="stylesheet" href="../assets/js/select2/select2-bootstrap.css">
-<link rel="stylesheet" href="../assets/js/multiselect/css/multi-select.css">
-<link rel="stylesheet" href="../css/app.css">
-<link rel="stylesheet" href="../css/crm.css">
+<link rel="stylesheet" href="../../assets/js/datatables/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="../../assets/js/select2/select2.css">
+<link rel="stylesheet" href="../../assets/js/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="../../assets/js/multiselect/css/multi-select.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../../css/crm.css">
 
 <style type="text/css">
 .panel {
@@ -35,24 +35,6 @@
 .chart-item-bg .chart-label {
 	position:relative;
 }
-/* #performanceDiv { */
-/*      width: 440px; */
-/* } */
-/* #unfinishedDiv { */
-/*     width: 580px; */
-/* } */
-/* #pubDpsChgDiv { */
-/*     width: 337px; */
-/* } */
-/* #pubLoanChgDiv { */
-/*     width: 337px; */
-/* } */
-/* #busiOppDiv { */
-/*     width: 337px; */
-/* } */
-/* #perfRankingDiv { */
-/*     width: 440px; */
-/* } */
 </style>
 </head>
 
@@ -70,7 +52,16 @@
         <div class="col-sm-6 crm-right-col crm-more-col">
           <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="unfinishedDiv" class="crm-echarts-panel-height"></div>
+              <div class="row">
+                <div class="col-sm-10">
+                  <div id="unfinishedDiv" class="crm-echarts-panel-height"></div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="crm-more-click-div" class="crm-echarts-panel-height">
+                    <a id="unfinishedMore" href="javascripe:void(0);">更多&gt;&gt;</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -79,14 +70,32 @@
         <div class="col-sm-4 crm-left-col">
           <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="pubDpsChgDiv" class="crm-echarts-panel-height"></div>
+              <div class="row">
+                <div class="col-sm-10">
+                  <div id="pubDpsChgDiv" class="crm-echarts-panel-height"></div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="crm-more-click-div" class="crm-echarts-panel-height">
+                    <a id="pubDpsChgMore" href="javascripe:void(0);">更多&gt;&gt;</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="pubLoanChgDiv" class="crm-echarts-panel-height"></div>
+              <div class="row">
+                <div class="col-sm-10">
+                  <div id="pubLoanChgDiv" class="crm-echarts-panel-height"></div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="crm-more-click-div" class="crm-echarts-panel-height">
+                    <a id="pubLoanChgMore" href="javascripe:void(0);">更多&gt;&gt;</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -125,7 +134,7 @@
                       <div>&nbsp;</div>
                       <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
-                        <a href="#">
+                        <a href="javascripe:void(0);">
                           <i class="fa-retweet"></i>了解更多&gt;
                         </a>
                       </div>
@@ -140,7 +149,7 @@
                       <div>&nbsp;</div>
                       <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
-                        <a href="#">
+                        <a href="javascripe:void(0);">
                           <i class="fa-retweet"></i>了解更多&gt;
                         </a>
                       </div>
@@ -155,7 +164,7 @@
                       <div>&nbsp;</div>
                       <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
-                        <a href="#">
+                        <a href="javascripe:void(0);">
                           <i class="fa-retweet"></i>了解更多&gt;
                         </a>
                       </div>
@@ -171,31 +180,31 @@
   </div>
 </body>
 
-<script src="../assets/js/jquery-1.11.1.min.js"></script>
-<script src="../assets/js/jquery-ui/jquery-ui.min.js"></script>
-<script src="../assets/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="../../assets/js/jquery-1.11.1.min.js"></script>
+<script src="../../assets/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../assets/js/jquery-validate/jquery.validate.min.js"></script>
 
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/TweenMax.min.js"></script>
-<script src="../assets/js/resizeable.js"></script>
-<script src="../assets/js/joinable.js"></script>
-<script src="../assets/js/xenon-api.js"></script>
-<script src="../assets/js/xenon-toggles.js"></script>
-<script src="../assets/js/xenon-custom.js"></script>
-<script src="../assets/js/moment.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/TweenMax.min.js"></script>
+<script src="../../assets/js/resizeable.js"></script>
+<script src="../../assets/js/joinable.js"></script>
+<script src="../../assets/js/xenon-api.js"></script>
+<script src="../../assets/js/xenon-toggles.js"></script>
+<script src="../../assets/js/xenon-custom.js"></script>
+<script src="../../assets/js/moment.min.js"></script>
 
-<script src="../assets/js/datepicker/bootstrap-datepicker.js"></script>
-<script src="../assets/js/datatables/js/jquery.dataTables.min.js"></script>
-<script src="../assets/js/datatables/dataTables.bootstrap.js"></script>
-<script src="../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
-<script src="../assets/js/select2/select2.min.js"></script>
-<script src="../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="../../assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../assets/js/datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../assets/js/datatables/dataTables.bootstrap.js"></script>
+<script src="../../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+<script src="../../assets/js/select2/select2.min.js"></script>
+<script src="../../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
 
-<script src="../assets/js/echarts/echarts.min.js"></script>
-<script src="../assets/js/echarts/crm-homepage1.js"></script>
-<script src="../assets/js/echarts/crm-homepage2.js"></script>
+<script src="../../assets/js/echarts/echarts.min.js"></script>
+<script src="../../assets/js/echarts/crm-homepage1.js"></script>
+<script src="../../assets/js/echarts/crm-homepage2.js"></script>
 
-<script src="../js/WebUtils.js"></script>
+<script src="../../js/WebUtils.js"></script>
 
 <jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
 
@@ -388,8 +397,8 @@
             type : "funnel",
             width : "47%",
             min: 0,
-            minSize: '0%',
-            maxSize: '100%',
+            minSize: "0%",
+            maxSize: "100%",
             gap : 2,
             label : fontLabel3,
             data : []
@@ -407,8 +416,8 @@
             type : "funnel",
             width : "47%",
             min: 0,
-            minSize: '0%',
-            maxSize: '100%',
+            minSize: "0%",
+            maxSize: "100%",
             gap : 2,
             sort : "ascending",
             label : fontLabel3,
@@ -554,6 +563,11 @@
                         data : result.data.unfinished.perfAlready
                     } ]
                 });
+                if (result.data.unfinished.taskName.length > 0) {
+                    $("#unfinishedMore").on("click", function() {
+                        parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+                    });
+                }
                 // 客户存款变动排名
                 var pubDpsChg = result.data.pubDpsChg;
                 myChart_pubDpsChg.setOption({
@@ -562,6 +576,11 @@
                         data : pubDpsChg
                     } ]
                 });
+                if (pubDpsChg.length > 0) {
+                    $("#pubDpsChgMore").on("click", function(ev) {
+                        parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+                    });
+                }
                 // 客户贷款变动排名
                 var pubLoanChg = result.data.pubLoanChg;
                 myChart_pubLoanChg.setOption({
@@ -570,17 +589,25 @@
                         data : result.data.pubLoanChg
                     } ]
                 });
+                if (pubLoanChg.length > 0) {
+                    $("#pubLoanChgMore").on("click", function(ev) {
+                        parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+                    });
+                }
                 // 可营销商机
                 myChart_busiOpp.setOption({
                     series : [ {
                         // data : [ "90", "70", "45" ]
-                        data: result.data.busiOpp
+                        data : result.data.busiOpp
                     } ]
                 });
                 // 业绩排名
                 var perfRanking = result.data.perfRanking.perfRanking;
                 var perfRankingMe = result.data.perfRanking.perfRankingMe;
-                perfRanking[perfRankingMe] = {value : perfRanking[perfRankingMe], itemStyle : gradientStyle4};
+                perfRanking[perfRankingMe] = {
+                    value : perfRanking[perfRankingMe],
+                    itemStyle : gradientStyle4
+                };
                 myChart_perfRanking.setOption({
                     yAxis : {
                         // data : [ "no1", "no2", "no3", "no4", "nom" ]
@@ -607,7 +634,7 @@
             WebUtils.alert("图表请求数据失败!");
         }
     });
-    
+
     $(function () {
     	window.addEventListener("resize", function () {
     		myChart_performance.resize();

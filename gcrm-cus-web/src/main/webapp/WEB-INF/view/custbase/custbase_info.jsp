@@ -11,21 +11,21 @@
 
 <title>客户列表</title>
 
-<link rel="stylesheet" href="../assets/css/fonts/linecons/css/linecons.css">
-<link rel="stylesheet" href="../assets/css/fonts/fontawesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../assets/css/bootstrap.css">
-<link rel="stylesheet" href="../assets/css/xenon-core.css">
-<link rel="stylesheet" href="../assets/css/xenon-forms.css">
-<link rel="stylesheet" href="../assets/css/xenon-components.css">
-<link rel="stylesheet" href="../assets/css/xenon-skins.css">
-<link rel="stylesheet" href="../assets/css/custom.css">
+<link rel="stylesheet" href="../../assets/css/fonts/linecons/css/linecons.css">
+<link rel="stylesheet" href="../../assets/css/fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../assets/css/xenon-core.css">
+<link rel="stylesheet" href="../../assets/css/xenon-forms.css">
+<link rel="stylesheet" href="../../assets/css/xenon-components.css">
+<link rel="stylesheet" href="../../assets/css/xenon-skins.css">
+<link rel="stylesheet" href="../../assets/css/custom.css">
 
 <!-- Imported styles on this page -->
-<link rel="stylesheet" href="../assets/js/datatables/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="../assets/js/select2/select2.css">
-<link rel="stylesheet" href="../assets/js/select2/select2-bootstrap.css">
-<link rel="stylesheet" href="../assets/js/multiselect/css/multi-select.css">
-<link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="../../assets/js/datatables/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="../../assets/js/select2/select2.css">
+<link rel="stylesheet" href="../../assets/js/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="../../assets/js/multiselect/css/multi-select.css">
+<link rel="stylesheet" href="../../css/app.css">
 
 </head>
 
@@ -132,30 +132,30 @@
   </div>
 </body>
 
-<script src="../assets/js/jquery-1.11.1.min.js"></script>
+<script src="../../assets/js/jquery-1.11.1.min.js"></script>
 
 <!-- Bottom Scripts -->
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/TweenMax.min.js"></script>
-<script src="../assets/js/resizeable.js"></script>
-<script src="../assets/js/joinable.js"></script>
-<script src="../assets/js/xenon-api.js"></script>
-<script src="../assets/js/xenon-toggles.js"></script>
-<script src="../assets/js/datatables/js/jquery.dataTables.min.js"></script>
-<script src="../assets/js/moment.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/TweenMax.min.js"></script>
+<script src="../../assets/js/resizeable.js"></script>
+<script src="../../assets/js/joinable.js"></script>
+<script src="../../assets/js/xenon-api.js"></script>
+<script src="../../assets/js/xenon-toggles.js"></script>
+<script src="../../assets/js/datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../assets/js/moment.min.js"></script>
 
 <!-- Imported scripts on this page -->
-<script src="../assets/js/datatables/dataTables.bootstrap.js"></script>
-<script src="../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
-<script src="../assets/js/select2/select2.min.js"></script>
-<script src="../assets/js/jquery-ui/jquery-ui.min.js"></script>
-<script src="../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
-<script src="../assets/js/jquery-validate/jquery.validate.min.js"></script>
-<script src="../assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../assets/js/datatables/dataTables.bootstrap.js"></script>
+<script src="../../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+<script src="../../assets/js/select2/select2.min.js"></script>
+<script src="../../assets/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="../../assets/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="../../assets/js/datepicker/bootstrap-datepicker.js"></script>
 
 <!-- JavaScripts initializations and stuff -->
-<script src="../assets/js/xenon-custom.js"></script>
-<script src="../js/WebUtils.js"></script>
+<script src="../../assets/js/xenon-custom.js"></script>
+<script src="../../js/WebUtils.js"></script>
 
 <jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
 
@@ -241,7 +241,7 @@
             var data = table.rows(".selected").data();
             if (data && data.length > 0) {
                 if (data.length == 1) {
-                    var url = "/cus/custbase_view?id=" + data[0].id;
+                    var url = "/cus/custbase/custbase_view?id=" + data[0].id;
                     parent.openPage("recordsdetail" + data[0].id, "客户视图-" + data[0].shortName, url);
                 } else {
                     WebUtils.alert("只能选择一条记录");

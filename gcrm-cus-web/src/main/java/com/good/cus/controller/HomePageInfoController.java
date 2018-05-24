@@ -25,7 +25,7 @@ import com.good.comm.web.WebRequest;
 import com.good.cus.service.HomePageInfoService;
 
 @Controller
-@RequestMapping("/cus")
+@RequestMapping("/cus/homepage")
 public class HomePageInfoController {
     private static Logger logger = LoggerFactory.getLogger(HomePageInfoController.class);
 
