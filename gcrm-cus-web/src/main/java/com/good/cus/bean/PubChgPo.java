@@ -27,8 +27,29 @@ public class PubChgPo implements Serializable {
     private Date bizDate;
 
     private String cry;
+    
+    /****5.23 增加熟悉****/
+    private String staffName;
+    
+    private String bizDateStr;
 
-    public Integer getId() {
+    public String getBizDateStr() {
+		return bizDateStr;
+	}
+
+	public void setBizDateStr(String bizDateStr) {
+		this.bizDateStr = bizDateStr;
+	}
+
+	public String getStaffName() {
+		return staffName;
+	}
+
+	public void setStaffName(String staffName) {
+		this.staffName = staffName;
+	}
+
+	public Integer getId() {
         return id;
     }
 

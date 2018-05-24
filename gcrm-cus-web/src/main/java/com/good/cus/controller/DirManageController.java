@@ -26,7 +26,7 @@ import com.good.comm.web.WebRequest;
 import com.good.cus.service.DirManageService;
 
 @Controller
-@RequestMapping("/cus")
+@RequestMapping("/cus/homepage")
 public class DirManageController {
 
 	 private static Logger logger = LoggerFactory.getLogger(HomePageInfoController.class);

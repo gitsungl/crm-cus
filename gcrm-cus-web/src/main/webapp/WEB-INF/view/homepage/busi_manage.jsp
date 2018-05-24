@@ -11,27 +11,24 @@
 
 <title>客户经理</title>
 
-<link rel="stylesheet" href="../assets/css/fonts/linecons/css/linecons.css">
-<link rel="stylesheet" href="../assets/css/fonts/fontawesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../assets/css/bootstrap.css">
-<link rel="stylesheet" href="../assets/css/xenon-core.css">
-<link rel="stylesheet" href="../assets/css/xenon-forms.css">
-<link rel="stylesheet" href="../assets/css/xenon-components.css">
-<link rel="stylesheet" href="../assets/css/xenon-skins.css">
-<link rel="stylesheet" href="../assets/css/custom.css">
+<link rel="stylesheet" href="../../assets/css/fonts/linecons/css/linecons.css">
+<link rel="stylesheet" href="../../assets/css/fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../assets/css/xenon-core.css">
+<link rel="stylesheet" href="../../assets/css/xenon-forms.css">
+<link rel="stylesheet" href="../../assets/css/xenon-components.css">
+<link rel="stylesheet" href="../../assets/css/xenon-skins.css">
+<link rel="stylesheet" href="../../assets/css/custom.css">
 
-<link rel="stylesheet" href="../assets/js/datatables/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="../assets/js/select2/select2.css">
-<link rel="stylesheet" href="../assets/js/select2/select2-bootstrap.css">
-<link rel="stylesheet" href="../assets/js/multiselect/css/multi-select.css">
-<link rel="stylesheet" href="../css/app.css">
-<link rel="stylesheet" href="../css/crm.css">
+<link rel="stylesheet" href="../../assets/js/datatables/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="../../assets/js/select2/select2.css">
+<link rel="stylesheet" href="../../assets/js/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="../../assets/js/multiselect/css/multi-select.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../../css/crm.css">
 
 
 <style type="text/css">
-.page-container {
-  width: 90%;
-}
 .panel {
     margin-bottom: 0px;
     padding-bottom: 5px;
@@ -39,12 +36,6 @@
 .pe3Row{
   width:  670px;
   height: 704px;
-}
-.leftCol {
-  padding-left: 15px;
-}
-.rightCol {
-  padding-right: 15px;
 }
 .downCol{
   padding-top :15px;
@@ -101,28 +92,28 @@
   <div class="page-container">
     <div class="main-content">
       <div id="topRow" class="row">
-        <div class="col-sm-6 leftCol fro50Col">
+        <div class="col-sm-6 crm-left-col fro50Col">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
               <div id="MktTaskInfoDiv" class="echartsHeight model"></div>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 rightCol fro50Col">
+        <div class="col-sm-6 crm-right-col fro50Col">
           <div class="chart-item-bg echartsCol">
             <div class="chart-label">
-              <div><div style="float:left;width: 100px;">任务审批图例</div><div style="float: right;width: 280px"><a href=""><img alt="" src="../images/crm/0_doing.png">任务审批完成&nbsp;&nbsp;&nbsp;</a><a href=""><img alt="" src="../images/crm/1_done.png">有新审批任务</a></div></div>
+              <div><div style="float:left;width: 100px;">任务审批图例</div><div style="float: right;width: 280px"><a href=""><img alt="" src="../../images/crm/0_doing.png">任务审批完成&nbsp;&nbsp;&nbsp;</a><a href=""><img alt="" src="../../images/crm/1_done.png">有新审批任务</a></div></div>
               <div id="PubVifyListPoDiv" class="echartsHeight model"></div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 leftCol lessCol">
+        <div class="col-sm-6 crm-left-col lessCol">
           <div class="echartsColDown chart-item-bg">
             <div class="chart-label-Left">
               <div style="float: left;width: 170px ;padding-left: 35px;padding-top: 12px;font-size:16px">营销活动发起流程</div>
-              <div id="perfRankingDiv" class="echartsHeight-left" ><img alt="" src="../images/crm/yxhdfqlc.png" usemap="yxhdfqlc">
+              <div id="perfRankingDiv" class="echartsHeight-left" ><img alt="" src="../../images/crm/yxhdfqlc.png" usemap="yxhdfqlc">
               	<map name="yxhdfqlc">
               	  <area shape="rect" coords="330,100,185,150" onclick="alert('\'发起\'功能开发中。。。。。')" title="发起" target="_blank" ><!-- href="http://hao.360.cn/daxue/hlj.html" -->
               	  <area shape="rect" coords="450,393,310,443" onclick="alert('\'分配\'功能开发中。。。。。')" title="分配" target="_blank" >
@@ -131,7 +122,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 rightCol moreCol">
+        <div class="col-sm-6 crm-right-col moreCol">
           <div class="pe3Row">
             <div class="col-sm-4 echartsCol chart-item-bg">
           	 <div class="p3topColBg"> 
@@ -205,30 +196,30 @@
   </div>
 </body>
 
-<script src="../assets/js/jquery-1.11.1.min.js"></script>
-<script src="../assets/js/jquery-ui/jquery-ui.min.js"></script>
-<script src="../assets/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="../../assets/js/jquery-1.11.1.min.js"></script>
+<script src="../../assets/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../assets/js/jquery-validate/jquery.validate.min.js"></script>
 
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/TweenMax.min.js"></script>
-<script src="../assets/js/resizeable.js"></script>
-<script src="../assets/js/joinable.js"></script>
-<script src="../assets/js/xenon-api.js"></script>
-<script src="../assets/js/xenon-toggles.js"></script>
-<script src="../assets/js/xenon-custom.js"></script>
-<script src="../assets/js/moment.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/TweenMax.min.js"></script>
+<script src="../../assets/js/resizeable.js"></script>
+<script src="../../assets/js/joinable.js"></script>
+<script src="../../assets/js/xenon-api.js"></script>
+<script src="../../assets/js/xenon-toggles.js"></script>
+<script src="../../assets/js/xenon-custom.js"></script>
+<script src="../../assets/js/moment.min.js"></script>
 
-<script src="../assets/js/datepicker/bootstrap-datepicker.js"></script>
-<script src="../assets/js/datatables/js/jquery.dataTables.min.js"></script>
-<script src="../assets/js/datatables/dataTables.bootstrap.js"></script>
-<script src="../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
-<script src="../assets/js/select2/select2.min.js"></script>
-<script src="../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="../../assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../assets/js/datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../assets/js/datatables/dataTables.bootstrap.js"></script>
+<script src="../../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+<script src="../../assets/js/select2/select2.min.js"></script>
+<script src="../../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
 
-<script src="../assets/js/echarts/echarts.js"></script>
-<script src="../assets/js/echarts/macarons.js"></script>
+<script src="../../assets/js/echarts/echarts.js"></script>
+<script src="../../assets/js/echarts/macarons.js"></script>
 
-<script src="../js/WebUtils.js"></script>
+<script src="../../js/WebUtils.js"></script>
 
 <jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
 

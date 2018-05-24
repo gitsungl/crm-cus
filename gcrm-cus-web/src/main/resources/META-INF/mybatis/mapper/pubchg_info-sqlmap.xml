@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.PubChgPoDao">
+
+  <resultMap id="PubChgPoMap" type="com.good.cus.bean.PubChgPo">
+    <id column="ID" property="id" />
+    <result column="CUST_NO" property="custNo" />
+    <result column="CUST_NAME" property="custName" />
+    <result column="BAL" property="bal" />
+    <result column="THAN_Y_AMT"  property="thanYAmt" />
+    <result column="THAN_D_AMT" property="thanDAmt" />
+    <result column="THAN_M_AMT" property="thanMAmt" />
+    <result column="STAFF_ID" property="staffId" />
+    <result column="STAFF_NAME" property="staffName" />
+    <result column="BIZ_DATE" property="bizDate" />
+    <result column="BIZ_DATE_STR" property="bizDateStr" />
+    <result column="CRY" property="cry" />
+  </resultMap>
+
+  <select id="PubChgPoListForDir" resultMap="PubChgPoMap">
+	SELECT
+		t.ID AS id,
+		t.CUST_NO AS custNo,
+		c.SHORT_NAME AS custName,
+		t.THAN_M_AMT AS thanMAmt,
+		t.BAL AS bal,
+		t.THAN_D_AMT AS thanDAmt,
+		t.THAN_Y_AMT AS thanYAmt,
+		t.STAFF_ID AS staffId,
+		s.STAFF_NAME AS staffName,
+		t.BIZ_DATE AS bizDateStr,
+		t.CRY AS cry
+	FROM
+		pub_loan_chg_staff t
+	LEFT JOIN cust_base_info c ON c.CUST_NO = t.CUST_NO
+	LEFT JOIN sys_staff s ON t.STAFF_ID = s.STAFF_ID
+	WHERE
+		t.STAFF_ID IN (
+			SELECT
+				sst.STAFF_ID
+			FROM
+				sys_staff sst
+			WHERE
+				sst.OWNER_UNITID = (
+						SELECT
+							ss.OWNER_UNITID
+						FROM
+							sys_staff ss
+						WHERE
+							ss.STAFF_ID = #{staffId}
+				)
+		)
+  </select>
+</mapper>

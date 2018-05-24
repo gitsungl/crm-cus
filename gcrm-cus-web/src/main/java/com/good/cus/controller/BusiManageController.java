@@ -29,7 +29,7 @@ import com.good.cus.bean.MktTaskInfoPo;
 import com.good.cus.service.BusiManageService;
 
 @Controller
-@RequestMapping("/cus")
+@RequestMapping("/cus/homepage")
 public class BusiManageController {
     private static Logger logger = LoggerFactory.getLogger(BusiManageController.class);
 

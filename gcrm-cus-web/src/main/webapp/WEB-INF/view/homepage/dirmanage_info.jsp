@@ -11,21 +11,21 @@
 
 <title>主管</title>
 
-<link rel="stylesheet" href="../assets/css/fonts/linecons/css/linecons.css">
-<link rel="stylesheet" href="../assets/css/fonts/fontawesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../assets/css/bootstrap.css">
-<link rel="stylesheet" href="../assets/css/xenon-core.css">
-<link rel="stylesheet" href="../assets/css/xenon-forms.css">
-<link rel="stylesheet" href="../assets/css/xenon-components.css">
-<link rel="stylesheet" href="../assets/css/xenon-skins.css">
-<link rel="stylesheet" href="../assets/css/custom.css">
+<link rel="stylesheet" href="../../assets/css/fonts/linecons/css/linecons.css">
+<link rel="stylesheet" href="../../assets/css/fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../assets/css/xenon-core.css">
+<link rel="stylesheet" href="../../assets/css/xenon-forms.css">
+<link rel="stylesheet" href="../../assets/css/xenon-components.css">
+<link rel="stylesheet" href="../../assets/css/xenon-skins.css">
+<link rel="stylesheet" href="../../assets/css/custom.css">
 
-<link rel="stylesheet" href="../assets/js/datatables/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="../assets/js/select2/select2.css">
-<link rel="stylesheet" href="../assets/js/select2/select2-bootstrap.css">
-<link rel="stylesheet" href="../assets/js/multiselect/css/multi-select.css">
-<link rel="stylesheet" href="../css/app.css">
-<link rel="stylesheet" href="../css/crm.css">
+<link rel="stylesheet" href="../../assets/js/datatables/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="../../assets/js/select2/select2.css">
+<link rel="stylesheet" href="../../assets/js/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="../../assets/js/multiselect/css/multi-select.css">
+<link rel="stylesheet" href="../../css/app.css">
+<link rel="stylesheet" href="../../css/crm.css">
 
 <style type="text/css">
 .panel {
@@ -38,24 +38,6 @@
 .chart-label-c {
 	width : 500px;
 	height : 340px;
-}
-#performanceDiv {
-    width: 440px;
-}
-#unfinishedDiv {
-    width: 354px;
-}
-#pubDpsChgDiv {
-    width: 337px;
-}
-#pubLoanChgDiv {
-    width: 337px;
-}
-#busiOppDiv {
-    width: 337px;
-}
-#perfRankingDiv {
-    width: 440px;
 }
 </style>
 </head>
@@ -106,7 +88,7 @@
         <div class="col-sm-6 crm-left-col crm-less-col">
           <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label-c">
-              <div><div style="float:left;width: 150px;padding-left: 35px;padding-top: 12px;font-size:18px">任务审批图例</div><div style="float: right;padding-right: 38px;padding-top: 19px;font-size:12px"><a><img alt="" src="../images/crm/0_doing.png">任务审批完成&nbsp;&nbsp;&nbsp;</a><a><img alt="" src="../images/crm/1_done.png">有新审批任务</a></div></div>
+              <div><div style="float:left;width: 150px;padding-left: 35px;padding-top: 12px;font-size:18px">任务审批图例</div><div style="float: right;padding-right: 38px;padding-top: 19px;font-size:12px"><a><img alt="" src="../../images/crm/0_doing.png">任务审批完成&nbsp;&nbsp;&nbsp;</a><a><img alt="" src="../../images/crm/1_done.png">有新审批任务</a></div></div>
               <div id="PubVifyListPoDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
@@ -176,40 +158,40 @@
   </div>
 </body>
 
-<script src="../assets/js/jquery-1.11.1.min.js"></script>
-<script src="../assets/js/jquery-ui/jquery-ui.min.js"></script>
-<script src="../assets/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="../../assets/js/jquery-1.11.1.min.js"></script>
+<script src="../../assets/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../assets/js/jquery-validate/jquery.validate.min.js"></script>
 
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/TweenMax.min.js"></script>
-<script src="../assets/js/resizeable.js"></script>
-<script src="../assets/js/joinable.js"></script>
-<script src="../assets/js/xenon-api.js"></script>
-<script src="../assets/js/xenon-toggles.js"></script>
-<script src="../assets/js/xenon-custom.js"></script>
-<script src="../assets/js/moment.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/TweenMax.min.js"></script>
+<script src="../../assets/js/resizeable.js"></script>
+<script src="../../assets/js/joinable.js"></script>
+<script src="../../assets/js/xenon-api.js"></script>
+<script src="../../assets/js/xenon-toggles.js"></script>
+<script src="../../assets/js/xenon-custom.js"></script>
+<script src="../../assets/js/moment.min.js"></script>
 
-<script src="../assets/js/datepicker/bootstrap-datepicker.js"></script>
-<script src="../assets/js/datatables/js/jquery.dataTables.min.js"></script>
-<script src="../assets/js/datatables/dataTables.bootstrap.js"></script>
-<script src="../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
-<script src="../assets/js/select2/select2.min.js"></script>
-<script src="../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="../../assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../assets/js/datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../assets/js/datatables/dataTables.bootstrap.js"></script>
+<script src="../../assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+<script src="../../assets/js/select2/select2.min.js"></script>
+<script src="../../assets/js/selectboxit/jquery.selectBoxIt.min.js"></script>
 
-<script src="../assets/js/echarts/echarts.min.js"></script>
-<script src="../assets/js/echarts/crm-homepage1.js"></script>
-<script src="../assets/js/echarts/crm-homepage2.js"></script>
+<script src="../../assets/js/echarts/echarts.min.js"></script>
+<script src="../../assets/js/echarts/crm-homepage1.js"></script>
+<script src="../../assets/js/echarts/crm-homepage2.js"></script>
 
-<script src="../js/WebUtils.js"></script>
+<script src="../../js/WebUtils.js"></script>
 
 <jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
 
 <script type="text/javascript">
     var noIcons = {
-     "no1" : "../images/crm/no1.png",
-     "no2" : "../images/crm/no2.png",
-     "no3" : "../images/crm/no3.png",
-     "nom" : "../images/crm/nom.png"
+     "no1" : "../../images/crm/no1.png",
+     "no2" : "../../images/crm/no2.png",
+     "no3" : "../../images/crm/no3.png",
+     "nom" : "../../images/crm/nom.png"
     };
 
     var colorStyle = {
@@ -482,10 +464,11 @@
             feature: {
                 myTool1: {
                 	show: true,
-                    title: '自定义',
-                    icon: 'image://../images/crm/more.png',
+                    title: '更多',
+                    icon: 'image://../../images/crm/more.png',
                     onclick: function (){
-                        alert('myToolHandler2')
+                    	var url = "/cus/pubchg_info";
+                    	parent.openPage("pubchgInfo", "管辖客户存款排名", url);
                     }
                 }
         	},
@@ -517,7 +500,7 @@
                 myTool1: {
                 	show: true,
                     title: '自定义',
-                    icon: 'image://../images/crm/more.png',
+                    icon: 'image://../../images/crm/more.png',
                     onclick: function (){
                         alert('myToolHandler2')
                     }
