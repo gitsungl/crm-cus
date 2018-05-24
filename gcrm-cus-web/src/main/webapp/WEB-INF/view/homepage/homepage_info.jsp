@@ -32,24 +32,27 @@
     margin-bottom: 0px;
     padding-bottom: 5px;
 }
-#performanceDiv {
-    width: 440px;
+.chart-item-bg .chart-label {
+	position:relative;
 }
-#unfinishedDiv {
-    width: 580px;
-}
-#pubDpsChgDiv {
-    width: 337px;
-}
-#pubLoanChgDiv {
-    width: 337px;
-}
-#busiOppDiv {
-    width: 337px;
-}
-#perfRankingDiv {
-    width: 440px;
-}
+/* #performanceDiv { */
+/*      width: 440px; */
+/* } */
+/* #unfinishedDiv { */
+/*     width: 580px; */
+/* } */
+/* #pubDpsChgDiv { */
+/*     width: 337px; */
+/* } */
+/* #pubLoanChgDiv { */
+/*     width: 337px; */
+/* } */
+/* #busiOppDiv { */
+/*     width: 337px; */
+/* } */
+/* #perfRankingDiv { */
+/*     width: 440px; */
+/* } */
 </style>
 </head>
 
@@ -603,6 +606,17 @@
         error : function(errorMsg) {
             WebUtils.alert("图表请求数据失败!");
         }
-    })
+    });
+    
+    $(function () {
+    	window.addEventListener("resize", function () {
+    		myChart_performance.resize();
+    		myChart_unfinished.resize();
+    		myChart_pubDpsChg.resize();
+    		myChart_busiOpp.resize();
+    		myChart_perfRanking.resize();
+    		myChart_pubLoanChg.resize();
+      	});
+    });
 </script>
 </html>
