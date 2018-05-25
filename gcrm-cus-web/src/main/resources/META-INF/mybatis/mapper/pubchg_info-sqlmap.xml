@@ -17,24 +17,22 @@
     <result column="CRY" property="cry" />
   </resultMap>
 
-  <select id="PubChgPoListForDir" resultMap="PubChgPoMap">
-	SELECT
-		t.ID AS id,
-		t.CUST_NO AS custNo,
-		c.SHORT_NAME AS custName,
-		t.THAN_M_AMT AS thanMAmt,
-		t.BAL AS bal,
-		t.THAN_D_AMT AS thanDAmt,
-		t.THAN_Y_AMT AS thanYAmt,
-		t.STAFF_ID AS staffId,
-		s.STAFF_NAME AS staffName,
-		t.BIZ_DATE AS bizDateStr,
-		t.CRY AS cry
-	FROM
-		pub_loan_chg_staff t
-	LEFT JOIN cust_base_info c ON c.CUST_NO = t.CUST_NO
-	LEFT JOIN sys_staff s ON t.STAFF_ID = s.STAFF_ID
-	WHERE
+  <sql id = "PubChgPoSelect">
+	t.ID AS id,
+	t.CUST_NO AS custNo,
+	c.SHORT_NAME AS custName,
+	t.THAN_M_AMT AS thanMAmt,
+	t.BAL AS bal,
+	t.THAN_D_AMT AS thanDAmt,
+	t.THAN_Y_AMT AS thanYAmt,
+	t.STAFF_ID AS staffId,
+	s.STAFF_NAME AS staffName,
+	t.BIZ_DATE AS bizDateStr,
+	t.CRY AS cry
+  </sql>
+  
+  <sql id ="PubChgPoWhere">
+   WHERE 
 		t.STAFF_ID IN (
 			SELECT
 				sst.STAFF_ID
@@ -49,6 +47,28 @@
 						WHERE
 							ss.STAFF_ID = #{staffId}
 				)
-		)
+		) and 1=1 
+	<if test="condition.custNo != null and condition.custNo != ''"> and t.CUST_NO = #{condition.custNo} </if>
+	<if test="condition.custName != null and condition.custName != ''"> and c.CUST_NAME like '%${condition.custName}%'</if>
+  </sql>
+
+  <select id="PubChgPoListForDirL" resultMap="PubChgPoMap">
+	SELECT
+		<include refid="PubChgPoSelect" />
+	FROM
+		pub_loan_chg_staff t
+	LEFT JOIN cust_base_info c ON c.CUST_NO = t.CUST_NO
+	LEFT JOIN sys_staff s ON t.STAFF_ID = s.STAFF_ID
+		<include refid="PubChgPoWhere" />
+  </select>
+  
+  <select id="PubChgPoListForDirD" resultMap="PubChgPoMap">
+	SELECT
+		<include refid="PubChgPoSelect" />
+	FROM
+		pub_dps_chg_staff t
+	LEFT JOIN cust_base_info c ON c.CUST_NO = t.CUST_NO
+	LEFT JOIN sys_staff s ON t.STAFF_ID = s.STAFF_ID
+		<include refid="PubChgPoWhere" />
   </select>
 </mapper>

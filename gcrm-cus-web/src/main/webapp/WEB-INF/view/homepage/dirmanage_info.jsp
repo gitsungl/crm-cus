@@ -28,6 +28,9 @@
 <link rel="stylesheet" href="../../css/crm.css">
 
 <style type="text/css">
+.chart-item-bg .chart-label {
+	position:relative;
+}
 .panel {
     margin-bottom: 0px;
     padding-bottom: 5px;
@@ -35,10 +38,10 @@
 .crm-eq-col {
 	width : 50%;
 }
-.chart-label-c {
+/* .chart-label-c {
 	width : 500px;
 	height : 340px;
-}
+} */
 </style>
 </head>
 
@@ -87,7 +90,7 @@
       <div class="row">
         <div class="col-sm-6 crm-left-col crm-less-col">
           <div class="chart-item-bg crm-echarts-col-height">
-            <div class="chart-label-c">
+            <div class="chart-label">
               <div><div style="float:left;width: 150px;padding-left: 35px;padding-top: 12px;font-size:18px">任务审批图例</div><div style="float: right;padding-right: 38px;padding-top: 19px;font-size:12px"><a><img alt="" src="../../images/crm/0_doing.png">任务审批完成&nbsp;&nbsp;&nbsp;</a><a><img alt="" src="../../images/crm/1_done.png">有新审批任务</a></div></div>
               <div id="PubVifyListPoDiv" class="crm-echarts-panel-height"></div>
             </div>
@@ -467,8 +470,8 @@
                     title: '更多',
                     icon: 'image://../../images/crm/more.png',
                     onclick: function (){
-                    	var url = "/cus/pubchg_info";
-                    	parent.openPage("pubchgInfo", "管辖客户存款排名", url);
+                    	var url = "/cus/pubchg_l_info";
+                    	parent.openPage("pubchgInfo_l", "管辖客户存款排名", url);
                     }
                 }
         	},
@@ -502,7 +505,8 @@
                     title: '自定义',
                     icon: 'image://../../images/crm/more.png',
                     onclick: function (){
-                        alert('myToolHandler2')
+                    	var url = "/cus/pubchg_d_info";
+                    	parent.openPage("pubchgInfo_d", "管辖客户贷款排名", url);
                     }
                 }
         	},
@@ -652,7 +656,7 @@
                 	tooltip: {
                     },
                     calendar: [{
-                        left: '70',
+                        left: '20',
                         top: '60',
                         cellSize: [55, 42],
                         yearLabel: {show: false},

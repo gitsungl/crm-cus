@@ -29,119 +29,89 @@
 
 
 <style type="text/css">
+.chart-item-bg .chart-label {
+	position:relative;
+}
 .panel {
     margin-bottom: 0px;
     padding-bottom: 5px;
 }
-.pe3Row{
-  width:  670px;
-  height: 704px;
-}
-.downCol{
-  padding-top :15px;
-}
-.topCol{
-  padding-bottom :15px;
-}
-.lessCol {
-  width: 43%;
-}
-.moreCol {
-  width: 57%;
-}
 .fro50Col {
   width: 50%;
 }
-.echartsCol {
-  height: 340px;
-}
-.echartsColDown {
-  height : 694px;
-}
-.echartsHeight {
-  height: 280px;
-}
 .echartsHeight-left {
-  wigth: 470px;
-  height: 660px;
+  height: 634px;
 }
-.chart-label-Left{
-  width : 490px;
-  height : 660px;
-}
-.p3topColBg {
-  width :660px;
-  height :330px;
-}
-.model {
-  width :530px;
-  height :300px
-}
-.echartsHeight1 {
-  width :630px;
-  height : 320px; 
-}
-#topRow {
-  margin-top: 1.5%;
-}
-
+.img-box{  
+    padding-bottom:100%;  
+}  
+.img-box img{  
+    position:absolute;  
+    top:0;  
+    bottom:0;  
+    left:0;  
+    right:0;  
+    width:100%;  
+    margin:auto;  
+}  
 </style>
 </head>
 
 <body class="page-body">
   <div class="page-container">
     <div class="main-content">
-      <div id="topRow" class="row">
+      <div class="row crm-top-row">
         <div class="col-sm-6 crm-left-col fro50Col">
-          <div class="chart-item-bg echartsCol">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
-              <div id="MktTaskInfoDiv" class="echartsHeight model"></div>
+              <div id="MktTaskInfoDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
         <div class="col-sm-6 crm-right-col fro50Col">
-          <div class="chart-item-bg echartsCol">
+          <div class="chart-item-bg crm-echarts-col-height">
             <div class="chart-label">
               <div><div style="float:left;width: 100px;">任务审批图例</div><div style="float: right;width: 280px"><a href=""><img alt="" src="../../images/crm/0_doing.png">任务审批完成&nbsp;&nbsp;&nbsp;</a><a href=""><img alt="" src="../../images/crm/1_done.png">有新审批任务</a></div></div>
-              <div id="PubVifyListPoDiv" class="echartsHeight model"></div>
+              <div id="PubVifyListPoDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 crm-left-col lessCol">
-          <div class="echartsColDown chart-item-bg">
-            <div class="chart-label-Left">
+        <div class="col-sm-6 crm-left-col crm-less-col">
+          <div class="chart-item-bg">
+            <div class="chart-label">
               <div style="float: left;width: 170px ;padding-left: 35px;padding-top: 12px;font-size:16px">营销活动发起流程</div>
-              <div id="perfRankingDiv" class="echartsHeight-left" ><img alt="" src="../../images/crm/yxhdfqlc.png" usemap="yxhdfqlc">
+              <div id="perfRankingDiv" class="echartsHeight-left img-box" ><img alt="" src="../../images/crm/yxhdfqlc.png" usemap="yxhdfqlc">
               	<map name="yxhdfqlc">
-              	  <area shape="rect" coords="330,100,185,150" onclick="alert('\'发起\'功能开发中。。。。。')" title="发起" target="_blank" ><!-- href="http://hao.360.cn/daxue/hlj.html" -->
+              	  <area shape="rect" coords="330,100,185,150" onclick="alert('\'发起\'功能开发中。。。。。')" title="发起" target="_blank" >
               	  <area shape="rect" coords="450,393,310,443" onclick="alert('\'分配\'功能开发中。。。。。')" title="分配" target="_blank" >
               	</map>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 crm-right-col moreCol">
-          <div class="pe3Row">
-            <div class="col-sm-4 echartsCol chart-item-bg">
-          	 <div class="p3topColBg"> 
+        <div class="col-sm-6 crm-right-col crm-more-col">
+          <div class="row"> 
+            <div class="col-sm-12 crm-left-col crm-right-col">
+          	 <div class="crm-echarts-col-height chart-item-bg"> 
                <div class="chart-label">
-                <div id="MktStfPerfPoDiv" class="echartsHeight1"></div>
+                <div id="MktStfPerfPoDiv" class="crm-echarts-panel-height"></div>
               </div>
              </div>
             </div>
-            <div class="col-sm-12 echartsCol chart-item-bg">
+            <div class="col-sm-12 crm-left-col crm-right-col">
+             <div class="chart-item-bg crm-echarts-col-height">
               <div class="row">
-                <div class="col-sm-12 crm-message-col">
+                <div class="col-sm-12 crm-left-col crm-right-col">
                   <div class="panel panel-default collapsed">
                     <div class="form-group">
                       <h4>公告栏</h4>
                     </div>
                    </div>
                  </div>
-                <div class="col-sm-12 crm-message-col">
-                <div class="col-sm-4">
+                <div class="col-sm-12 crm-left-col crm-right-col ">
+                 <div class="col-sm-4 ">
                   <div class="chart-label" style="padding: 0px; padding-left: 10px; padding-right: 10px;">
                     <div class="xe-widget xe-status-update crm-widget">
                       <div style="hight:5px; background: linear-gradient(red, blue);"></div>
@@ -186,6 +156,7 @@
                     </div>
                   </div>
                 </div>
+               </div>
                </div>
                </div>
              </div>

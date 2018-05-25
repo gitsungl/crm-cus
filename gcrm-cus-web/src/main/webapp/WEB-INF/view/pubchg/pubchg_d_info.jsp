@@ -34,7 +34,7 @@
     <div class="main-content">
       <div class="panel panel-default collapsed">
         <div class="panel-heading">
-          <h3 class="panel-title">主管客户列表</h3>
+          <h3 class="panel-title">主管客户存款列表</h3>
           <div class="panel-options">
             <a href="#" data-toggle="panel"> <span class="collapse-icon">&ndash;</span> <span class="expand-icon">+</span>
             </a>
@@ -74,9 +74,9 @@
         <div class="panel-body-">
           <div class="row">
             <div class="col-md-9">
-              <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-blue glyphicon glyphicon-tag" id="view_button"> <input type="checkbox">客户视图</label>
-              </div>
+             <!--  <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-blue glyphicon glyphicon-tag" id="view_button"><input type="checkbox">客户视图</label>
+              </div> -->
             </div>
             <div class="col-md-3">
               <li class="hiden-columns-title pull-right">
@@ -149,7 +149,7 @@
         //初始化列表
         var initparams = {
             "ajax" : {
-                "url" : "pubchg_info/listPubChgInfo",
+                "url" : "pubchg_info/listPubChgInfoD?&staffId=${loginUserId}",
                 "type" : "POST",
                 "data" : function(d) {
                     var orders = d.order;
@@ -176,13 +176,23 @@
                 { "data" : "cry", "sClass" : "text-center" },
             ],
             "columnDefs" : [{
-                "targets" : [2]
+                "targets" : [8]
             }]
         };
         var params = $.extend({}, WebUtils.settings, initparams);
         params.ordering = false;
         var table = $("#listtable").DataTable(params);
         WebUtils.initColumnHider(table);
+      //过滤条件设置按钮
+        $("#filter_button").click(function() {
+            table.draw();
+            $(".panel-default").addClass("collapsed");
+        });
+        //过滤条件重置按钮
+        $("#reset_button").click(function() {
+            $("#inputName input").val("");
+            $("#inputName select").select2("val", []);
+        });
     });
 </script>
 </html>
