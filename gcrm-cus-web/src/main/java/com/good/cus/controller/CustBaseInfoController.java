@@ -29,6 +29,7 @@ import com.good.cus.bean.CustBaseInfoPo;
 import com.good.cus.service.CustBaseInfoService;
 import com.good.db.IPage;
 import com.good.sys.WebUtils;
+import com.good.sys.bean.LogonInfo;
 
 @Controller
 @RequestMapping("/cus/custbase")
@@ -55,8 +56,8 @@ public class CustBaseInfoController {
     @PostMapping("/custbase_info/listCustBaseInfo")
     @ResponseBody
     public WebPageResult listCustBaseInfo(WebRequest wr, HttpServletRequest request) throws Exception {
-        // LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-        String staffId = "admin"; // linfo.getOperator().getUserID();
+        LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
+        String staffId = linfo.getOperator().getUserID();
         logger.info("controller staffId: {}", staffId);
 
         // 获取排序信息
@@ -78,8 +79,8 @@ public class CustBaseInfoController {
     @PostMapping("/custbase_view/custBaseView")
     @ResponseBody
     public WebPageResult custBaseView(WebRequest wr, HttpServletRequest request) throws Exception {
-        // LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-        String staffId = "admin"; // linfo.getOperator().getUserID();
+        LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
+        String staffId = linfo.getOperator().getUserID();
         logger.info("controller staffId: {}", staffId);
 
         HashMap<String, Object> condition = WebUtils.fillOrderParam(wr, null);
@@ -90,6 +91,7 @@ public class CustBaseInfoController {
         String pri = custBaseInfoService.pri(id);
         Map<String, List<String>> trade = custBaseInfoService.trade(id);
         List<String> rskm = custBaseInfoService.rskm(id);
+        Map<String, Object> relacorp = custBaseInfoService.relacorp(id);
 
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("custBase", listCustBaseInfo.get(0));
@@ -98,6 +100,7 @@ public class CustBaseInfoController {
         result.put("pri", pri);
         result.put("trade", trade);
         result.put("rskm", rskm);
+        result.put("relacorp", relacorp);
         logger.info("listCustBaseInfo controller result:\n{}\n", result);
         WebPageResult ret = new WebPageResult(result);
         return ret;

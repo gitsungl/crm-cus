@@ -52,13 +52,10 @@
 .crm-form-group-label {
     width: 20%;
 }
-.crm-col-sm-10 {
-    width: 80%;
-}
 .ownstr-col-height {
     height: 460px;
 }
-.ownstr-panel-height {
+#ownstrDiv {
     height: 400px;
 }
 .keyman-col-height {
@@ -66,20 +63,26 @@
 }
 .keyman-inline {
     display: inline-block;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 .trade-col-height {
     height: 440px;
 }
-.trade-panel-height {
+#tradeDiv {
     height: 380px;
 }
 .rskm-col-height {
     height: 500px;
 }
-.rskm-panel-height {
+#rskmDiv {
     height: 440px;
+}
+.relacorp-col-height {
+    height: 410px;
+}
+#relacorpDiv {
+    height: 350px;
 }
 </style>
 </head>
@@ -149,31 +152,31 @@
           <div class="row">
             <div class="chart-item-bg ownstr-col-height">
               <div class="chart-label">
-                <div id="ownstrDiv" class="crm-left-echarts-div ownstr-panel-height"></div>
+                <div id="ownstrDiv"></div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="chart-item-bg keyman-col-height">
               <div class="chart-label">
-                <div class="xe-widget xe-status-update crm-left-echarts-div">
+                <div class="xe-widget xe-status-update">
                   <div class="xe-header">
                     <h4>关键人信息</h4>
                   </div>
                   <div class="xe-body">
                     <div class="row">
-                      <div class="col-sm-1">
+                      <div class="col-sm-1 text-right crm-center-vertical">
                         <div class="xe-nav">
                           <a href="javascripe:void(0);" class="xe-prev">
                             <i class="fa-angle-left"></i>
                           </a>
                         </div>
                       </div>
-                      <div class="col-sm-10 crm-col-sm-10">
+                      <div class="col-sm-10 text-center">
                         <ul id="priUl" class="list-unstyled">
                         </ul>
                       </div>
-                      <div class="col-sm-1">
+                      <div class="col-sm-1 text-left crm-center-vertical">
                         <div class="xe-nav">
                           <a href="javascripe:void(0);" class="xe-next">
                             <i class="fa-angle-right"></i>
@@ -189,7 +192,7 @@
           <div class="row">
             <div class="chart-item-bg trade-col-height">
               <div class="chart-label">
-                <div id="tradeDiv" class="crm-left-echarts-div trade-panel-height"></div>
+                <div id="tradeDiv"></div>
               </div>
             </div>
           </div>
@@ -198,11 +201,18 @@
           <div class="row">
             <div class="chart-item-bg rskm-col-height">
               <div class="chart-label">
-                <div id="rskmDiv" class="crm-right-echarts-div rskm-panel-height"></div>
+                <div id="rskmDiv"></div>
               </div>
             </div>
           </div>
           <div class="row">
+          </div>
+          <div class="row">
+            <div class="chart-item-bg relacorp-col-height">
+              <div class="chart-label">
+                <div id="relacorpDiv"></div>
+              </div>
+            </div>
           </div>
           <div class="row">
           </div>
@@ -243,8 +253,10 @@
 
 <script type="text/javascript">
     var colorStyle = {
-        childrenLabelColor: "#333333"
-    }
+        childrenLabelColor: "#333333",
+        upperColor : "#8689F7",
+        lowerColor : "#51B3FF"
+    };
 
     var gradientStyle2 = {
         normal: {
@@ -576,6 +588,86 @@
         }
     }, true);
 
+    // 企业关系圈
+    var myChart_relacorp = echarts.init(document.getElementById("relacorpDiv"), "crm-homepage1");
+    myChart_relacorp.setOption({
+        title : {
+            text : "企业关系圈"
+        },
+        series : [ {
+            type: 'graph',
+            symbolSize: 50,
+            label: {
+                normal: {
+                    show: true
+                }
+            },
+            edgeSymbol: ['circle', 'arrow'],
+            edgeSymbolSize: [0, 5],
+            edgeLabel: {
+                normal: {
+                    textStyle: {
+                        fontSize: 12
+                    }
+                }
+            },
+            data: [],
+            links: []
+        } ]
+    }, true);
+
+    var relacorp = {
+        data: [ {
+            name: '11',
+            x: 0,
+            y: 15,
+            itemStyle : { color : colorStyle.upperColor }
+        }, {
+            name: '12',
+            x: 20,
+            y: 15,
+            itemStyle : { color : colorStyle.upperColor }
+        }, {
+            name: '13',
+            x: 40,
+            y: 15,
+            itemStyle : { color : colorStyle.upperColor }
+        }, {
+            name: '21',
+            x: 5,
+            y: 30,
+            symbolSize: 80,
+            itemStyle : { color : colorStyle.lowerColor }
+        }, {
+            name: '22',
+            x: 35,
+            y: 30,
+            symbolSize: 80,
+            itemStyle : { color : colorStyle.lowerColor }
+        } ],
+        links: [ {
+            source: '11',
+            target: '21',
+            label: {
+                normal: {
+                    show: true
+                }
+            }
+        }, {
+            source: '11',
+            target: '22'
+        }, {
+            source: '12',
+            target: '21'
+        }, {
+            source: '12',
+            target: '22'
+        }, {
+            source: '13',
+            target: '21'
+        } ]
+    };
+
     // 异步加载数据
     $.ajax({
         url : "custbase_view/custBaseView",
@@ -626,11 +718,27 @@
                         data : data_rskm
                     } ]
                 });
+                // 企业关系圈
+                myChart_relacorp.setOption({
+                    series : [ {
+                        data: relacorp.data,
+                        links: relacorp.links
+                    } ]
+                });
             }
         },
         error : function(errorMsg) {
             WebUtils.alert("图表请求数据失败!");
         }
-    })
+    });
+
+    $(function () {
+        window.addEventListener("resize", function () {
+            myChart_ownstr.resize();
+            myChart_trade.resize();
+            myChart_rskm.resize();
+            myChart_relacorp.resize();
+        });
+    });
 </script>
 </html>

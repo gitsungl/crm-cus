@@ -125,4 +125,10 @@ public class CustBaseInfoServiceImpl implements CustBaseInfoService {
         return result;
     }
 
+    @Override
+    public Map<String, Object> relacorp(String id) throws ServiceException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

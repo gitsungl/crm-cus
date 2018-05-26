@@ -18,6 +18,8 @@ public class CustBaseInfoPo implements Serializable {
 
     private String enName;
 
+    private String formerCustName;
+
     private String officeTel;
 
     private String email;
@@ -48,23 +50,31 @@ public class CustBaseInfoPo implements Serializable {
 
     private String regId;
 
+    private String identifyNum;
+
+    private String busLicense;
+
     private String orgCertNo;
 
-    private Date orgCertDate;
-
     private String uniformCreditNo;
+
+    private Date startDate;
+
+    private Date endDate;
 
     private String enterpriseType;
 
     private String operateStatus;
 
-    private String operateTerm;
-
     private Date checkDate;
+
+    private String listingcorpFlag;
 
     private String regOrg;
 
-    private String listingcorpFlag;
+    private String status;
+
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -104,6 +114,14 @@ public class CustBaseInfoPo implements Serializable {
 
     public void setEnName(String enName) {
         this.enName = enName;
+    }
+
+    public String getFormerCustName() {
+        return formerCustName;
+    }
+
+    public void setFormerCustName(String formerCustName) {
+        this.formerCustName = formerCustName;
     }
 
     public String getOfficeTel() {
@@ -226,6 +244,22 @@ public class CustBaseInfoPo implements Serializable {
         this.regId = regId;
     }
 
+    public String getIdentifyNum() {
+        return identifyNum;
+    }
+
+    public void setIdentifyNum(String identifyNum) {
+        this.identifyNum = identifyNum;
+    }
+
+    public String getBusLicense() {
+        return busLicense;
+    }
+
+    public void setBusLicense(String busLicense) {
+        this.busLicense = busLicense;
+    }
+
     public String getOrgCertNo() {
         return orgCertNo;
     }
@@ -234,20 +268,28 @@ public class CustBaseInfoPo implements Serializable {
         this.orgCertNo = orgCertNo;
     }
 
-    public Date getOrgCertDate() {
-        return orgCertDate;
-    }
-
-    public void setOrgCertDate(Date orgCertDate) {
-        this.orgCertDate = orgCertDate;
-    }
-
     public String getUniformCreditNo() {
         return uniformCreditNo;
     }
 
     public void setUniformCreditNo(String uniformCreditNo) {
         this.uniformCreditNo = uniformCreditNo;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public String getEnterpriseType() {
@@ -266,20 +308,20 @@ public class CustBaseInfoPo implements Serializable {
         this.operateStatus = operateStatus;
     }
 
-    public String getOperateTerm() {
-        return operateTerm;
-    }
-
-    public void setOperateTerm(String operateTerm) {
-        this.operateTerm = operateTerm;
-    }
-
     public Date getCheckDate() {
         return checkDate;
     }
 
     public void setCheckDate(Date checkDate) {
         this.checkDate = checkDate;
+    }
+
+    public String getListingcorpFlag() {
+        return listingcorpFlag;
+    }
+
+    public void setListingcorpFlag(String listingcorpFlag) {
+        this.listingcorpFlag = listingcorpFlag;
     }
 
     public String getRegOrg() {
@@ -290,11 +332,20 @@ public class CustBaseInfoPo implements Serializable {
         this.regOrg = regOrg;
     }
 
-    public String getListingcorpFlag() {
-        return listingcorpFlag;
+    public String getStatus() {
+        return status;
     }
 
-    public void setListingcorpFlag(String listingcorpFlag) {
-        this.listingcorpFlag = listingcorpFlag;
+    public void setStatus(String status) {
+        this.status = status;
     }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
 }

@@ -8,6 +8,7 @@
     <result column="SHORT_NAME" jdbcType="VARCHAR" property="shortName" />
     <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
     <result column="EN_NAME" jdbcType="VARCHAR" property="enName" />
+    <result column="FORMER_CUST_NAME" jdbcType="VARCHAR" property="formerCustName" />
     <result column="OFFICE_TEL" jdbcType="VARCHAR" property="officeTel" />
     <result column="EMAIL" jdbcType="VARCHAR" property="email" />
     <result column="FAX" jdbcType="VARCHAR" property="fax" />
@@ -23,22 +24,27 @@
     <result column="SETUP_DATE" jdbcType="DATE" property="setupDate" />
     <result column="LEGAL_PERSON" jdbcType="VARCHAR" property="legalPerson" />
     <result column="REG_ID" jdbcType="VARCHAR" property="regId" />
+    <result column="IDENTIFY_NUM" jdbcType="VARCHAR" property="identifyNum" />
+    <result column="BUS_LICENSE" jdbcType="VARCHAR" property="busLicense" />
     <result column="ORG_CERT_NO" jdbcType="VARCHAR" property="orgCertNo" />
-    <result column="ORG_CERT_DATE" jdbcType="DATE" property="orgCertDate" />
     <result column="UNIFORM_CREDIT_NO" jdbcType="VARCHAR" property="uniformCreditNo" />
+    <result column="START_DATE" jdbcType="DATE" property="startDate" />
+    <result column="END_DATE" jdbcType="DATE" property="endDate" />
     <result column="ENTERPRISE_TYPE" jdbcType="VARCHAR" property="enterpriseType" />
     <result column="OPERATE_STATUS" jdbcType="VARCHAR" property="operateStatus" />
-    <result column="OPERATE_TERM" jdbcType="VARCHAR" property="operateTerm" />
     <result column="CHECK_DATE" jdbcType="DATE" property="checkDate" />
-    <result column="REG_ORG" jdbcType="VARCHAR" property="regOrg" />
     <result column="LISTINGCORP_FLAG" jdbcType="VARCHAR" property="listingcorpFlag" />
+    <result column="REG_ORG" jdbcType="VARCHAR" property="regOrg" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="UPDATE_TIME" jdbcType="DATE" property="updateTime" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    ID, CUST_NO, SHORT_NAME, CUST_NAME, EN_NAME, OFFICE_TEL, EMAIL, FAX, WEB_ADDR, COMPANY_ADDR, 
-    INDUSTRY_TYPE, ENTERPRISE_SCOPE, REVENUE, BUSINESS_SCOPE, COMPANY_DESC, CURRENCY, 
-    REG_CAPITAL, SETUP_DATE, LEGAL_PERSON, REG_ID, ORG_CERT_NO, ORG_CERT_DATE, UNIFORM_CREDIT_NO, 
-    ENTERPRISE_TYPE, OPERATE_STATUS, OPERATE_TERM, CHECK_DATE, REG_ORG, LISTINGCORP_FLAG
+    ID, CUST_NO, SHORT_NAME, CUST_NAME, EN_NAME, FORMER_CUST_NAME, OFFICE_TEL, EMAIL, 
+    FAX, WEB_ADDR, COMPANY_ADDR, INDUSTRY_TYPE, ENTERPRISE_SCOPE, REVENUE, BUSINESS_SCOPE, 
+    COMPANY_DESC, CURRENCY, REG_CAPITAL, SETUP_DATE, LEGAL_PERSON, REG_ID, IDENTIFY_NUM, 
+    BUS_LICENSE, ORG_CERT_NO, UNIFORM_CREDIT_NO, START_DATE, END_DATE, ENTERPRISE_TYPE, 
+    OPERATE_STATUS, CHECK_DATE, LISTINGCORP_FLAG, REG_ORG, STATUS, UPDATE_TIME
   </sql>
 
   <select id="listCustBaseInfo" resultMap="BaseResultMap">

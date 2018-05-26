@@ -46,7 +46,6 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
                             break;
                         }
                     }
-
                 } else {
                     perfAcph.add("0");
                 }

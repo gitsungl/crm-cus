@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.good.comm.web.WebPageResult;
 import com.good.comm.web.WebRequest;
 import com.good.cus.service.HomePageInfoService;
+import com.good.sys.WebUtils;
+import com.good.sys.bean.LogonInfo;
 
 @Controller
 @RequestMapping("/cus/homepage")
@@ -40,8 +42,8 @@ public class HomePageInfoController {
     @PostMapping("/homepage_info/homepage")
     @ResponseBody
     public WebPageResult homepage(WebRequest wr, HttpServletRequest request) throws Exception {
-        // LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-        String staffId = "admin"; // linfo.getOperator().getUserID();
+        LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
+        String staffId = linfo.getOperator().getUserID();
         logger.info("controller staffId: {}", staffId);
         List<String> perfAcph = service.performance(staffId);
         Map<String, List<String>> unfinished = service.unfinished(staffId);

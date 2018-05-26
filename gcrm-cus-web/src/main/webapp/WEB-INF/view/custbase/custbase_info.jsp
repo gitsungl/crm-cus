@@ -97,6 +97,7 @@
                 <th>客户简称</th>
                 <th>客户全称</th>
                 <th>客户英文名称</th>
+                <th>企业曾用名</th>
                 <th>联系电话</th>
                 <th>邮箱地址</th>
                 <th>传真电话</th>
@@ -112,15 +113,19 @@
                 <th>成立日期</th>
                 <th>法定代表人</th>
                 <th>企业登记注册号</th>
+                <th>纳税人识别号</th>
+                <th>营业执照</th>
                 <th>组织机构代码</th>
-                <th>组织机构代码到期日</th>
-                <th>统一社会信用证</th>
+                <th>统一社会信用代码</th>
+                <th>营业期限开始时间</th>
+                <th>营业期限结束时间</th>
                 <th>企业类型</th>
                 <th>经验状态</th>
-                <th>营业期限</th>
                 <th>核准日期</th>
-                <th>登记机关</th>
                 <th>上市公司标识</th>
+                <th>登记机关</th>
+                <th>登记状态</th>
+                <th>更新时间</th>
               </tr>
             </thead>
             <tbody class="middle-align">
@@ -184,34 +189,39 @@
                 }
             },
             "columns" : [
-                { "data" : "custNo", "sClass" : "text-center" }, // 客户号
-                { "data" : "shortName", "sClass" : "text-center" }, // 客户简称
-                { "data" : "custName", "sClass" : "text-center" }, // 客户全称
-                { "data" : "enName", "sClass" : "text-center" }, // 客户英文名称
-                { "data" : "officeTel", "sClass" : "text-center" }, // 联系电话
-                { "data" : "email", "sClass" : "text-center" }, // 邮箱地址
-                { "data" : "fax", "sClass" : "text-center" }, // 传真电话
-                { "data" : "webAddr", "sClass" : "text-center" }, // 官网地址
-                { "data" : "companyAddr", "sClass" : "text-center" }, // 公司地址
-                { "data" : "industryType", "sClass" : "text-center" }, // 所属行业
-                { "data" : "enterpriseScope", "sClass" : "text-center" }, // 公司规模
-                { "data" : "revenue", "sClass" : "text-center" }, // 年营业额
-                { "data" : "businessScope", "sClass" : "text-center" }, // 经营范围
-                { "data" : "companyDesc", "sClass" : "text-center" }, // 公司介绍
-                { "data" : "currency", "sClass" : "text-center" }, // 注册资金币种
-                { "data" : "regCapital", "sClass" : "text-center" }, // 注册资金
-                { "data" : "setupDate", "sClass" : "text-center" }, // 成立日期
-                { "data" : "legalPerson", "sClass" : "text-center" }, // 法定代表人
-                { "data" : "regId", "sClass" : "text-center" }, // 企业登记注册号
-                { "data" : "orgCertNo", "sClass" : "text-center" }, // 组织机构代码
-                { "data" : "orgCertDate", "sClass" : "text-center" }, // 组织机构代码到期日
-                { "data" : "uniformCreditNo", "sClass" : "text-center" }, // 统一社会信用证
-                { "data" : "enterpriseType", "sClass" : "text-center" }, // 企业类型
-                { "data" : "operateStatus", "sClass" : "text-center" }, // 经验状态
-                { "data" : "operateTerm", "sClass" : "text-center" }, // 营业期限
-                { "data" : "checkDate", "sClass" : "text-center" }, // 核准日期
-                { "data" : "regOrg", "sClass" : "text-center" }, // 登记机关
-                { "data" : "listingcorpFlag", "sClass" : "text-center" }, // 上市公司标识
+                { "data" : "custNo", "sClass" : "text-center" },           // 客户号
+                { "data" : "shortName", "sClass" : "text-center" },        // 客户简称
+                { "data" : "custName", "sClass" : "text-center" },         // 客户全称
+                { "data" : "enName", "sClass" : "text-center" },           // 客户英文名称
+                { "data" : "formerCustName", "sClass" : "text-center" },   // 企业曾用名
+                { "data" : "officeTel", "sClass" : "text-center" },        // 联系电话
+                { "data" : "email", "sClass" : "text-center" },            // 邮箱地址
+                { "data" : "fax", "sClass" : "text-center" },              // 传真电话
+                { "data" : "webAddr", "sClass" : "text-center" },          // 官网地址
+                { "data" : "companyAddr", "sClass" : "text-center" },      // 公司地址
+                { "data" : "industryType", "sClass" : "text-center" },     // 所属行业
+                { "data" : "enterpriseScope", "sClass" : "text-center" },  // 公司规模
+                { "data" : "revenue", "sClass" : "text-center" },          // 年营业额
+                { "data" : "businessScope", "sClass" : "text-center" },    // 经营范围
+                { "data" : "companyDesc", "sClass" : "text-center" },      // 公司介绍
+                { "data" : "currency", "sClass" : "text-center" },         // 注册资金币种
+                { "data" : "regCapital", "sClass" : "text-center" },       // 注册资金
+                { "data" : "setupDate", "sClass" : "text-center" },        // 成立日期
+                { "data" : "legalPerson", "sClass" : "text-center" },      // 法定代表人
+                { "data" : "regId", "sClass" : "text-center" },            // 企业登记注册号
+                { "data" : "identifyNum", "sClass" : "text-center" },      // 纳税人识别号
+                { "data" : "busLicense", "sClass" : "text-center" },       // 营业执照
+                { "data" : "orgCertNo", "sClass" : "text-center" },        // 组织机构代码
+                { "data" : "uniformCreditNo", "sClass" : "text-center" },  // 统一社会信用代码
+                { "data" : "startDate", "sClass" : "text-center" },        // 营业期限开始时间
+                { "data" : "endDate", "sClass" : "text-center" },          // 营业期限结束时间
+                { "data" : "enterpriseType", "sClass" : "text-center" },   // 企业类型
+                { "data" : "operateStatus", "sClass" : "text-center" },    // 经验状态
+                { "data" : "checkDate", "sClass" : "text-center" },        // 核准日期
+                { "data" : "listingcorpFlag", "sClass" : "text-center" },  // 上市公司标识
+                { "data" : "regOrg", "sClass" : "text-center" },           // 登记机关
+                { "data" : "status", "sClass" : "text-center" },           // 登记状态
+                { "data" : "updateTime", "sClass" : "text-center" },       // 更新时间
             ],
             "columnDefs" : [{
                 "render" : function (data, type, row) {

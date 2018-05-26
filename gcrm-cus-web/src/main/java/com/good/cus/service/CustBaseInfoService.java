@@ -56,4 +56,13 @@ public interface CustBaseInfoService {
      */
     public List<String> rskm(String id) throws ServiceException;
 
+    /**
+     * 企业关系圈
+     * 
+     * @param id
+     * @return
+     * @throws ServiceException
+     */
+    public Map<String, Object> relacorp(String id) throws ServiceException;
+
 }

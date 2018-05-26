@@ -3,8 +3,17 @@
     padding-right: 7px;
 }
 
+.panel {
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+}
+
 .chart-item-bg {
     margin-bottom: 14px;
+}
+
+.chart-item-bg .chart-label {
+    position: relative;
 }
 
 .crm-top-row {
@@ -43,6 +52,10 @@
     width: 600px;
 }
 
+.crm-center-vertical {
+    transform: translateY(100%);
+}
+
 .crm-message-col {
     padding-left: 25px;
     padding-right: 25px;
@@ -67,6 +80,11 @@
     border-top: 4px solid #3B90FF;
 }
 
+.crm-more-click-div a {
+    font-size: 12px;
+    color: #666666;
+}
+
 .xe-widget.xe-status-update {
     background: #FFFFFF;
     color: #333333;
@@ -81,9 +99,4 @@
 
 .xe-widget.xe-status-update .xe-footer a {
     color: #333333;
-}
-
-.crm-more-click-div a {
-    font-size: 12px;
-    color: #666666;
 }

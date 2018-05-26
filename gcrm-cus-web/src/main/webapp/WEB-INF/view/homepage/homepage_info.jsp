@@ -27,15 +27,6 @@
 <link rel="stylesheet" href="../../css/app.css">
 <link rel="stylesheet" href="../../css/crm.css">
 
-<style type="text/css">
-.panel {
-    margin-bottom: 0px;
-    padding-bottom: 5px;
-}
-.chart-item-bg .chart-label {
-	position:relative;
-}
-</style>
 </head>
 
 <body class="page-body">
@@ -57,7 +48,7 @@
                   <div id="unfinishedDiv" class="crm-echarts-panel-height"></div>
                 </div>
                 <div class="col-sm-2">
-                  <div class="crm-more-click-div" class="crm-echarts-panel-height">
+                  <div class="crm-more-click-div crm-echarts-panel-height">
                     <a id="unfinishedMore" href="javascripe:void(0);">更多&gt;&gt;</a>
                   </div>
                 </div>
@@ -75,7 +66,7 @@
                   <div id="pubDpsChgDiv" class="crm-echarts-panel-height"></div>
                 </div>
                 <div class="col-sm-2">
-                  <div class="crm-more-click-div" class="crm-echarts-panel-height">
+                  <div class="crm-more-click-div crm-echarts-panel-height">
                     <a id="pubDpsChgMore" href="javascripe:void(0);">更多&gt;&gt;</a>
                   </div>
                 </div>
@@ -91,7 +82,7 @@
                   <div id="pubLoanChgDiv" class="crm-echarts-panel-height"></div>
                 </div>
                 <div class="col-sm-2">
-                  <div class="crm-more-click-div" class="crm-echarts-panel-height">
+                  <div class="crm-more-click-div crm-echarts-panel-height">
                     <a id="pubLoanChgMore" href="javascripe:void(0);">更多&gt;&gt;</a>
                   </div>
                 </div>
@@ -120,8 +111,15 @@
             <div class="row">
               <div class="col-sm-12 crm-message-col">
                 <div class="panel panel-default collapsed">
-                  <div class="form-group">
-                    <h4>公告栏</h4>
+                  <div class="row" style="margin-bottom: 5px;">
+                    <div class="col-sm-10">
+                      <h4>公告栏</h4>
+                    </div>
+                    <div class="col-sm-2 text-center">
+                      <h4 class="crm-more-click-div">
+                        <a id="msgMore" href="javascripe:void(0);">更多&gt;&gt;</a>
+                      </h4>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -134,7 +132,7 @@
                       <div>&nbsp;</div>
                       <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
-                        <a href="javascripe:void(0);">
+                        <a id="msgContentMore0" href="javascripe:void(0);">
                           <i class="fa-retweet"></i>了解更多&gt;
                         </a>
                       </div>
@@ -149,7 +147,7 @@
                       <div>&nbsp;</div>
                       <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
-                        <a href="javascripe:void(0);">
+                        <a id="msgContentMore1" href="javascripe:void(0);">
                           <i class="fa-retweet"></i>了解更多&gt;
                         </a>
                       </div>
@@ -164,7 +162,7 @@
                       <div>&nbsp;</div>
                       <div class="xe-body crm-message-body" style="height: 160px;"></div>
                       <div class="xe-footer">
-                        <a href="javascripe:void(0);">
+                        <a id="msgContentMore2" href="javascripe:void(0);">
                           <i class="fa-retweet"></i>了解更多&gt;
                         </a>
                       </div>
@@ -174,6 +172,25 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="msgContentDiv">
+    <div class="modal-dialog" style="width: 60%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body panel-body-">
+          <div class="panel panel-default collapsed">
+            <div id="msgContentData"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
         </div>
       </div>
     </div>
@@ -210,17 +227,17 @@
 
 <script type="text/javascript">
     var noIcons = {
-     "no1" : "../images/crm/no1.png",
-     "no2" : "../images/crm/no2.png",
-     "no3" : "../images/crm/no3.png",
-     "nom" : "../images/crm/nom.png"
+     "no1" : "../../images/crm/no1.png",
+     "no2" : "../../images/crm/no2.png",
+     "no3" : "../../images/crm/no3.png",
+     "nom" : "../../images/crm/nom.png"
     };
 
     var colorStyle = {
         blackStyle : "#666666",
         guidelines : "#BDBDBD",
         areaStyle : "#DDF1FF"
-    }
+    };
 
     var gradientStyle = {
         normal: {
@@ -536,6 +553,7 @@
         } ]
     }, true);
 
+    var msg = [];
     // 异步加载数据
     $.ajax({
         url : "homepage_info/homepage",
@@ -619,13 +637,14 @@
                     } ]
                 });
                 // 公告栏
-                var msg = result.data.message;
+                msg = result.data.message;
                 if (msg.length > 0) {
                     var $msgheader = $(".crm-message-header");
                     var $msgbody = $(".crm-message-body");
                     for (var i_msg = 0; i_msg < 3; i_msg++) {
                         $($msgheader[i_msg]).empty().append(msg[i_msg].msgTitle);
                         $($msgbody[i_msg]).empty().append(msg[i_msg].msgContent.slice(0, 150) + "…");
+                        $("#msgContentMore" + i_msg).off().on("click", msgContentClick);
                     }
                 }
             }
@@ -635,15 +654,34 @@
         }
     });
 
+    function msgContentClick() {
+        var msgContentId = $(this).attr("id");
+        var i_msgContent = msgContentId.substring(msgContentId.length - 1);
+        $("#msgContentData").empty().append(msg[i_msgContent].msgContent);
+        jQuery('#msgContentDiv').modal('show', {backdrop : 'static', title : msg[i_msgContent].msgTitle});
+    }
+
+    $('#msgContentDiv').on('show.bs.modal', function (event) {
+        //设置详细对话框内容
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        modal.find('.modal-title').text(button.attr('title'));
+        modal.find('form').attr("action", button.attr('action'));
+    });
+
     $(function () {
-    	window.addEventListener("resize", function () {
-    		myChart_performance.resize();
-    		myChart_unfinished.resize();
-    		myChart_pubDpsChg.resize();
-    		myChart_busiOpp.resize();
-    		myChart_perfRanking.resize();
-    		myChart_pubLoanChg.resize();
-      	});
+        window.addEventListener("resize", function () {
+            myChart_performance.resize();
+            myChart_unfinished.resize();
+            myChart_pubDpsChg.resize();
+            myChart_busiOpp.resize();
+            myChart_perfRanking.resize();
+            myChart_pubLoanChg.resize();
+        });
+
+        $("#msgMore").on("click", function(ev) {
+            parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+        });
     });
 </script>
 </html>
