@@ -94,8 +94,15 @@
         <div class="col-sm-6 crm-left-col crm-less-col">
           <div class="row">
             <div class="panel panel-default collapsed">
-              <div class="form-group">
-                <h4>基本信息</h4>
+              <div class="form-group" style="margin-bottom: 45px;">
+                <div class="col-sm-10">
+                  <h4>基本信息</h4>
+                </div>
+                <div class="col-sm-2 text-center">
+                  <h4 class="crm-more-click-div">
+                    <a id="baseinfoMore" href="javascripe:void(0);">更多&gt;&gt;</a>
+                  </h4>
+                </div>
               </div>
               <form class="form-horizontal">
                 <div class="form-group">
@@ -140,7 +147,7 @@
                     <input type="text" class="form-control" id="webAddr" readonly>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 10px;">
                   <label class="control-label col-sm-2 crm-form-group-label">公司地址</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="companyAddr" readonly>
@@ -191,8 +198,15 @@
           </div>
           <div class="row">
             <div class="chart-item-bg trade-col-height">
-              <div class="chart-label">
-                <div id="tradeDiv"></div>
+              <div class="chart-label" style="padding-top: 10px;">
+                <div class="row text-right">
+                  <div class="crm-more-click-div">
+                    <a id="tradeMore" href="javascripe:void(0);">更多&gt;&gt;</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div id="tradeDiv"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -216,6 +230,226 @@
           </div>
           <div class="row">
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="baseinfoContentDiv">
+    <div class="modal-dialog" style="width: 60%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body panel-body-">
+          <div class="panel panel-default collapsed">
+            <div id="baseinfoContentData">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">客户号</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-custNo" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">客户简称</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-shortName" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">客户全称</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-custName" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">客户英文名称</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-enName" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">企业曾用名</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-formerCustName" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">联系电话</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-officeTel" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">邮箱地址</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-email" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">传真电话</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-fax" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">官网地址</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-webAddr" readonly>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 10px;">
+                  <label class="control-label col-sm-2 crm-form-group-label">公司地址</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-companyAddr" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">所属行业</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-industryType" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">公司规模</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-enterpriseScope" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">年营业额</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-revenue" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">经营范围</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-businessScope" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">公司介绍</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-companyDesc" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">注册资金币种</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-currency" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">注册资金</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-regCapital" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">成立日期</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-setupDate" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">法定代表人</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-legalPerson" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">企业登记注册号</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-regId" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">纳税人识别号</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-identifyNum" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">营业执照</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-busLicense" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">组织机构代码</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-orgCertNo" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">统一社会信用代码</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-uniformCreditNo" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">营业期限开始时间</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-startDate" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">营业期限结束时间</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-endDate" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">企业类型</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-enterpriseType" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">经验状态</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-operateStatus" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">核准日期</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-checkDate" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">上市公司标识</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-listingcorpFlag" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">登记机关</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-regOrg" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">登记状态</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-status" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2 crm-form-group-label">更新时间</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="modal-updateTime" readonly>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
         </div>
       </div>
     </div>
@@ -616,58 +850,6 @@
         } ]
     }, true);
 
-    var relacorp = {
-        data: [ {
-            name: '11',
-            x: 0,
-            y: 15,
-            itemStyle : { color : colorStyle.upperColor }
-        }, {
-            name: '12',
-            x: 20,
-            y: 15,
-            itemStyle : { color : colorStyle.upperColor }
-        }, {
-            name: '13',
-            x: 40,
-            y: 15,
-            itemStyle : { color : colorStyle.upperColor }
-        }, {
-            name: '21',
-            x: 5,
-            y: 30,
-            symbolSize: 80,
-            itemStyle : { color : colorStyle.lowerColor }
-        }, {
-            name: '22',
-            x: 35,
-            y: 30,
-            symbolSize: 80,
-            itemStyle : { color : colorStyle.lowerColor }
-        } ],
-        links: [ {
-            source: '11',
-            target: '21',
-            label: {
-                normal: {
-                    show: true
-                }
-            }
-        }, {
-            source: '11',
-            target: '22'
-        }, {
-            source: '12',
-            target: '21'
-        }, {
-            source: '12',
-            target: '22'
-        }, {
-            source: '13',
-            target: '21'
-        } ]
-    };
-
     // 异步加载数据
     $.ajax({
         url : "custbase_view/custBaseView",
@@ -683,7 +865,11 @@
                     var custBase = result.data.custBase;
                     for (var index in custBase) {
                         $("#" + index).val(custBase[index]);
+                        $("#modal-" + index).val(custBase[index]);
                     }
+                    $("#baseinfoMore").on("click", function() {
+                        jQuery('#baseinfoContentDiv').modal('show', {backdrop : 'static', title : "基本信息-" + custBase.shortName});
+                    });
                 }
                 // 股权结构
                 myChart_ownstr.setOption({
@@ -708,6 +894,9 @@
                         data : result.data.trade.loan
                     } ]
                 });
+                $("#tradeMore").on("click", function(ev) {
+                    parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+                });
                 // 风险管理
                 var rskm = result.data.rskm;
                 for (var i_rskm = 0; i_rskm < 11; i_rskm++) {
@@ -719,6 +908,15 @@
                     } ]
                 });
                 // 企业关系圈
+                var relacorp = result.data.relacorp;
+                for (var i_relacorpData = 0, relacorpDataLength = relacorp.data.length; i_relacorpData < relacorpDataLength; i_relacorpData++) {
+                    relacorp.data[i_relacorpData].itemStyle = relacorp.data[i_relacorpData].positionFlag === "u" ? { color : colorStyle.upperColor } : { color : colorStyle.lowerColor };
+                }
+                for (var i_relacorpLinks = 0, relacorpLinksLength = relacorp.links.length; i_relacorpLinks < relacorpLinksLength; i_relacorpLinks++) {
+                    if (relacorp.links[i_relacorpLinks].params && relacorp.links[i_relacorpLinks].params.length > 0) {
+                        relacorp.links[i_relacorpLinks].label = { show : true, formatter : relacorp.links[i_relacorpLinks].params };
+                    }
+                }
                 myChart_relacorp.setOption({
                     series : [ {
                         data: relacorp.data,
@@ -730,6 +928,14 @@
         error : function(errorMsg) {
             WebUtils.alert("图表请求数据失败!");
         }
+    });
+
+    $('#baseinfoContentDiv').on('show.bs.modal', function (event) {
+        //设置详细对话框内容
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        modal.find('.modal-title').text(button.attr('title'));
+        modal.find('form').attr("action", button.attr('action'));
     });
 
     $(function () {

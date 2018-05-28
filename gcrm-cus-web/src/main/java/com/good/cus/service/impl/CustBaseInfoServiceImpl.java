@@ -127,8 +127,64 @@ public class CustBaseInfoServiceImpl implements CustBaseInfoService {
 
     @Override
     public Map<String, Object> relacorp(String id) throws ServiceException {
-        // TODO Auto-generated method stub
-        return null;
+        Map<String, Object> result = new HashMap<String, Object>(2);
+        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+        List<Map<String, String>> links = new ArrayList<Map<String, String>>();
+
+        Map<String, String> data1 = new HashMap<String, String>(4);
+        Map<String, String> data2 = new HashMap<String, String>(4);
+        Map<String, String> data3 = new HashMap<String, String>(4);
+        Map<String, String> data4 = new HashMap<String, String>(4);
+        Map<String, String> data5 = new HashMap<String, String>(4);
+        data1.put("name", "赫春雷");
+        data1.put("x", "0");
+        data1.put("y", "17");
+        data1.put("positionFlag", "u");
+        data2.put("name", "密伯元");
+        data2.put("x", "20");
+        data2.put("y", "17");
+        data2.put("positionFlag", "u");
+        data3.put("name", "杨吉贵");
+        data3.put("x", "40");
+        data3.put("y", "17");
+        data3.put("positionFlag", "u");
+        data4.put("name", "上海东家金服\n投资管理\n有限公司");
+        data4.put("x", "5");
+        data4.put("y", "30");
+        data4.put("symbolSize", "80");
+        data5.put("name", "上海东戊\n信息科技\n有限公司");
+        data5.put("x", "35");
+        data5.put("y", "30");
+        data5.put("symbolSize", "80");
+        data.add(data1);
+        data.add(data2);
+        data.add(data3);
+        data.add(data4);
+        data.add(data5);
+
+        Map<String, String> link1 = new HashMap<String, String>(3);
+        link1.put("source", "赫春雷");
+        link1.put("target", "上海东家金服\n投资管理\n有限公司");
+        link1.put("params", "法定代表人");
+        links.add(link1);
+        Map<String, String> link2 = new HashMap<String, String>(3);
+        link2.put("source", "赫春雷");
+        link2.put("target", "上海东戊\n信息科技\n有限公司");
+        link2.put("params", "法定代表人，执行董事");
+        links.add(link2);
+        Map<String, String> link3 = new HashMap<String, String>(3);
+        link3.put("source", "密伯元");
+        link3.put("target", "上海东家金服\n投资管理\n有限公司");
+        links.add(link3);
+        Map<String, String> link4 = new HashMap<String, String>(3);
+        link4.put("source", "杨吉贵");
+        link4.put("target", "上海东戊\n信息科技\n有限公司");
+        link4.put("params", "总经理");
+        links.add(link4);
+
+        result.put("data", data);
+        result.put("links", links);
+        return result;
     }
 
 }
