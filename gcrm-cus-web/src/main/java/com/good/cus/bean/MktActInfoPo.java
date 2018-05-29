@@ -3,6 +3,10 @@ package com.good.cus.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class MktActInfoPo implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -25,10 +29,12 @@ public class MktActInfoPo implements Serializable {
 	/**
      * 开始日期
      */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date startDate;
 	/**
      * 结束日期
      */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date endDate;
 	/**
      * 活动规模
@@ -61,6 +67,7 @@ public class MktActInfoPo implements Serializable {
 	/**
      * 申创建时间
      */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
 	/**
      * 最后修改人
@@ -69,6 +76,7 @@ public class MktActInfoPo implements Serializable {
 	/**
      * 最后修改时间
      */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date lastUpdTime;
 	
 	public Integer getCtId() {
@@ -95,12 +103,14 @@ public class MktActInfoPo implements Serializable {
 	public void setActStatus(String actStatus) {
 		this.actStatus = actStatus;
 	}
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
 	public Date getStartDate() {
 		return startDate;
 	}
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -149,6 +159,7 @@ public class MktActInfoPo implements Serializable {
 	public void setCreateUser(String createUser) {
 		this.createUser = createUser;
 	}
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -161,6 +172,7 @@ public class MktActInfoPo implements Serializable {
 	public void setLastUpdUser(String lastUpdUser) {
 		this.lastUpdUser = lastUpdUser;
 	}
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
 	public Date getLastUpdTime() {
 		return lastUpdTime;
 	}
