@@ -27,7 +27,7 @@ import com.good.sys.bean.LogonInfo;
 @RequestMapping("/cus")
 public class PubChgPoController {
 
-	private static Logger logger = LoggerFactory.getLogger(CustBaseInfoController.class);
+	private static Logger logger = LoggerFactory.getLogger(PubChgPoController.class);
 	
 	@Autowired
 	private PubChgPoService Service;

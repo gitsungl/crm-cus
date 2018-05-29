@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.PubPoitMsgDao">
+
+  <resultMap id="PubPoitMsgMap" type="com.good.cus.bean.PubPoitMsg">
+    <id column="ID" property="id" />
+    <result column="MSG_TYPE" property="msgType" />
+    <result column="MSG_TITLE" property="msgTitle" />
+    <result column="STATUS" property="status" />
+    <result column="CREATE_USER"  property="createUser" />
+    <result column="CREATE_TIME" property="createTime" />
+    <result column="LAST_UPD_USER" property="lastUpdUser" />
+    <result column="LAST_UPD_TIME" property="lastUpdTime" />
+  </resultMap>
+
+  <sql id = "PubPoitMsgSelect">
+	t.ID AS id,
+	t.MSG_TYPE AS msgType,
+	t.MSG_TITLE AS msgTitle,
+	t.STATUS AS status,
+	t.CREATE_USER AS createUser,
+	t.CREATE_TIME AS createTime,
+	t.LAST_UPD_USER AS lastUpdUser,
+	t.LAST_UPD_TIME AS lastUpdTime
+  </sql>
+  
+  <sql id ="PubPoitMsgWhere">
+   WHERE  1=1 
+	<if test="condition.custNo != null and condition.custNo != ''"> and t.MSG_TYPE = #{condition.msgType} </if>
+	<if test="condition.custName != null and condition.custName != ''"> and t.MSG_TITLE like '%${condition.msgTitle}%'</if>
+  </sql>
+
+  <select id="PubPoitMsgToTable" resultMap="PubPoitMsgMap">
+	SELECT
+		<include refid="PubPoitMsgSelect" />
+	FROM
+		Pub_Poit_Msg t
+		<include refid="PubPoitMsgWhere" />
+  </select>
+</mapper>

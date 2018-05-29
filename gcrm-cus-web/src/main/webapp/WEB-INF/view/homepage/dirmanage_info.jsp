@@ -101,8 +101,15 @@
             <div class="row">
              <div class="col-sm-12 crm-message-col">
                 <div class="panel panel-default collapsed">
-                  <div class="form-group">
-                    <h4>公告栏</h4>
+                  <div class="row" style="margin-bottom: 5px;">
+                    <div class="col-sm-10">
+                      <h4>公告栏</h4>
+                    </div>
+                    <div class="col-sm-2 text-center">
+                      <h4 class="crm-more-click-div">
+                        <a id="msgMore" href="javascripe:void(0);">更多&gt;&gt;</a>
+                      </h4>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -502,7 +509,7 @@
             feature: {
                 myTool1: {
                 	show: true,
-                    title: '自定义',
+                    title: '更多',
                     icon: 'image://../../images/crm/more.png',
                     onclick: function (){
                     	var url = "/cus/pubchg_d_info";
@@ -694,6 +701,20 @@
         error : function(errorMsg) {
             WebUtils.alert("图表请求数据失败!");
         }
-    })
+    });
+    
+    $(function () {
+        window.addEventListener("resize", function () {
+            myChart_performance.resize();
+            myChart_unfinished.resize();
+            myChart_pubDpsChg.resize();
+            myChart_perfRanking.resize();
+            myChart_pubLoanChg.resize();
+        });
+
+        $("#msgMore").on("click", function(ev) {
+            parent.openPage("pubmsg", "消息详情页面", "/cus/pubmsg/pubpoitmsg_info");
+        });
+    });
 </script>
 </html>

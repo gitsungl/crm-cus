@@ -41,18 +41,19 @@
 }
 .echartsHeight-left {
   height: 634px;
+  width:1px
 }
 .img-box{  
     padding-bottom:100%;  
 }  
 .img-box img{  
     position:absolute;  
-    top:0;  
+    top:20;  
     bottom:0;  
     left:0;  
     right:0;  
     width:100%;  
-    margin:auto;  
+    margin:auto;
 }  
 </style>
 </head>
@@ -82,10 +83,10 @@
           <div class="chart-item-bg">
             <div class="chart-label">
               <div style="float: left;width: 170px ;padding-left: 35px;padding-top: 12px;font-size:16px">营销活动发起流程</div>
-              <div id="perfRankingDiv" class="echartsHeight-left img-box" ><img alt="" src="../../images/crm/yxhdfqlc.png" usemap="yxhdfqlc">
+              <div id="perfRankingDiv" class="echartsHeight-left img-box" ><img  src="../../images/crm/yxhdfqlc.png"  width="100%"  usemap="yxhdfqlc">
               	<map name="yxhdfqlc">
-              	  <area shape="rect" coords="330,100,185,150" onclick="alert('\'发起\'功能开发中。。。。。')" title="发起" target="_blank" >
-              	  <area shape="rect" coords="450,393,310,443" onclick="alert('\'分配\'功能开发中。。。。。')" title="分配" target="_blank" >
+              	  <area shape="rect" coords="275,125,165,165" onclick="alert('\'发起营销活动\'功能开发中。。。。。')" title="发起营销活动" target="_blank" >
+              	  <area shape="rect" coords="435,360,310,400" onclick="alert('\'分配\'功能开发中。。。。。')" title="分配" target="_blank" >
               	</map>
               </div>
             </div>
@@ -105,9 +106,16 @@
               <div class="row">
                 <div class="col-sm-12 crm-left-col crm-right-col">
                   <div class="panel panel-default collapsed">
-                    <div class="form-group">
+                    <div class="row" style="margin-bottom: 5px;">
+                    <div class="col-sm-10">
                       <h4>公告栏</h4>
                     </div>
+                    <div class="col-sm-2 text-center">
+                      <h4 class="crm-more-click-div">
+                        <a id="msgMore" href="javascripe:void(0);">更多&gt;&gt;</a>
+                      </h4>
+                    </div>
+                  </div>
                    </div>
                  </div>
                 <div class="col-sm-12 crm-left-col crm-right-col ">
@@ -395,7 +403,7 @@
 		        name: nameList[i].slice(0, 6)});
     	}
     	return data;
-    }  
+    };
     
    function getDataToJosn3(yearStr,numStr){
 	   var data = [];
@@ -410,6 +418,20 @@
    	}
    	console.log(data);
    	return data;
-   }
+   };
+   
+   $(function () {
+       window.addEventListener("resize", function () {
+           myChart_performance.resize();
+           myChart_unfinished.resize();
+           myChart_pubDpsChg.resize();
+           myChart_perfRanking.resize();
+           myChart_pubLoanChg.resize();
+       });
+
+       $("#msgMore").on("click", function(ev) {
+           parent.openPage("pubmsg", "消息详情页面", "/cus/pubmsg/pubpoitmsg_info");
+       });
+   });
 </script>
 </html>
