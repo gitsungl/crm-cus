@@ -84,6 +84,34 @@
 #relacorpDiv {
     height: 350px;
 }
+.product-col-height {
+    height: 470px;
+}
+.panel-product {
+    margin-bottom: 0px;
+    padding: 0px;
+}
+.page-body .main-content .cbp_tmtimeline:before {
+    background: #afdcf8;
+}
+.page-body .main-content .cbp_tmtimeline>li .cbp_tmlabel {
+    padding: 3px;
+}
+.cbp_tmtimeline:before {
+    left: 43.5%;
+}
+.cbp_tmtimeline > li .cbp_tmtime {
+    width: 50%;
+}
+.cbp_tmtimeline > li .cbp_tmicon {
+    margin-left: 20%;
+}
+.cbp_tmtimeline > li .cbp_tmlabel {
+    margin-left: 50%;
+}
+.page-body .main-content .cbp_tmtimeline > li .cbp_tmlabel h2 {
+    padding-top: 5px;
+}
 </style>
 </head>
 
@@ -229,6 +257,66 @@
             </div>
           </div>
           <div class="row">
+            <div class="chart-item-bg product-col-height">
+              <div class="chart-label">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="panel panel-default collapsed panel-product">
+                      <h4 style="font-size: 20px;">签约业务</h4>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <ul class="cbp_tmtimeline">
+                      <li>
+                        <time class="cbp_tmtime"><span>03:45 PM</span> <span>Today</span></time>
+                        <div class="cbp_tmicon timeline-bg-success">
+                          <i class="fa-paper-plane-o"></i>
+                        </div>
+                        <div class="cbp_tmlabel">
+                          <h2>对公短信通</h2>
+                        </div>
+                      </li>
+                      <li>
+                        <time class="cbp_tmtime"><span>2018-05-27</span> <span>Yesterday</span></time>
+                        <div class="cbp_tmicon timeline-bg-primary">
+                          <i class="fa-calendar"></i>
+                        </div>
+                        <div class="cbp_tmlabel">
+                          <h2>企业网银</h2>
+                        </div>
+                      </li>
+                      <li>
+                        <time class="cbp_tmtime"><span>2018-05-18</span> <span>Two weeks ago</span></time>
+                        <div class="cbp_tmicon timeline-bg-info">
+                          <i class="fa-location-arrow"></i>
+                        </div>
+                        <div class="cbp_tmlabel">
+                          <h2>现金管理平台</h2>
+                        </div>
+                      </li>
+                      <li>
+                        <time class="cbp_tmtime"><span>2018-05-15</span> <span>Two weeks ago</span></time>
+                        <div class="cbp_tmicon timeline-bg-warning">
+                          <i class="fa-camera-retro"></i>
+                        </div>
+                        <div class="cbp_tmlabel">
+                          <h2>票据池</h2>
+                        </div>
+                      </li>
+                      <li>
+                        <time class="cbp_tmtime"><span>2018-05-14</span> <span>Two weeks ago</span></time>
+                        <div class="cbp_tmicon timeline-bg-info">
+                          <i class="fa-location-arrow"></i>
+                        </div>
+                        <div class="cbp_tmlabel">
+                          <h2>结算卡</h2>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -922,6 +1010,10 @@
                         data: relacorp.data,
                         links: relacorp.links
                     } ]
+                });
+                // 签约业务
+                $("#productMore").on("click", function(ev) {
+                    parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
                 });
             }
         },

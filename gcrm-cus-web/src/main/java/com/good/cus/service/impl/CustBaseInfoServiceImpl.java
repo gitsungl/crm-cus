@@ -184,6 +184,7 @@ public class CustBaseInfoServiceImpl implements CustBaseInfoService {
 
         result.put("data", data);
         result.put("links", links);
+        logger.info("relacorp service result:\n{}\n", result);
         return result;
     }
 
