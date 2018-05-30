@@ -128,7 +128,7 @@ public class HomePageInfoServiceImpl implements HomePageInfoService {
         List<String> perfRanking = new ArrayList<String>(5);
         List<String> perfRankingName = new ArrayList<String>(5);
         int i_acph = 4;
-        if (list.size() == 5 && staffId.equals(list.get(4).getStaffId())) {
+        if (list != null && list.size() == 5 && staffId.equals(list.get(4).getStaffId())) {
             String myName = list.get(4).getStaffName();
             BigDecimal myValue = list.get(4).getPerfAcph();
             for (int i = 0; i < 4; i++) {
