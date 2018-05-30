@@ -13,7 +13,7 @@ public class MktActInfoPo implements Serializable {
 	/**
      * 活动ID
      */
-	private Integer ctId;
+	private Integer actId;
 	/**
      * 活动名称
      */
@@ -69,6 +69,11 @@ public class MktActInfoPo implements Serializable {
      */
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
+	
+	/**
+     * 创建机构
+     */
+	private String createOrg;
 	/**
      * 最后修改人
      */
@@ -79,11 +84,28 @@ public class MktActInfoPo implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date lastUpdTime;
 	
-	public Integer getCtId() {
-		return ctId;
+	/**
+     * 最后修改机构
+     */
+	private String lastUpdOrg;
+	
+	public Integer getActId() {
+		return actId;
 	}
-	public void setCtId(Integer ctId) {
-		this.ctId = ctId;
+	public void setActId(Integer actId) {
+		this.actId = actId;
+	}
+	public String getCreateOrg() {
+		return createOrg;
+	}
+	public void setCreateOrg(String createOrg) {
+		this.createOrg = createOrg;
+	}
+	public String getLastUpdOrg() {
+		return lastUpdOrg;
+	}
+	public void setLastUpdOrg(String lastUpdOrg) {
+		this.lastUpdOrg = lastUpdOrg;
 	}
 	public String getActName() {
 		return actName;

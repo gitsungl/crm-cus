@@ -17,7 +17,7 @@ import com.good.sys.ServiceException;
 @Service
 public class PubChgPoServiceImpl implements PubChgPoService {
 
-	private static Logger logger = LoggerFactory.getLogger(CustBaseInfoServiceImpl.class);
+	private static Logger logger = LoggerFactory.getLogger(PubChgPoServiceImpl.class);
 	
 	@Autowired
 	private PubChgPoDao pubChgPoDao;

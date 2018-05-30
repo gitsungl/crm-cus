@@ -66,15 +66,13 @@
                   <div style="float: left;width: 170px ;padding-left: 35px;padding-top: 12px;font-size:16px">营销活动发起流程</div>
                 </div>
                 <div class="col-sm-12">
-                  <div class="echartsHeight-left">
-                    <img class="echartsHeight-left" src="../../images/crm/yxhdfqlc.png" width="100%"  usemap="yxhdfqlc">
-                    <map name="yxhdfqlc">
-                      <area shape="rect" coords="275,125,165,165" onclick="alert('\'发起营销活动\'功能开发中。。。。。')" title="发起营销活动" target="_blank" >
-                      <area shape="rect" coords="435,360,325,400" onclick="alert('\'查看营销进度\'功能开发中。。。。。')" title="查看营销进度" target="_blank" >
-                      <area shape="rect" coords="435,435,325,475" onclick="alert('\'查看营销反馈\'功能开发中。。。。。')" title="查看营销反馈" target="_blank" >
-                      <area shape="rect" coords="195,490,85,530" onclick="alert('\'查看营销后评价\'功能开发中。。。。。')" title="查看营销后评价" target="_blank" >
-                    </map>
-                  </div>
+                   <img class="echartsHeight-left" src="../../images/crm/yxhdfqlc.png" width="100%"  usemap="yxhdfqlc">
+                   <map name="yxhdfqlc">
+                     <area shape="rect" coords="275,125,165,165" onclick="alert('\'发起营销活动\'功能开发中。。。。。')" title="发起营销活动" target="_blank" >
+                     <area shape="rect" coords="435,360,325,400" onclick="alert('\'查看营销进度\'功能开发中。。。。。')" title="查看营销进度" target="_blank" >
+                     <area shape="rect" coords="435,435,325,475" onclick="alert('\'查看营销反馈\'功能开发中。。。。。')" title="查看营销反馈" target="_blank" >
+                     <area shape="rect" coords="195,490,85,530" onclick="alert('\'查看营销后评价\'功能开发中。。。。。')" title="查看营销后评价" target="_blank" >
+                   </map>
                 </div>
               </div>
             </div>
