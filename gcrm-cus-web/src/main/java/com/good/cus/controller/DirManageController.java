@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.good.comm.web.WebPageResult;
 import com.good.comm.web.WebRequest;
 import com.good.cus.service.DirManageService;
+import com.good.sys.WebUtils;
+import com.good.sys.bean.LogonInfo;
 
 @Controller
 @RequestMapping("/cus/homepage")
@@ -42,8 +44,8 @@ public class DirManageController {
 	 @PostMapping("/dirmanage_info/dirmanage")
 	    @ResponseBody
 	    public WebPageResult homepage(WebRequest wr, HttpServletRequest request) throws Exception {
-	        // LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-	        String staffId = "admin"; // linfo.getOperator().getUserID();
+	        LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
+	        String staffId =  linfo.getOperator().getUserID();
 	        logger.info("controller staffId: {}", staffId);
 	        List<String> perfAcph = service.performance(staffId);
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");

@@ -27,6 +27,8 @@ import com.good.comm.web.WebRequest;
 import com.good.cus.bean.MktStfPerfPo;
 import com.good.cus.bean.MktTaskInfoPo;
 import com.good.cus.service.BusiManageService;
+import com.good.sys.WebUtils;
+import com.good.sys.bean.LogonInfo;
 
 @Controller
 @RequestMapping("/cus/homepage")
@@ -44,8 +46,8 @@ public class BusiManageController {
 	@PostMapping("/busi_manage/homepage")
     @ResponseBody
     public WebPageResult homepage(WebRequest wr, HttpServletRequest request) throws Exception {
-        // LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-        String staffId = "admin"; // linfo.getOperator().getUserID();
+        LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
+        String staffId = linfo.getOperator().getUserID();
         logger.info("controller staffId: {}", staffId);
         List<MktTaskInfoPo> MktTaskInfoTab = service.MktTaskInfoForTable(staffId);
         List<String> MktTaskInfoPoName = new LinkedList<String>();

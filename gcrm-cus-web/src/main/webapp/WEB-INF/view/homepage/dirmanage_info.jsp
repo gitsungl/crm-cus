@@ -477,7 +477,7 @@
                     title: '更多',
                     icon: 'image://../../images/crm/more.png',
                     onclick: function (){
-                    	var url = "/cus/pubchg_l_info";
+                    	var url = "/cus/pubchg_d_info";
                     	parent.openPage("pubchgInfo_l", "管辖客户存款排名", url);
                     }
                 }
@@ -512,7 +512,7 @@
                     title: '更多',
                     icon: 'image://../../images/crm/more.png',
                     onclick: function (){
-                    	var url = "/cus/pubchg_d_info";
+                    	var url = "/cus/pubchg_l_info";
                     	parent.openPage("pubchgInfo_d", "管辖客户贷款排名", url);
                     }
                 }
