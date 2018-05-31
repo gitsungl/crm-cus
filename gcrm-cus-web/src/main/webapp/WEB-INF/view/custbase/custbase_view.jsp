@@ -94,7 +94,7 @@
 #rskmDiv {
     height: 347px;
 }
-#custTagsDiv, #induTagsDiv {
+#custTagsDiv {
     height: 280px;
 }
 #relacorpDiv {
@@ -236,18 +236,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-6" style="padding-left: 0px;">
-              <div class="chart-item-bg tags-col-height">
-                <div class="chart-label">
-                  <div id="custTagsDiv"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6" style="padding-right: 0px;">
-              <div class="chart-item-bg tags-col-height">
-                <div class="chart-label">
-                  <div id="induTagsDiv"></div>
-                </div>
+            <div class="chart-item-bg">
+              <div class="chart-label">
+                <div id="custTagsDiv"></div>
               </div>
             </div>
           </div>
@@ -942,36 +933,6 @@
         }]
     }, true);
 
-    // 行业标签
-    var myChart_induTags = echarts.init(document.getElementById("induTagsDiv"), "crm-homepage1");
-    myChart_induTags.setOption({
-        title: {
-            text: '行业标签'
-        },
-        xAxis: {
-            show: false
-        },
-        yAxis: {
-            show: false,
-            scale: true
-        },
-        series: [{
-            type: 'scatter',
-            symbolSize: 60,
-            label: {
-                show: true
-            },
-            itemStyle: {
-                normal: {
-                    shadowBlur: 10,
-                    shadowColor: 'rgba(25, 100, 150, 0.5)',
-                    shadowOffsetY: 3
-                }
-            },
-            data: []
-        }]
-    }, true);
-
     // 企业关系圈
     var myChart_relacorp = echarts.init(document.getElementById("relacorpDiv"), "crm-homepage1");
     myChart_relacorp.setOption({
@@ -1063,12 +1024,6 @@
                         data : result.data.custTags
                     } ]
                 });
-                // 行业标签
-                myChart_induTags.setOption({
-                    series : [ {
-                        data : result.data.induTags
-                    } ]
-                });
                 // 企业关系圈
                 var relacorp = result.data.relacorp;
                 for (var i_relacorpData = 0, relacorpDataLength = relacorp.data.length; i_relacorpData < relacorpDataLength; i_relacorpData++) {
@@ -1110,7 +1065,6 @@
             myChart_trade.resize();
             myChart_rskm.resize();
             myChart_custTags.resize();
-            myChart_induTags.resize();
             myChart_relacorp.resize();
         });
     });

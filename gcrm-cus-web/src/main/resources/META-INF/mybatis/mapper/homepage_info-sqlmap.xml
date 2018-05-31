@@ -84,7 +84,7 @@
     ( SELECT
       p.STAFF_ID AS STAFF_ID,
       s.STAFF_NAME AS staffName,
-      SUM(p.PERF_ACPH) AS PERF_ACPH
+      IF( isnull(SUM(p.PERF_ACPH)), 0, SUM(p.PERF_ACPH) ) AS PERF_ACPH
     FROM
       mkt_stf_perf p
     LEFT JOIN sys_staff s ON s.STAFF_ID = p.STAFF_ID
@@ -94,19 +94,19 @@
     GROUP BY
       p.STAFF_ID
     ORDER BY
-      SUM(p.PERF_ACPH) DESC
+      IF( isnull(SUM(p.PERF_ACPH)), 0, SUM(p.PERF_ACPH) ) DESC
     LIMIT 4 )
     UNION ALL
     ( SELECT
-      t.STAFF_ID AS id,
+      s.STAFF_ID AS id,
       s.STAFF_NAME AS staffName,
-      SUM(t.PERF_ACPH) AS perfAcph
+      IF( isnull(SUM(t.PERF_ACPH)), 0, SUM(t.PERF_ACPH) ) AS perfAcph
     FROM
-      mkt_stf_perf t
-    LEFT JOIN sys_staff s ON s.STAFF_ID = t.STAFF_ID
+      sys_staff s
+    LEFT JOIN mkt_stf_perf t ON t.STAFF_ID = s.STAFF_ID
     WHERE
       MONTH (t.BIZ_DATE) = DATE_FORMAT(NOW(), '%m')
-    AND t.STAFF_ID = #{staffId} )
+    AND s.STAFF_ID = #{staffId} )
   </select>
 
   <select id="message" resultType="java.util.Map">

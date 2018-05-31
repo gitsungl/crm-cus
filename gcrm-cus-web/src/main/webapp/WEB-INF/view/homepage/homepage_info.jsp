@@ -588,26 +588,26 @@
                 }
                 // 客户存款变动排名
                 var pubDpsChg = result.data.pubDpsChg;
-                myChart_pubDpsChg.setOption({
-                    series : [ {
-                        max : pubDpsChg[0].value,
-                        data : pubDpsChg
-                    } ]
-                });
                 if (pubDpsChg.length > 0) {
+                    myChart_pubDpsChg.setOption({
+                        series : [ {
+                            max : pubDpsChg[0].value,
+                            data : pubDpsChg
+                        } ]
+                    });
                     $("#pubDpsChgMore").on("click", function(ev) {
                         parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
                     });
                 }
                 // 客户贷款变动排名
                 var pubLoanChg = result.data.pubLoanChg;
-                myChart_pubLoanChg.setOption({
-                    series : [ {
-                        max : pubLoanChg[0].value,
-                        data : result.data.pubLoanChg
-                    } ]
-                });
                 if (pubLoanChg.length > 0) {
+                    myChart_pubLoanChg.setOption({
+                        series : [ {
+                            max : pubLoanChg[0].value,
+                            data : result.data.pubLoanChg
+                        } ]
+                    });
                     $("#pubLoanChgMore").on("click", function(ev) {
                         parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
                     });
