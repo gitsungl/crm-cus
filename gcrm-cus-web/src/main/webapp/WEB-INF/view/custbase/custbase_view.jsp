@@ -1109,6 +1109,8 @@
             myChart_ownstr.resize();
             myChart_trade.resize();
             myChart_rskm.resize();
+            myChart_custTags.resize();
+            myChart_induTags.resize();
             myChart_relacorp.resize();
         });
     });
