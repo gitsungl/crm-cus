@@ -91,6 +91,8 @@ public class CustBaseInfoController {
         String pri = custBaseInfoService.pri(id);
         Map<String, List<String>> trade = custBaseInfoService.trade(id);
         List<String> rskm = custBaseInfoService.rskm(id);
+        List<Map<String, Object>> custTags = custBaseInfoService.custTags(id);
+        List<Map<String, Object>> induTags = custBaseInfoService.induTags(id);
         Map<String, Object> relacorp = custBaseInfoService.relacorp(id);
 
         Map<String, Object> result = new HashMap<String, Object>();
@@ -100,6 +102,8 @@ public class CustBaseInfoController {
         result.put("pri", pri);
         result.put("trade", trade);
         result.put("rskm", rskm);
+        result.put("custTags", custTags);
+        result.put("induTags", induTags);
         result.put("relacorp", relacorp);
         logger.info("listCustBaseInfo controller result:\n{}\n", result);
         WebPageResult ret = new WebPageResult(result);

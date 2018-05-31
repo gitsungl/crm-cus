@@ -57,6 +57,24 @@ public interface CustBaseInfoService {
     public List<String> rskm(String id) throws ServiceException;
 
     /**
+     * 行内客户标签
+     * 
+     * @param id
+     * @return
+     * @throws ServiceException
+     */
+    public List<Map<String, Object>> custTags(String id) throws ServiceException;
+
+    /**
+     * 行业标签
+     * 
+     * @param id
+     * @return
+     * @throws ServiceException
+     */
+    public List<Map<String, Object>> induTags(String id) throws ServiceException;
+
+    /**
      * 企业关系圈
      * 
      * @param id

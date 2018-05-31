@@ -34,14 +34,14 @@
     <div class="main-content">
       <div class="row crm-top-row">
         <div class="col-sm-6 crm-left-col crm-less-col">
-          <div class="chart-item-bg crm-echarts-col-height">
+          <div class="chart-item-bg">
             <div class="chart-label">
               <div id="performanceDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
         <div class="col-sm-6 crm-right-col crm-more-col">
-          <div class="chart-item-bg crm-echarts-col-height">
+          <div class="chart-item-bg">
             <div class="chart-label">
               <div class="row">
                 <div class="col-sm-10">
@@ -59,7 +59,7 @@
       </div>
       <div class="row">
         <div class="col-sm-4 crm-left-col">
-          <div class="chart-item-bg crm-echarts-col-height">
+          <div class="chart-item-bg">
             <div class="chart-label">
               <div class="row">
                 <div class="col-sm-10">
@@ -75,7 +75,7 @@
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="chart-item-bg crm-echarts-col-height">
+          <div class="chart-item-bg">
             <div class="chart-label">
               <div class="row">
                 <div class="col-sm-10">
@@ -91,7 +91,7 @@
           </div>
         </div>
         <div class="col-sm-4 crm-right-col">
-          <div class="chart-item-bg crm-echarts-col-height">
+          <div class="chart-item-bg">
             <div class="chart-label">
               <div id="busiOppDiv" class="crm-echarts-panel-height"></div>
             </div>
@@ -100,14 +100,14 @@
       </div>
       <div class="row">
         <div class="col-sm-6 crm-left-col crm-less-col">
-          <div class="chart-item-bg crm-echarts-col-height">
+          <div class="chart-item-bg">
             <div class="chart-label">
               <div id="perfRankingDiv" class="crm-echarts-panel-height"></div>
             </div>
           </div>
         </div>
         <div class="col-sm-6 crm-right-col crm-more-col">
-          <div class="chart-item-bg crm-echarts-col-height">
+          <div class="chart-item-bg">
             <div class="row">
               <div class="col-sm-12 crm-message-col">
                 <div class="panel panel-default collapsed">

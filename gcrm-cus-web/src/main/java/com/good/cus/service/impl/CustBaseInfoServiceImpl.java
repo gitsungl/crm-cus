@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.good.db.IPage;
 import com.good.cus.bean.CustBaseInfoPo;
+import com.good.cus.constant.TagsCoordinate;
 import com.good.cus.mapper.CustBaseInfoDao;
 import com.good.cus.service.CustBaseInfoService;
 import com.good.sys.ServiceException;
@@ -122,6 +123,44 @@ public class CustBaseInfoServiceImpl implements CustBaseInfoService {
     public List<String> rskm(String id) throws ServiceException {
         List<String> result = custBaseInfoDao.rskm(id);
         logger.info("rskm service result:\n{}\n", result);
+        return result;
+    }
+
+    @Override
+    public List<Map<String, Object>> custTags(String id) throws ServiceException {
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>(5);
+
+        for (int i = 0; i < 5; i++) {
+            Map<String, Object> data = new HashMap<String, Object>(3);
+            data.put("value", TagsCoordinate.AMOUNT_OF_5[i]);
+            Map<String, String> formatter = new HashMap<String, String>(1);
+            formatter.put("formatter", TagsCoordinate.TAGS[i]);
+            data.put("label", formatter);
+            Map<String, String> color = new HashMap<String, String>(1);
+            color.put("color", TagsCoordinate.COLOR[i]);
+            data.put("itemStyle", color);
+            result.add(data);
+        }
+
+        return result;
+    }
+
+    @Override
+    public List<Map<String, Object>> induTags(String id) throws ServiceException {
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>(5);
+
+        for (int i = 0; i < 4; i++) {
+            Map<String, Object> data = new HashMap<String, Object>(3);
+            data.put("value", TagsCoordinate.AMOUNT_OF_4[i]);
+            Map<String, String> formatter = new HashMap<String, String>(1);
+            formatter.put("formatter", TagsCoordinate.TAGS2[i]);
+            data.put("label", formatter);
+            Map<String, String> color = new HashMap<String, String>(1);
+            color.put("color", TagsCoordinate.COLOR[i]);
+            data.put("itemStyle", color);
+            result.add(data);
+        }
+
         return result;
     }
 

@@ -52,41 +52,6 @@
 .crm-form-group-label {
     width: 20%;
 }
-.ownstr-col-height {
-    height: 460px;
-}
-#ownstrDiv {
-    height: 400px;
-}
-.keyman-col-height {
-    height: 220px;
-}
-.keyman-inline {
-    display: inline-block;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-.trade-col-height {
-    height: 440px;
-}
-#tradeDiv {
-    height: 380px;
-}
-.rskm-col-height {
-    height: 500px;
-}
-#rskmDiv {
-    height: 440px;
-}
-.relacorp-col-height {
-    height: 410px;
-}
-#relacorpDiv {
-    height: 350px;
-}
-.product-col-height {
-    height: 470px;
-}
 .panel-product {
     margin-bottom: 0px;
     padding: 0px;
@@ -111,6 +76,29 @@
 }
 .page-body .main-content .cbp_tmtimeline > li .cbp_tmlabel h2 {
     padding-top: 5px;
+}
+.keyman-col-height {
+    height: 240px;
+}
+.keyman-inline {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+#tradeDiv {
+    height: 400px;
+}
+#ownstrDiv {
+    height: 420px;
+}
+#rskmDiv {
+    height: 347px;
+}
+#custTagsDiv, #induTagsDiv {
+    height: 280px;
+}
+#relacorpDiv {
+    height: 300px;
 }
 </style>
 </head>
@@ -185,14 +173,14 @@
             </div>
           </div>
           <div class="row">
-            <div class="chart-item-bg ownstr-col-height">
+            <div class="chart-item-bg">
               <div class="chart-label">
                 <div id="ownstrDiv"></div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="chart-item-bg keyman-col-height">
+            <div class="chart-item-bg">
               <div class="chart-label">
                 <div class="xe-widget xe-status-update">
                   <div class="xe-header">
@@ -225,7 +213,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="chart-item-bg trade-col-height">
+            <div class="chart-item-bg">
               <div class="chart-label" style="padding-top: 10px;">
                 <div class="row text-right">
                   <div class="crm-more-click-div">
@@ -241,23 +229,37 @@
         </div>
         <div class="col-sm-6 crm-right-col crm-more-col">
           <div class="row">
-            <div class="chart-item-bg rskm-col-height">
+            <div class="chart-item-bg">
               <div class="chart-label">
                 <div id="rskmDiv"></div>
               </div>
             </div>
           </div>
           <div class="row">
+            <div class="col-sm-6" style="padding-left: 0px;">
+              <div class="chart-item-bg tags-col-height">
+                <div class="chart-label">
+                  <div id="custTagsDiv"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6" style="padding-right: 0px;">
+              <div class="chart-item-bg tags-col-height">
+                <div class="chart-label">
+                  <div id="induTagsDiv"></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="row">
-            <div class="chart-item-bg relacorp-col-height">
+            <div class="chart-item-bg">
               <div class="chart-label">
                 <div id="relacorpDiv"></div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="chart-item-bg product-col-height">
+            <div class="chart-item-bg">
               <div class="chart-label">
                 <div class="row">
                   <div class="col-sm-12">
@@ -910,6 +912,66 @@
         }
     }, true);
 
+    // 行内客户标签
+    var myChart_custTags = echarts.init(document.getElementById("custTagsDiv"), "crm-homepage1");
+    myChart_custTags.setOption({
+        title: {
+            text: '行内客户标签'
+        },
+        xAxis: {
+            show: false
+        },
+        yAxis: {
+            show: false,
+            scale: true
+        },
+        series: [{
+            type: 'scatter',
+            symbolSize: 60,
+            label: {
+                show: true
+            },
+            itemStyle: {
+                normal: {
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(25, 100, 150, 0.5)',
+                    shadowOffsetY: 3
+                }
+            },
+            data: []
+        }]
+    }, true);
+
+    // 行业标签
+    var myChart_induTags = echarts.init(document.getElementById("induTagsDiv"), "crm-homepage1");
+    myChart_induTags.setOption({
+        title: {
+            text: '行业标签'
+        },
+        xAxis: {
+            show: false
+        },
+        yAxis: {
+            show: false,
+            scale: true
+        },
+        series: [{
+            type: 'scatter',
+            symbolSize: 60,
+            label: {
+                show: true
+            },
+            itemStyle: {
+                normal: {
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(25, 100, 150, 0.5)',
+                    shadowOffsetY: 3
+                }
+            },
+            data: []
+        }]
+    }, true);
+
     // 企业关系圈
     var myChart_relacorp = echarts.init(document.getElementById("relacorpDiv"), "crm-homepage1");
     myChart_relacorp.setOption({
@@ -993,6 +1055,18 @@
                 myChart_rskm.setOption({
                     series : [ {
                         data : data_rskm
+                    } ]
+                });
+                // 行内客户标签
+                myChart_custTags.setOption({
+                    series : [ {
+                        data : result.data.custTags
+                    } ]
+                });
+                // 行业标签
+                myChart_induTags.setOption({
+                    series : [ {
+                        data : result.data.induTags
                     } ]
                 });
                 // 企业关系圈
