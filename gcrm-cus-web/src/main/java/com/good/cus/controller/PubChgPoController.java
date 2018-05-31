@@ -24,7 +24,7 @@ import com.good.sys.WebUtils;
 import com.good.sys.bean.LogonInfo;
 
 @Controller
-@RequestMapping("/cus")
+@RequestMapping("/cus/pubchg")
 public class PubChgPoController {
 
 	private static Logger logger = LoggerFactory.getLogger(PubChgPoController.class);

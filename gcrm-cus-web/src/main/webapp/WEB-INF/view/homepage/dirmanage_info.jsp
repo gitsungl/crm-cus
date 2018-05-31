@@ -477,7 +477,7 @@
                     title: '更多',
                     icon: 'image://../../images/crm/more.png',
                     onclick: function (){
-                    	var url = "/cus/pubchg_d_info";
+                    	var url = "/cus/pubchg/pubchg_d_info";
                     	parent.openPage("pubchgInfo_l", "管辖客户存款排名", url);
                     }
                 }
@@ -512,7 +512,7 @@
                     title: '更多',
                     icon: 'image://../../images/crm/more.png',
                     onclick: function (){
-                    	var url = "/cus/pubchg_l_info";
+                    	var url = "/cus/pubchg/pubchg_l_info";
                     	parent.openPage("pubchgInfo_d", "管辖客户贷款排名", url);
                     }
                 }
@@ -633,20 +633,24 @@
                 }); 
                 // 客户存款变动排名
                 var pubDpsChg = result.data.pubDpsChg;
-                myChart_pubDpsChg.setOption({
-                    series : [ {
-                        max : pubDpsChg[0].value,
-                        data : pubDpsChg
-                    } ]
-                });
+                if (pubDpsChg.length > 0) {
+                    myChart_pubDpsChg.setOption({
+                        series : [ {
+                            max : pubDpsChg[0].value,
+                            data : pubDpsChg
+                        } ]
+                    });
+                }
                 // 客户贷款变动排名
                 var pubLoanChg = result.data.pubLoanChg;
-                myChart_pubLoanChg.setOption({
-                    series : [ {
-                        max : pubLoanChg[0].value,
-                        data : result.data.pubLoanChg
-                    } ]
-                });
+                if (pubLoanChg.length > 0) {
+                    myChart_pubLoanChg.setOption({
+                        series : [ {
+                            max : pubLoanChg[0].value,
+                            data : result.data.pubLoanChg
+                        } ]
+                    });
+                }
                 // 业绩排名
                 myChart_perfRanking.setOption({
                     yAxis : {

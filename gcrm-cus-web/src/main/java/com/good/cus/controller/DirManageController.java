@@ -37,42 +37,42 @@ public class DirManageController {
 	 private  DirManageService service;
 	 
 	 @RequestMapping(value = "/dirmanage_info", method = { RequestMethod.POST, RequestMethod.GET })
-	    public String toPage() throws Exception {
-	        return "/homepage/dirmanage_info";
-	    }
+	 public String toPage() throws Exception {
+	     return "/homepage/dirmanage_info";
+	 }
 	 
 	 @PostMapping("/dirmanage_info/dirmanage")
-	    @ResponseBody
-	    public WebPageResult homepage(WebRequest wr, HttpServletRequest request) throws Exception {
-	        LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-	        String staffId =  linfo.getOperator().getUserID();
-	        logger.info("controller staffId: {}", staffId);
-	        List<String> perfAcph = service.performance(staffId);
-	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
-	        List<BigDecimal> unfinished = service.unfinished(staffId);
-	        List<Map<String, String>> pubDpsChg = service.pubDpsChg(staffId);
-	        List<Map<String, String>> pubLoanChg = service.pubLoanChg(staffId);
-	        List<List<String>> PubVifyListTab = service.PubVifyListPoForTable(staffId);
-	        Map<String, List<String>> perfRanking = service.perfRanking(staffId);
-	        List<Map<String, String>> message = service.message(staffId);
-	        Map<String, Object> result = new HashMap<String, Object>(7);
-	        result.put("perfAcph", perfAcph);
-	        result.put("unfinished", unfinished);
-	        result.put("pubDpsChg", pubDpsChg);
-	        result.put("pubLoanChg", pubLoanChg);
-	        result.put("PubVifyListTab", PubVifyListTab);
-	        result.put("PubVifyListTabYear", sdf.format(new Date()));
-	        result.put("perfRanking", perfRanking);
-	        result.put("message", message);
-	        logger.info("dirmanage controller result: {}", result);
-	        WebPageResult ret = new WebPageResult(result);
-	        return ret;
-	    }
+	 @ResponseBody
+	 public WebPageResult homepage(WebRequest wr, HttpServletRequest request) throws Exception {
+		 LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
+	     String staffId =  linfo.getOperator().getUserID();
+	     logger.info("controller staffId: {}", staffId);
+	     List<String> perfAcph = service.performance(staffId);
+	     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+	     List<BigDecimal> unfinished = service.unfinished(staffId);
+	     List<Map<String, String>> pubDpsChg = service.pubDpsChg(staffId);
+	     List<Map<String, String>> pubLoanChg = service.pubLoanChg(staffId);
+	     List<List<String>> PubVifyListTab = service.PubVifyListPoForTable(staffId);
+         Map<String, List<String>> perfRanking = service.perfRanking(staffId);
+         List<Map<String, String>> message = service.message(staffId);
+         Map<String, Object> result = new HashMap<String, Object>(7);
+         result.put("perfAcph", perfAcph);
+         result.put("unfinished", unfinished);
+         result.put("pubDpsChg", pubDpsChg);
+         result.put("pubLoanChg", pubLoanChg);
+         result.put("PubVifyListTab", PubVifyListTab);
+         result.put("PubVifyListTabYear", sdf.format(new Date()));
+         result.put("perfRanking", perfRanking);
+         result.put("message", message);
+         logger.info("dirmanage controller result: {}", result);
+         WebPageResult ret = new WebPageResult(result);
+         return ret;
+	 }
 
-	    @InitBinder
-	    public void initBinder(WebDataBinder binder) {
-	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	        dateFormat.setLenient(false);
-	        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-	    }
+	  @InitBinder
+	  public void initBinder(WebDataBinder binder) {
+	      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	      dateFormat.setLenient(false);
+	      binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+	  }
 }
