@@ -29,12 +29,12 @@ public class MktActInfoPo implements Serializable {
 	/**
      * 开始日期
      */
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
 	/**
      * 结束日期
      */
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 	/**
      * 活动规模
@@ -65,7 +65,7 @@ public class MktActInfoPo implements Serializable {
      */
 	private String createUser;
 	/**
-     * 申创建时间
+     * 创建时间
      */
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
@@ -89,12 +89,8 @@ public class MktActInfoPo implements Serializable {
      */
 	private String lastUpdOrg;
 	
-	public Integer getActId() {
-		return actId;
-	}
-	public void setActId(Integer actId) {
-		this.actId = actId;
-	}
+	
+	
 	public String getCreateOrg() {
 		return createOrg;
 	}
@@ -125,14 +121,14 @@ public class MktActInfoPo implements Serializable {
 	public void setActStatus(String actStatus) {
 		this.actStatus = actStatus;
 	}
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
+	@JsonFormat(pattern = "yyyy-MM-dd" ,timezone = "GMT+8")
 	public Date getStartDate() {
 		return startDate;
 	}
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
+	@JsonFormat(pattern = "yyyy-MM-dd" ,timezone = "GMT+8")
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -200,5 +196,11 @@ public class MktActInfoPo implements Serializable {
 	}
 	public void setLastUpdTime(Date lastUpdTime) {
 		this.lastUpdTime = lastUpdTime;
+	}
+	public Integer getActId() {
+		return actId;
+	}
+	public void setActId(Integer actId) {
+		this.actId = actId;
 	}
 }

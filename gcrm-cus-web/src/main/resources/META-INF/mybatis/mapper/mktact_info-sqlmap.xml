@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.MktActInfoDao">
+	<resultMap id="MktActInfoPoMap" type="com.good.cus.bean.MktActInfoPo">
+		<id property="ACT_ID" column="actId"/>
+		<result property="ACT_NAME" column="actName"/>
+		<result property="ACT_TYPE" column="actType"/>
+		<result property="ACT_STATUS" column="actStatus"/>
+		<result property="START_DATE" column="startDate"/>
+		<result property="END_DATE" column="endDate"/>
+		<result property="ACT_SCOPE" column="actScope"/>
+		<result property="ACT_DESC" column="actDesc"/>
+		<result property="HOST_UNIT" column="hostUnit"/>
+		<result property="LINKER" column="linker"/>
+		<result property="TEL" column="tel"/>
+		<result property="ADDR" column="addr"/>
+		<result property="CREATE_USER" column="createUser"/>
+		<result property="CREATE_TIME" column="createTime"/>
+		<result property="CREATE_ORG" column="createOrg"/>
+		<result property="LAST_UPD_USER" column="lastUpdUser"/>
+		<result property="LAST_UPD_TIME" column="lastUpdTime"/>
+		<result property="LAST_UPD_ORG" column="lastUpdOrg"/>
+	</resultMap>
+	
+	<sql id="MktActInfoPoSelect">
+		t.ACT_ID AS actId,
+		t.ACT_NAME AS actName,
+		t.ACT_TYPE AS actType,
+		t.ACT_STATUS AS actStatus,
+		t.START_DATE AS startDate,
+		t.END_DATE AS endDate,
+		t.ACT_SCOPE AS actScope,
+		t.ACT_DESC AS actDesc,
+		t.HOST_UNIT AS hostUnit,
+		t.LINKER AS linker,
+		t.TEL AS tel,
+		t.ADDR AS addr,
+		t.CREATE_USER AS createUser,
+		t.CREATE_TIME AS createTime,
+		t.LAST_UPD_USER AS lastUpdUser,
+		t.LAST_UPD_TIME AS lastUpdTime
+	</sql>
+
+	<sql id="MktActInfoPoWhere">
+		<!-- <if test="condition.actId != null and condition.actId != ''"> and t.ACT_ID = #{condition.actId} </if> -->
+		<if test="condition.actName != null and condition.actName != ''"> and t.ACT_NAME like '%${condition.actName}%'</if>
+	</sql>
+
+	<select id="list" resultType="com.good.cus.bean.MktActInfoPo">
+		SELECT 
+			<include refid="MktActInfoPoSelect" />
+		FROM MKT_ACT_INFO t
+		<where> 1=1
+			<include refid="MktActInfoPoWhere" />
+		</where>
+	</select>
+
+	<update id="update" parameterType="com.good.cus.bean.MktActInfoPo">
+		UPDATE MKT_ACT_INFO 
+		<set>
+			<!-- <if test="actId != null">ACT_ID=#{actId},</if> -->
+			<if test="actName != null">ACT_NAME=#{actName},</if>
+			<if test="actType != null">ACT_TYPE=#{actType},</if>
+			<if test="actStatus != null">ACT_STATUS=#{actStatus},</if>
+			<if test="startDate != null">START_DATE=#{startDate},</if>
+			<if test="endDate != null">END_DATE=#{endDate},</if>
+			
+			<if test="actScope != null">ACT_SCOPE=#{actScope},</if>
+			<if test="actDesc != null">ACT_DESC=#{actDesc},</if>
+			<if test="hostUnit != null">HOST_UNIT=#{hostUnit},</if>
+			<if test="linker != null">LINKER=#{linker},</if>
+			<if test="tel != null">TEL=#{tel},</if>
+			<if test="addr != null">ADDR=#{addr},</if>
+			<if test="createUser != null">CREATE_USER=#{createUser},</if>
+			
+			<if test="createTime != null">CREATE_TIME=#{createTime},</if>
+			<if test="lastUpdUser != null">LAST_UPD_USER=#{lastUpdUser},</if>
+			<if test="lastUpdTime != null">LAST_UPD_TIME=#{lastUpdTime},</if>
+		</set>
+		WHERE ACT_ID = #{actId}
+	</update>
+
+	<insert id="insert" parameterType="com.good.cus.bean.MktActInfoPo">
+		INSERT INTO MKT_ACT_INFO 
+				(ACT_NAME,ACT_TYPE,ACT_STATUS,START_DATE,END_DATE,ACT_SCOPE,ACT_DESC,HOST_UNIT,LINKER,TEL,ADDR,CREATE_USER,CREATE_TIME,LAST_UPD_USER,LAST_UPD_TIME)
+		VALUES  (#{actName,jdbcType=VARCHAR},#{actType,jdbcType=VARCHAR},
+				 #{actStatus,jdbcType=VARCHAR},#{startDate,jdbcType=TIMESTAMP},#{endDate,jdbcType=TIMESTAMP},
+				 #{actScope,jdbcType=VARCHAR},#{actDesc,jdbcType=VARCHAR},#{hostUnit,jdbcType=VARCHAR},
+				 #{linker,jdbcType=VARCHAR},#{tel,jdbcType=VARCHAR},#{addr,jdbcType=VARCHAR},
+				 #{createUser,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},
+				 #{lastUpdUser,jdbcType=VARCHAR},#{lastUpdTime,jdbcType=TIMESTAMP})
+	</insert>
+
+	<delete id="delete" parameterType="com.good.cus.bean.MktActInfoPo">
+		DELETE FROM MKT_ACT_INFO WHERE ACT_ID = #{actId}
+	</delete>
+</mapper>

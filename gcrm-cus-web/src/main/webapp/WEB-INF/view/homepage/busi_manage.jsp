@@ -68,13 +68,14 @@
                 <div class="col-sm-12">
                    <img class="echartsHeight-left" src="../../images/crm/yxhdfqlc.png" width="100%"  usemap="yxhdfqlc">
                    <map name="yxhdfqlc">
-                     <area shape="rect" coords="275,125,165,165" onclick="alert('\'发起营销活动\'功能开发中。。。。。')" title="发起营销活动" target="_blank" >
-                     <area shape="rect" coords="435,360,325,400" onclick="alert('\'查看营销进度\'功能开发中。。。。。')" title="查看营销进度" target="_blank" >
-                     <area shape="rect" coords="435,435,325,475" onclick="alert('\'查看营销反馈\'功能开发中。。。。。')" title="查看营销反馈" target="_blank" >
-                     <area shape="rect" coords="195,490,85,530" onclick="alert('\'查看营销后评价\'功能开发中。。。。。')" title="查看营销后评价" target="_blank" >
+                     <area shape="rect" coords="220,120,130,160" onclick="alert('\'发起营销活动\'功能开发中。。。。。')" title="发起营销活动" target="_blank" >
+                     <area shape="rect" coords="348,345,258,385" onclick="alert('\'查看营销进度\'功能开发中。。。。。')" title="查看营销进度" target="_blank" >
+                     <area shape="rect" coords="348,420,258,460" onclick="alert('\'查看营销反馈\'功能开发中。。。。。')" title="查看营销反馈" target="_blank" >
+                     <area shape="rect" coords="155,470,65,510" onclick="alert('\'查看营销后评价\'功能开发中。。。。。')" title="查看营销后评价" target="_blank" >
                    </map>
                 </div>
-              </div>
+              </div>·
+              
             </div>
           </div>
         </div>
