@@ -1006,7 +1006,8 @@
                     } ]
                 });
                 $("#tradeMore").on("click", function(ev) {
-                    parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+                    WebUtils.alert("功能开发中。。。");
+                    // parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
                 });
                 // 风险管理
                 var rskm = result.data.rskm;

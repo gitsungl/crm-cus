@@ -578,7 +578,8 @@
                 });
                 if (result.data.unfinished.taskName.length > 0) {
                     $("#unfinishedMore").on("click", function() {
-                        parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+                        WebUtils.alert("功能开发中。。。");
+                        // parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
                     });
                 }
                 // 客户存款变动排名
@@ -591,7 +592,7 @@
                         } ]
                     });
                     $("#pubDpsChgMore").on("click", function(ev) {
-                        parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+                    	parent.openPage("pubchgInfo_l", "管辖客户存款排名", "/cus/pubchg/pubchg_d_info");
                     });
                 }
                 // 客户贷款变动排名
@@ -604,7 +605,7 @@
                         } ]
                     });
                     $("#pubLoanChgMore").on("click", function(ev) {
-                        parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+                    	parent.openPage("pubchgInfo_d", "管辖客户贷款排名", "/cus/pubchg/pubchg_l_info");
                     });
                 }
                 // 可营销商机
@@ -674,7 +675,7 @@
         });
 
         $("#msgMore").on("click", function(ev) {
-            parent.openPage("custbase_info", "客户管理", "/cus/custbase/custbase_info");
+            parent.openPage("pubmsg", "消息详情页面", "/cus/pubmsg/pubpoitmsg_info");
         });
     });
 </script>
