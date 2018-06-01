@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.MktTaskInfoDao">
+	<resultMap id="MktTaskInfoPoMap" type="com.good.cus.bean.MktTaskInfoPo">
+		<id property="TASK_ID" column="taskId"/>
+		<result property="OBJ_ID" column="objId"/>
+		<result property="TASK_NAME" column="taskName"/>
+		<result property="TASK_TYPE" column="taskType"/>
+		<result property="TASK_STATUS" column="taskStatus"/>
+		<result property="CUST_NO" column="custNo"/>
+		<result property="CUST_NAME" column="custName"/>
+		<result property="STAFF_ID" column="staffId"/>
+		<result property="START_DATE" column="startDate"/>
+		<result property="END_DATE" column="endDate"/>
+		<result property="PERF_TOTAL" column="perfTotal"/>
+		<result property="CREATE_TIME" column="createTime"/>
+	</resultMap>
+	
+	<sql id="PoSelect">
+		t.TASK_ID AS taskId,
+		t.OBJ_ID AS objId,
+		t.TASK_NAME AS taskName,
+		t.TASK_TYPE AS taskType,
+		t.TASK_STATUS AS taskStatus,
+		t.CUST_NO AS custNo,
+		t.CUST_NAME AS custName,
+		t.STAFF_ID AS staffId,
+		t.START_DATE AS startDate,
+		t.END_DATE AS endDate,
+		t.PERF_TOTAL AS perfTotal,
+		t.CREATE_TIME AS createTime
+	</sql>
+
+	<sql id="PoWhere">
+		<!-- <if test="condition.actId != null and condition.actId != ''"> and t.ACT_ID = #{condition.actId} </if> -->
+		<if test="condition.taskName != null and condition.taskName != ''"> and t.TASK_NAME like '%${condition.taskName}%'</if>
+	</sql>
+
+	<select id="list" resultType="com.good.cus.bean.MktTaskInfoPo">
+		SELECT 
+			<include refid="PoSelect" />
+		FROM MKT_TASK_INFO t
+		<where> 1=1
+			<include refid="PoWhere" />
+		</where>
+	</select>
+
+	<update id="update" parameterType="com.good.cus.bean.MktTaskInfoPo">
+		UPDATE MKT_TASK_INFO 
+		<set>
+			<!-- <if test="taskId != null">TASK_ID=#{taskId},</if> -->
+			<if test="objId != null">OBJ_ID=#{objId},</if>
+			<if test="taskName != null">TASK_NAME=#{taskName},</if>
+			<if test="taskType != null">TASK_TYPE=#{taskType},</if>
+			<if test="taskStatus != null">TASK_STATUS=#{taskStatus},</if>
+			<if test="custNo != null">CUST_NO=#{custNo},</if>
+			
+			<if test="custName != null">CUST_NAME=#{custName},</if>
+			<if test="staffId != null">STAFF_ID=#{staffId},</if>
+			<if test="startDate != null">START_DATE=#{startDate},</if>
+			<if test="endDate != null">END_DATE=#{endDate},</if>
+			<if test="perfTotal != null">PERF_TOTAL=#{perfTotal},</if>
+			<if test="createTime != null">CREATE_TIME=#{createTime},</if>
+		</set>
+		WHERE TASK_ID = #{taskId}
+	</update>
+
+	<insert id="insert" parameterType="com.good.cus.bean.MktTaskInfoPo">
+		INSERT INTO MKT_TASK_INFO 
+				(OBJ_ID ,TASK_NAME ,TASK_TYPE ,TASK_STATUS ,CUST_NO ,CUST_NAME ,STAFF_ID ,START_DATE ,END_DATE ,PERF_TOTAL ,CREATE_TIME )
+		VALUES  (#{objId,jdbcType=INTEGER},
+				 #{taskName,jdbcType=VARCHAR},
+				 #{taskType,jdbcType=VARCHAR},
+				 #{taskStatus,jdbcType=VARCHAR},
+				 #{custNo,jdbcType=VARCHAR},
+				 #{custName,jdbcType=VARCHAR},
+				 #{staffId,jdbcType=VARCHAR},
+				 #{startDate,jdbcType=TIMESTAMP},
+				 #{endDate,jdbcType=TIMESTAMP},
+				 #{perfTotal,jdbcType=DECIMAL},
+				 #{createTime,jdbcType=TIMESTAMP})
+	</insert>
+
+	<delete id="delete" parameterType="com.good.cus.bean.MktTaskInfoPo">
+		DELETE FROM MKT_TASK_INFO WHERE TASK_ID = #{taskId}
+	</delete>
+</mapper>

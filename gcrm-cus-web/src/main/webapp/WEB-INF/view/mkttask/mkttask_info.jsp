@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>营销活动列表</title>
+<title>营销任务列表</title>
 
 <link rel="stylesheet" href="../../assets/css/fonts/linecons/css/linecons.css">
 <link rel="stylesheet" href="../../assets/css/fonts/fontawesome/css/font-awesome.min.css">
@@ -34,7 +34,7 @@
     <div class="main-content">
       <div class="panel panel-default collapsed">
         <div class="panel-heading">
-          <h3 class="panel-title">营销活动列表</h3>
+          <h3 class="panel-title">营销任务列表</h3>
           <div class="panel-options">
             <a href="#" data-toggle="panel"> <span class="collapse-icon">&ndash;</span> <span class="expand-icon">+</span>
             </a>
@@ -47,7 +47,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label class="control-label">活动名称</label>
-                  <input type="text" class="form-control" id="actName1" name="actName" placeholder="活动名称">
+                  <input type="text" class="form-control" id="taskName1" name="taskName" placeholder="任务名称">
                 </div>
               </div>
               <!-- <div class="col-md-3">
@@ -95,24 +95,18 @@
           <table class="table table-bordered table-striped table-condensed nowrap" id="listtable" style="width: 100%;">
             <thead>
               <tr>
-               	<!-- <th>活动ID</th> -->
-                <th>活动名称</th>
-                <th>活动类型</th>
-                <th>活动状态</th>
+               	<!-- <th>任务ID</th> -->
+                <th>对象ID</th>
+                <th>任务名称</th>
+                <th>任务类型</th>
+                <th>任务状态</th>
+                <th>客户号</th>
+                <th>客户名称</th>
+                <th>客户经理</th>
                 <th>开始日期</th>
                 <th>结束日期</th>
-                <th>活动规模</th>
-                <th>活动内容</th>
-                <th>主办单位</th>
-                <th>活动联系人</th>
-                <th>活动联系电话</th>
-                <th>活动地点</th>
-                <th>创建人</th>
-                <th>申创建时间</th>
-                <!-- <th>创建机构</th> -->
-                <th>最后修改人</th>
-                <th>最后修改时间</th>
-                <!-- <th>最后修改机构</th> -->
+                <th>奖金总额</th>
+                <th>创建时间</th>
               </tr>
             </thead>
             <tbody class="middle-align">
@@ -134,16 +128,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="actName" class="control-label">活动名称</label>
-                            <input type="hidden" id = "actId" name = "actId">
-                            <input type="text" class="form-control" id="actName" name="actName" placeholder="请输入活动名称" 
+                        	<input type="hidden" id = "taskId" name = "taskId">
+                            <label for="objId" class="control-label">对象ID</label>
+                            <input type="text" class="form-control" id="objId" name="objId" placeholder="请输入对象ID" 
                               data-validate="required" data-message-required="此项必须输入.">
                         </div>    
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="actType" class="control-label">活动类型</label>
-                            <input type="text" class="form-control" id="actType" name="actType" placeholder="请输入活动类型"
+                            <label for="taskName" class="control-label">任务名称</label>
+                            <input type="text" class="form-control" id="taskName" name="taskName" placeholder="请输入任务名称"
                                 data-validate="required" data-message-required="此项必须输入.">
                         </div>    
                     </div>
@@ -151,31 +145,35 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="startDate" class="control-label">开始日期</label>
-                            <input type="date" class="form-control" id="startDate" name="startDate" placeholder="请输入开始日期"
-                            	data-validate="required" data-message-required="此项必须输入."/>
+                            <label for="taskType" class="control-label">任务类型</label>
+                            <select class="form-control" id="taskType" name="taskType" data-validate="required" data-message-required="此项必须输入.">
+                            </select>
+                            <!-- <input type="text" class="form-control" id="taskType" name="taskType" placeholder="请输入任务类型"
+                            	data-validate="required" data-message-required="此项必须输入."/> -->
                         </div>    
                     </div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="endDate" class="control-label">结束日期</label>
-							<input type="date" class="form-control" id="endDate" name="endDate" placeholder="请输入結束日期"
-                            	data-validate="required" data-message-required="此项必须输入."/>
+							<label for="taskStatus" class="control-label">任务状态</label>
+							<select class="form-control" id="taskStatus" name="taskStatus" data-validate="required" data-message-required="此项必须输入.">
+                            </select>
+							<!-- <input type="date" class="form-control" id="taskStatus" name="taskStatus" placeholder="请输入任务状态"
+                            	data-validate="required" data-message-required="此项必须输入."/> -->
 						</div>	
 					</div>
                 </div>
              <div class="row">
               	<div class="col-md-6">
                         <div class="form-group">
-                            <label for="actScope" class="control-label">活动规模</label>
-                            <input type="text" class="form-control" id="actScope" name="actScope" placeholder="请输入活动规模"
+                            <label for="custNo" class="control-label">客户号</label>
+                            <input type="text" class="form-control" id="custNo" name="custNo" placeholder="请输入客户号"
                             	data-validate="required" data-message-required="此项必须输入."/>
                         </div>    
                     </div>
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label for="actDesc" class="control-label">活动内容</label>
-                         <input type="text" class="form-control" id="actDesc" name="actDesc" placeholder="请输入活动内容"
+                         <label for="custName" class="control-label">客户名称</label>
+                         <input type="text" class="form-control" id="custName" name="custName" placeholder="请输入客户名称"
                             	data-validate="required" data-message-required="此项必须输入."/>
                      </div>    
                  </div>
@@ -183,28 +181,28 @@
              <div class="row">
               	<div class="col-md-6">
                         <div class="form-group">
-                            <label for="hostUnit" class="control-label">主办单位</label>
-                            <input type="text" class="form-control" id="hostUnit" name="hostUnit" placeholder="请输入活动规模"/>
+                            <label for="staffId" class="control-label">客户经理</label>
+                            <input type="text" class="form-control" id="staffId" name="staffId" placeholder="请输入客户经理"/>
                         </div>    
                     </div>
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label for="linker" class="control-label">活动联系人</label>
-                         <input type="text" class="form-control" id="linker" name="linker" placeholder="请输入活动联系地点"/>
+                         <label for="startDate" class="control-label">开始日期</label>
+                         <input type="date" class="form-control" id="startDate" name="startDate" placeholder="请输入开始日期"/>
                      </div>    
                  </div>
              </div>
              <div class="row">
               	<div class="col-md-6">
                         <div class="form-group">
-                            <label for="tel" class="control-label">活动联系电话</label>
-                            <input type="text" class="form-control" id="tel" name="tel" placeholder="请输入活动规模"/>
+                            <label for="endDate" class="control-label">结束日期</label>
+                            <input type="date" class="form-control" id="endDate" name="endDate" placeholder="请输入结束日期"/>
                         </div>    
                     </div>
                  <div class="col-md-6">
                      <div class="form-group">
-                         <label for="addr" class="control-label">活动联系地点</label>
-                         <input type="text" class="form-control" id="addr" name="addr" placeholder="请输入活动联系地点"/>
+                         <label for="perfTotal" class="control-label">奖金总额</label>
+                         <input type="text" class="form-control" id="perfTotal" name="perfTotal" placeholder="请输入奖金总额"/>
                      </div>    
                  </div>
              </div>
@@ -246,22 +244,17 @@
 
 <jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
 
-<s:enums keys="act_Status"></s:enums>
-<%-- <script type="text/javascript">
-$(function () {
-    //下拉框数据绑定
-    WebUtils.bindSelect('actStatus','act_Status');
-});
-</script> --%>
+<s:enums keys="task_Type,task_Status"></s:enums>
 <script type="text/javascript">
     $(function() {
         //下拉框数据绑定
-        WebUtils.bindSelect('actStatus','act_Status',true);
-
+        WebUtils.bindSelect('taskType','task_Type',true);
+        WebUtils.bindSelect('taskStatus','task_Status',true);
+        
         //初始化列表
         var initparams = {
             "ajax" : {
-                "url" : "mktactinfo/list",
+                "url" : "mkttaskinfo/list",
                 "type" : "POST",
                 "data" : function(d) {
                     var orders = d.order;
@@ -276,31 +269,32 @@ $(function () {
                 }
             },
             "columns" : [
-               /*  { "data" : "actId", "sClass" : "text-center" },	 */	// 活动ID
-                { "data" : "actName", "sClass" : "text-center" },	// 活动名称
-                { "data" : "actType", "sClass" : "text-center" },	// 活动类型
-                { "data" : "actStatus", "sClass" : "text-center" },	// 活动状态:1-失效 9-驳回 2-生效
-                { "data" : "startDate", "sClass" : "text-center" },	// 开始日期
-                { "data" : "endDate", "sClass" : "text-center" },	// 结束日期
-                { "data" : "actScope", "sClass" : "text-center" },	// 活动规模
-                { "data" : "actDesc", "sClass" : "text-center" },	// 活动内容
-                { "data" : "hostUnit", "sClass" : "text-center" },	// 主办单位
-                { "data" : "linker", "sClass" : "text-center" },	// 活动联系人
-                { "data" : "tel", "sClass" : "text-center" },		// 活动联系电话
-                { "data" : "addr", "sClass" : "text-center" },		// 活动地点
-                { "data" : "createUser", "sClass" : "text-center" },	// 创建人
-                { "data" : "createTime", "sClass" : "text-center" },    // 创建时间
-                //{ "data" : "createOrg", "sClass" : "text-center" },		// 创建机构
-                { "data" : "lastUpdUser", "sClass" : "text-center" },	// 最后修改人
-                { "data" : "lastUpdTime", "sClass" : "text-center" },	// 最后修改时间
-                //{ "data" : "lastUpdOrg", "sClass" : "text-center" },	// 最后修改机构
+               /*  { "data" : "taskId", "sClass" : "text-center" },	 */	// 任务ID
+                { "data" : "objId", "sClass" : "text-center" },			// 对象ID
+                { "data" : "taskName", "sClass" : "text-center" },		// 任务名称
+                { "data" : "taskType", "sClass" : "text-center" },		// 任务类型 1-营销活动 2-潜在客户 3-客户商机
+                { "data" : "taskStatus", "sClass" : "text-center" },	// 任务状态 1-新增 2-已拜访 3-已记录 4-完成
+                { "data" : "custNo", "sClass" : "text-center" },		// 客户号
+                { "data" : "custName", "sClass" : "text-center" },		// 客户名称
+                { "data" : "staffId", "sClass" : "text-center" },		// 客户经理
+                { "data" : "startDate", "sClass" : "text-center" },		// 开始日期
+                { "data" : "endDate", "sClass" : "text-center" },		// 结束日期
+                { "data" : "perfTotal", "sClass" : "text-center" },		// 奖金总额
+                { "data" : "createTime", "sClass" : "text-center" },	// 创建时间
             ],
             "columnDefs" : [{
                  "render" : function (data, type, row) {
-                    return WebUtils.getCodeValue("act_Status", data);
+                    return WebUtils.getCodeValue("task_Type", data);
                 }, 
                 "targets" : [2]
-            }]
+            },
+            {
+                "render" : function (data, type, row) {
+                   return WebUtils.getCodeValue("task_Status", data);
+               }, 
+               "targets" : [3]
+           }
+            ]
         };
         var params = $.extend({}, WebUtils.settings, initparams);
         params.ordering = false;
@@ -327,7 +321,7 @@ $(function () {
                     sdata.push(data[x]);
                 }
                 var str =  JSON.stringify(sdata);
-                WebUtils.ajaxSubmitJson('mktactinfo/delete',str,function(result){
+                WebUtils.ajaxSubmitJson('mkttaskinfo/delete',str,function(result){
                     $('#sysmsg .modal-body').text(result.msg);
                     $('#sysmsg').modal('show');
                     table.draw();
@@ -337,14 +331,14 @@ $(function () {
         
       //新增
         $('#addbutton').click( function () {
-            jQuery('#unit_detail').modal('show', {backdrop: 'static',action: "mktactinfo/add",title:"新增营销活动"});
+            jQuery('#unit_detail').modal('show', {backdrop: 'static',action: "mkttaskinfo/add",title:"新增营销任务"});
         });
         
         //修改
         $('#updbutton').click( function () {
             var data = table.rows('.selected').data();
             if (data.length == 1) {
-                jQuery('#unit_detail').modal('show', {backdrop: 'static',action: "mktactinfo/update",title:"修改营销活动"});
+                jQuery('#unit_detail').modal('show', {backdrop: 'static',action: "mkttaskinfo/update",title:"修改营销任务"});
             } else {
                 WebUtils.alert("请选择一条记录");
             }
@@ -366,25 +360,26 @@ $(function () {
             $('#unit_detail form').validate().resetForm();
             $('.form-group').removeClass('validate-has-error');
             
-            if (button.attr('action') == 'mktactinfo/add') {
+            if (button.attr('action') == 'mkttaskinfo/add') {
                // $('#unitId').removeAttr('readonly');
                 $('#unit_detail form')[0].reset();
             } else {
                 //$('#unitId').attr('readonly','true');
                 var data = table.row('.selected').data();
                 if (data) {
-                	$('#actId').val(data['actId']);
-                    $('#actName').val(data['actName']);
-                    $('#actType').val(data['actType']);
+                	$('#taskId').val(data['taskId']);
+                    $('#objId').val(data['objId']);
+                    $('#taskName').val(data['taskName']);
+                    $('#taskType').val(data['taskType']);
+                    
+                    $('#taskStatus').val(data['taskStatus']);
+                    $('#custNo').val(data['custNo']);
+                    $('#custName').val(data['custName']);
+                    
+                    $('#staffId').val(data['staffId']);
                     $('#startDate').val(data['startDate']);
                     $('#endDate').val(data['endDate']);
-                    $('#actScope').val(data['actScope']);
-                    $('#actDesc').val(data['actDesc']);
-                    
-                    $('#hostUnit').val(data['hostUnit']);
-                    $('#linker').val(data['linker']);
-                    $('#tel').val(data['tel']);
-                    $('#addr').val(data['addr']);
+                    $('#perfTotal').val(data['perfTotal']);
                 }
             }
         });
