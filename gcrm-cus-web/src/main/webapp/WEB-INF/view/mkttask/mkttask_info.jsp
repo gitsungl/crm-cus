@@ -384,7 +384,7 @@
             }
         });
     });
-    
+    /////////////////////////
     function submitDetail() {
         var form = $('#unit_detail form');
         if (form.valid()) {
