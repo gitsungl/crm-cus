@@ -244,12 +244,12 @@
 
 <jsp:include page="/WEB-INF/template/settings.jsp"></jsp:include>
 
-<s:enums keys="task_Type,task_Status"></s:enums>
+<s:enums keys="task_Type,cus_task_status"></s:enums>
 <script type="text/javascript">
     $(function() {
         //下拉框数据绑定
         WebUtils.bindSelect('taskType','task_Type',true);
-        WebUtils.bindSelect('taskStatus','task_Status',true);
+        WebUtils.bindSelect('taskStatus','cus_task_status',true);
         
         //初始化列表
         var initparams = {
@@ -290,7 +290,7 @@
             },
             {
                 "render" : function (data, type, row) {
-                   return WebUtils.getCodeValue("task_Status", data);
+                   return WebUtils.getCodeValue("cus_task_status", data);
                }, 
                "targets" : [3]
            }

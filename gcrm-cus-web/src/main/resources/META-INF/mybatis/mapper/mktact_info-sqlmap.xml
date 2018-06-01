@@ -58,7 +58,7 @@
 	<update id="update" parameterType="com.good.cus.bean.MktActInfoPo">
 		UPDATE MKT_ACT_INFO 
 		<set>
-			<!-- <if test="actId != null">ACT_ID=#{actId},</if> -->
+			<if test="actId != null">ACT_ID=#{actId},</if>
 			<if test="actName != null">ACT_NAME=#{actName},</if>
 			<if test="actType != null">ACT_TYPE=#{actType},</if>
 			<if test="actStatus != null">ACT_STATUS=#{actStatus},</if>

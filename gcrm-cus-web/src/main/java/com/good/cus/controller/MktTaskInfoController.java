@@ -47,7 +47,7 @@ public class MktTaskInfoController {
 		
 		// 设置查询条件
 		WebUtils.convertParam(condition, request);
-		condition.put("actName", request.getParameter("actName"));
+		condition.put("taskName", request.getParameter("taskName"));
 		// 获取翻页信息
 		IPage page = WebUtils.getPageParam(wr);
 		LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);

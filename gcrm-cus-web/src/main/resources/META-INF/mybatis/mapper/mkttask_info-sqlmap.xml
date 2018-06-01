@@ -48,7 +48,7 @@
 	<update id="update" parameterType="com.good.cus.bean.MktTaskInfoPo">
 		UPDATE MKT_TASK_INFO 
 		<set>
-			<!-- <if test="taskId != null">TASK_ID=#{taskId},</if> -->
+			<if test="taskId != null">TASK_ID=#{taskId},</if>
 			<if test="objId != null">OBJ_ID=#{objId},</if>
 			<if test="taskName != null">TASK_NAME=#{taskName},</if>
 			<if test="taskType != null">TASK_TYPE=#{taskType},</if>

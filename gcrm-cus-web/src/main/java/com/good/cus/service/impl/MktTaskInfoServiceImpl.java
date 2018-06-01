@@ -1,5 +1,6 @@
 package com.good.cus.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,8 @@ public class MktTaskInfoServiceImpl implements MktTaskInfoService {
 	public void insert(Operator oper, MktTaskInfoPo one) throws ServiceException {
 		ExecuteResult result = ExecuteResult.UNKNOWN;
 		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("MMddHHmmss");
+			one.setTaskId(Integer.parseInt(sdf.format(new Date())));
 			one.setCreateTime(new Date());
 			mktTaskInfoDao.insert(one);
 			result = ExecuteResult.SUCCESS;

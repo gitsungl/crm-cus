@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class MktTaskInfoPo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,10 +46,12 @@ public class MktTaskInfoPo implements Serializable {
     /**
      * 开始日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
     /**
      * 结束日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     /**
      * 表外字段:未定义
@@ -58,6 +64,7 @@ public class MktTaskInfoPo implements Serializable {
     /**
      * 创建时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     /**
      * 引申字段:任务状态
@@ -136,6 +143,7 @@ public class MktTaskInfoPo implements Serializable {
         this.staffId = staffId;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd" ,timezone = "GMT+8")
     public Date getStartDate() {
         return startDate;
     }
@@ -144,6 +152,7 @@ public class MktTaskInfoPo implements Serializable {
         this.startDate = startDate;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd" ,timezone = "GMT+8")
     public Date getEndDate() {
         return endDate;
     }
@@ -168,6 +177,7 @@ public class MktTaskInfoPo implements Serializable {
         this.perfTotal = perfTotal;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" ,timezone = "GMT+8")
     public Date getCreateTime() {
         return createTime;
     }

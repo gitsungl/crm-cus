@@ -74,8 +74,7 @@
                      <area shape="rect" coords="155,470,65,510" onclick="alert('\'查看营销后评价\'功能开发中。。。。。')" title="查看营销后评价" target="_blank" >
                    </map>
                 </div>
-              </div>·
-              
+              </div>
             </div>
           </div>
         </div>
