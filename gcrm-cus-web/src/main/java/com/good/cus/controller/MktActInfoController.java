@@ -82,7 +82,6 @@ public class MktActInfoController {
         WebPageResult ret = new WebPageResult();
         try {
             LogonInfo linfo = (LogonInfo) WebUtils.getLogInfo(request);
-            one.setLastUpdUser(linfo.getOperator().getUserID());
             service.update(linfo.getOperator(), one);
         } catch (Exception e) {
             logger.error(MsgConstants.E0000, e);

@@ -7,33 +7,61 @@ import java.util.Date;
 public class MktTaskInfoPo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    /**
+     * 任务ID
+     */
     private Integer taskId;
-
+    /**
+     * 对象ID
+     */
     private Integer objId;
-
+    /**
+     * 任务名称
+     */
     private String taskName;
-
+    /**
+     * 任务类型 1-营销活动 2-潜在客户 3-客户商机
+     */
     private String taskType;
-
+    /**
+     * 任务状态 1-新增 2-已拜访 3-已记录 4-完成
+     */
     private String taskStatus;
-
+    /**
+     * 客户号
+     */
     private String custNo;
-
+    /**
+     * 客户名称
+     */
     private String custName;
-
+    /**
+     * 客户经理
+     */
     private String staffId;
-
+    /**
+     * 开始日期
+     */
     private Date startDate;
-
+    /**
+     * 结束日期
+     */
     private Date endDate;
-
+    /**
+     * 表外字段:未定义
+     */
     private BigDecimal perfAlready;
-
+    /**
+     * 奖金总额
+     */
     private BigDecimal perfTotal;
-
+    /**
+     * 创建时间
+     */
     private Date createTime;
-    
+    /**
+     * 引申字段:任务状态
+     */
     private Integer taskStatusNum;
     
     public Integer getTaskStatusNum() {

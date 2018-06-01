@@ -14,7 +14,6 @@
     <result column="STAFF_NAME" property="staffName" />
     <result column="BIZ_DATE" property="bizDate" />
     <result column="BIZ_DATE_STR" property="bizDateStr" />
-    <result column="CRY" property="cry" />
   </resultMap>
 
   <sql id = "PubChgPoSelect">
@@ -27,8 +26,7 @@
 	t.THAN_Y_AMT AS thanYAmt,
 	t.STAFF_ID AS staffId,
 	s.STAFF_NAME AS staffName,
-	t.BIZ_DATE AS bizDateStr,
-	t.CRY AS cry
+	t.BIZ_DATE AS bizDateStr
   </sql>
   
   <sql id ="PubChgPoWhere">

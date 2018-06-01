@@ -52,7 +52,7 @@ public class MktActInfoServiceImpl implements MktActInfoService {
 			mktActInfoDao.insert(one);
 			result = ExecuteResult.SUCCESS;
 		} finally {
-			logService.addAuditLog(oper, BizType.SYS, "insertMktActInfoPo", "增加用户", "自增ID",
+			logService.addAuditLog(oper, BizType.SYS, "insertMktActInfoPo", "增加营销活动", "自增ID",
 					FunctionType.INSERT, result);
 		}
 
@@ -65,7 +65,7 @@ public class MktActInfoServiceImpl implements MktActInfoService {
 			mktActInfoDao.delete(one);
 			result = ExecuteResult.SUCCESS;
 		} finally {
-			logService.addAuditLog(oper, BizType.SYS, "deleteMktActInfoPo", "增加用户", one.getActId().toString(),
+			logService.addAuditLog(oper, BizType.SYS, "deleteMktActInfoPo", "删除营销活动", one.getActId().toString(),
 					FunctionType.INSERT, result);
 		}
 
@@ -81,7 +81,7 @@ public class MktActInfoServiceImpl implements MktActInfoService {
 			mktActInfoDao.update(one);
 			result = ExecuteResult.SUCCESS;
 		} finally {
-			logService.addAuditLog(oper, BizType.SYS, "updateMktActInfoPo", "增加用户", one.getActId().toString(),
+			logService.addAuditLog(oper, BizType.SYS, "updateMktActInfoPo", "更新营销活动", one.getActId().toString(),
 					FunctionType.INSERT, result);
 		}
 	}
