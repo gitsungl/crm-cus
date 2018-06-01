@@ -271,18 +271,6 @@
         });
         return group;
     }
-    
-    var gradientStyle = {
-        normal: {
-            color: new echarts.graphic.LinearGradient(
-                0, 0, 0, 1,
-                [
-                    {offset: 0, color: "#35D6FF"},
-                    {offset: 1, color: "#3B90FF"}
-                ]
-            )
-        }
-    };
 
     var gradientStyle2 = {
         normal: {
@@ -296,28 +284,6 @@
         }
     };
 
-    var gradientStyle3 = {
-        normal: {
-            color: new echarts.graphic.LinearGradient(
-                0, 0, 0, 1,
-                [
-                    {offset: 0, color: "#99E28E"},
-                    {offset: 1, color: "#57CFA9"}
-                ]
-            )
-        }
-    };
-
-    var fontLabel = {
-        normal : {
-            show : true,
-            position : "top",
-            fontSize : 10,
-            textBorderWidth : 1,
-            color : colorStyle.guidelines
-        }
-    };
-
     var fontLabel2 = {
         normal : {
             show : true,
@@ -326,18 +292,6 @@
                 color: colorStyle.blackStyle
             },
             fontSize : 9,
-            textBorderWidth : 1
-        }
-    };
-
-    var fontLabel3 = {
-        normal : {
-            show : true,
-            position : "inside",
-            textStyle: {
-                color: colorStyle.blackStyle
-            },
-            fontSize : 12,
             textBorderWidth : 1
         }
     };
@@ -492,7 +446,12 @@
             minSize: '0%',
             maxSize: '100%',
             gap : 2,
-            label : fontLabel3,
+            label : fontLabel2,
+            labelLine: {
+                normal: {
+                    length: 0
+                }
+            },
             data : []
         } ]
     }, true);
@@ -528,7 +487,12 @@
             maxSize: '100%',
             sort : "ascending",
             gap : 2,
-            label : fontLabel3,
+            label : fontLabel2,
+            labelLine: {
+                normal: {
+                    length: 0
+                }
+            },
             data : []
         } ]
     }, true);
