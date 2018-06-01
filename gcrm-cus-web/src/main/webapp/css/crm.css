@@ -10,6 +10,7 @@
 
 .chart-item-bg {
     margin-bottom: 14px;
+    border-radius: 5px;
 }
 
 .chart-item-bg .chart-label {
@@ -74,6 +75,7 @@
 .crm-widget {
     border: 1px solid #F0F0F0;
     border-top: 4px solid #3B90FF;
+    border-radius: 4px;
 }
 
 .crm-more-click-div a {

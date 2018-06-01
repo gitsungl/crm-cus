@@ -109,7 +109,7 @@
       <div class="row crm-top-row">
         <div class="col-sm-6 crm-left-col crm-less-col">
           <div class="row">
-            <div class="panel panel-default collapsed">
+            <div class="panel panel-default collapsed chart-item-bg">
               <div class="form-group" style="margin-bottom: 45px;">
                 <div class="col-sm-10">
                   <h4>基本信息</h4>
