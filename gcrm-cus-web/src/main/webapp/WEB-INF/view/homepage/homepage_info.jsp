@@ -304,19 +304,7 @@
             textStyle: {
                 color: colorStyle.blackStyle
             },
-            fontSize : 9,
-            textBorderWidth : 1
-        }
-    };
-
-    var fontLabel3 = {
-        normal : {
-            show : true,
-            position : "inside",
-            textStyle: {
-                color: colorStyle.blackStyle
-            },
-            fontSize : 12,
+            fontSize : 10,
             textBorderWidth : 1
         }
     };
@@ -417,7 +405,12 @@
             minSize: "0%",
             maxSize: "100%",
             gap : 2,
-            label : fontLabel3,
+            label : fontLabel2,
+            labelLine: {
+                normal: {
+                    length: 0
+                }
+            },
             data : []
         } ]
     }, true);
@@ -437,7 +430,12 @@
             maxSize: "100%",
             gap : 2,
             sort : "ascending",
-            label : fontLabel3,
+            label : fontLabel2,
+            labelLine: {
+                normal: {
+                    length: 0
+                }
+            },
             data : []
         } ]
     }, true);
@@ -570,14 +568,11 @@
                 // 未完成营销任务
                 myChart_unfinished.setOption({
                     xAxis : {
-                        // data : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
                         data : result.data.unfinished.taskName
                     },
                     series : [ {
-                        // data: [ 1.6, 2.6, 3.6, 4.6, 5.6, 6.6, 7.6, 8.6, 9.6, 10.6, 11.6, 12.6 ]
                         data : result.data.unfinished.perfTotal
                     }, {
-                        // data: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 8 ]
                         data : result.data.unfinished.perfAlready
                     } ]
                 });
@@ -615,27 +610,26 @@
                 // 可营销商机
                 myChart_busiOpp.setOption({
                     series : [ {
-                        // data : [ "90", "70", "45" ]
                         data : result.data.busiOpp
                     } ]
                 });
                 // 业绩排名
                 var perfRanking = result.data.perfRanking.perfRanking;
-                var perfRankingMe = result.data.perfRanking.perfRankingMe;
-                perfRanking[perfRankingMe] = {
-                    value : perfRanking[perfRankingMe],
-                    itemStyle : gradientStyle4
-                };
-                myChart_perfRanking.setOption({
-                    yAxis : {
-                        // data : [ "no1", "no2", "no3", "no4", "nom" ]
-                        data : result.data.perfRanking.perfRankingName
-                    },
-                    series : [ {
-                        // data: [ 165, 140, 50, 30, 10 ]
-                        data : result.data.perfRanking.perfRanking
-                    } ]
-                });
+                if (perfRanking.length > 0) {
+                    var perfRankingMe = result.data.perfRanking.perfRankingMe;
+                    perfRanking[perfRankingMe] = {
+                        value : perfRanking[perfRankingMe],
+                        itemStyle : gradientStyle4
+                    };
+                    myChart_perfRanking.setOption({
+                        yAxis : {
+                            data : result.data.perfRanking.perfRankingName
+                        },
+                        series : [ {
+                            data : result.data.perfRanking.perfRanking
+                        } ]
+                    });
+                }
                 // 公告栏
                 msg = result.data.message;
                 if (msg.length > 0) {
