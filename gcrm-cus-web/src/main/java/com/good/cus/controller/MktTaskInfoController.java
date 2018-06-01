@@ -46,7 +46,7 @@ public class MktTaskInfoController {
 		HashMap<String,Object> condition = WebUtils.fillOrderParam(wr, null);
 		
 		// 设置查询条件
-		WebUtils.convertParam(condition, request);
+		WebUtils.convertParam(condition, request);//不确定有效
 		condition.put("taskName", request.getParameter("taskName"));
 		// 获取翻页信息
 		IPage page = WebUtils.getPageParam(wr);
