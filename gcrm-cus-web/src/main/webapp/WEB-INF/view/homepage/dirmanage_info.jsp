@@ -661,7 +661,7 @@
                     var $msgbody = $(".crm-message-body");
                     for (var i_msg = 0; i_msg < 3; i_msg++) {
                     	$($msgheader[i_msg]).empty().append(msg[i_msg].msgTitle);
-                        $($msgbody[i_msg]).empty().append(msg[i_msg].msgContent.slice(0, 150) + "…");
+                        $($msgbody[i_msg]).empty().append(msg[i_msg].msgContent.slice(0, 100) + "…");
                     }
                 }
             }
