@@ -33,6 +33,24 @@ public class MktStfPerfPo implements Serializable {
     
     private List<BigDecimal> perfAcphList;
     
+    //新增属性
+    
+    private BigDecimal perfAcphOne;
+    
+    private BigDecimal perfAcphTwo;
+    
+    public BigDecimal getPerfAcphOne() {
+		return perfAcphOne;
+	}
+
+	public void setPerfAcphOne(BigDecimal perfAcphOne) {
+		this.perfAcphOne = perfAcphOne;
+	}
+
+	public BigDecimal getPerfAcphTwo() {
+		return perfAcphTwo;
+	}
+    
     public String getPerfAcphStr() {
 		return perfAcphStr;
 	}

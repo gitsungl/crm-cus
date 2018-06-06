@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.good.cus.mapper.PresidentDao">
+	<select id="performance" resultType="com.good.cus.bean.MktStfPerfPo">
+    SELECT
+      MONTH(t.BIZ_DATE) AS id,
+      SUM(t.PERF_ACPH)  AS perfAcph,
+      SUM(t.PERF_TOTAL) AS perfTotal
+    FROM
+      mkt_stf_perf t
+    WHERE
+      YEAR(t.BIZ_DATE) = DATE_FORMAT(NOW(), '%Y') AND STAFF_ID = #{staffId}
+    GROUP BY
+     MONTH(t.BIZ_DATE)
+  </select>
+  
+  <select id="performanceOne" resultType="com.good.cus.bean.MktStfPerfPo">
+    SELECT
+      MONTH(t.BIZ_DATE) AS id,
+      SUM(t.PERF_ACPH)  AS perfAcphOne,
+      SUM(t.PERF_TOTAL) AS perfTotal
+    FROM
+      mkt_stf_perf t
+    WHERE
+      YEAR(t.BIZ_DATE) = DATE_FORMAT(NOW(), '%Y')-1 AND STAFF_ID = #{staffId}
+    GROUP BY
+     MONTH(t.BIZ_DATE)
+  </select>
+  
+  <select id="performanceTwo" resultType="com.good.cus.bean.MktStfPerfPo">
+    SELECT
+      MONTH(t.BIZ_DATE) AS id,
+      SUM(t.PERF_ACPH)  AS perfAcphTwo,
+      SUM(t.PERF_TOTAL) AS perfTotal
+    FROM
+      mkt_stf_perf t
+    WHERE
+      YEAR(t.BIZ_DATE) = DATE_FORMAT(NOW(), '%Y')-2 AND STAFF_ID = #{staffId}
+    GROUP BY
+     MONTH(t.BIZ_DATE)
+  </select>
+  
+  <select id="termRadarNum" resultType="java.lang.String">
+   SELECT c.risk_num riskNum   FROM CUST_RISK_TYPE_ORG c where ORG_CODE = #{str}
+  </select>
+  
+  <select id="termRadarOrgCode" resultType="java.lang.String">
+   SELECT c.ORG_CODE orgCode  FROM CUST_RISK_TYPE_ORG c GROUP BY C.ORG_CODE
+  </select>
+
+  <select id="unfinished" resultType="com.good.cus.bean.MktTaskInfoPo">
+    SELECT
+      t.TASK_NAME AS taskName,
+      CASE t.TASK_STATUS
+      WHEN '1' THEN
+        t.PERF_TOTAL * 0.25
+      WHEN '2' THEN
+        t.PERF_TOTAL * 0.5
+      WHEN '3' THEN
+        t.PERF_TOTAL * 0.75
+      END AS perfAlready,
+      t.PERF_TOTAL AS perfTotal
+    FROM
+      MKT_TASK_INFO t
+    WHERE
+      t.TASK_TYPE = '1' AND t.TASK_STATUS != '4' AND t.STAFF_ID = #{staffId}
+    ORDER BY t.CREATE_TIME ASC
+    LIMIT 10
+  </select>
+
+  <select id="pubDpsChg" resultType="com.good.cus.bean.PubChgPo">
+   
+   	SELECT
+	    t.CUST_NO,
+	    c.STAFF_NAME,
+	    t.THAN_M_AMT
+	    FROM pub_dps_chg_org t
+	    LEFT JOIN sys_staff c ON c.STAFF_ID = t.CUST_NO
+	     ORDER BY
+      t.THAN_M_AMT DESC
+	    LIMIT 5
+   
+  </select>
+
+  <select id="pubLoanChg" resultType="com.good.cus.bean.PubChgPo">
+  	SELECT
+	    t.CUST_NO,
+	    c.STAFF_NAME,
+	    t.THAN_M_AMT
+	    FROM pub_dps_chg_org t
+	    LEFT JOIN sys_staff c ON c.STAFF_ID = t.CUST_NO
+	     ORDER BY
+      t.THAN_M_AMT DESC
+	    LIMIT 5
+  
+  </select>
+
+  <select id="busiOpp" resultType="java.lang.String">
+    SELECT
+      COUNT(*)
+    FROM
+      cust_busi_info
+    UNION ALL
+      SELECT
+        COUNT(*)
+      FROM
+        mkt_task_info
+      WHERE STAFF_ID = #{staffId}
+    UNION ALL
+      SELECT
+        COUNT(*)
+      FROM
+        mkt_task_info
+      WHERE TASK_STATUS = '4' AND STAFF_ID = #{staffId}
+  </select>
+
+  <select id="perfRanking" resultType="com.good.cus.bean.MktStfPerfPo">
+    ( SELECT
+      p.STAFF_ID AS STAFF_ID,
+      s.STAFF_NAME AS staffName,
+      SUM(p.PERF_ACPH) AS PERF_ACPH
+    FROM
+      mkt_stf_perf p
+    LEFT JOIN sys_staff s ON s.STAFF_ID = p.STAFF_ID
+    WHERE
+      MONTH (p.BIZ_DATE) = DATE_FORMAT(NOW(), '%m')
+    AND p.STAFF_ID != #{staffId}
+    GROUP BY
+      p.STAFF_ID
+    ORDER BY
+      SUM(p.PERF_ACPH) DESC
+    LIMIT 4 )
+    UNION ALL
+    ( SELECT
+      t.STAFF_ID AS id,
+      s.STAFF_NAME AS staffName,
+      SUM(t.PERF_ACPH) AS perfAcph
+    FROM
+      mkt_stf_perf t
+    LEFT JOIN sys_staff s ON s.STAFF_ID = t.STAFF_ID
+    WHERE
+      MONTH (t.BIZ_DATE) = DATE_FORMAT(NOW(), '%m')
+    AND t.STAFF_ID = #{staffId} )
+  </select>
+
+  <select id="message" resultType="java.lang.String">
+    SELECT
+      t.MSG_CONTENT
+    FROM
+      pub_poit_msg t
+    WHERE
+      t.MSG_TYPE = '1'
+    AND t. STATUS = '2'
+    AND t.CREATE_USER = #{staffId}
+    ORDER BY
+      t.CREATE_TIME DESC
+    LIMIT 3
+  </select>
+</mapper>
